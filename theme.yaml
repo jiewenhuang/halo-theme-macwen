@@ -1,0 +1,17 @@
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+spec:
+  displayName: thmeme-app
+  author:
+    name: jiewenhuang
+    website: 'https://jiewen.run'
+  description: Halo 2.0 Theme base on Thymeleaf
+  logo: 'https://pic.tyubar.com/2022/11/1668877198-32b3773ec3c02dc.png'
+  website: 'https://jiewen.run'
+  repo: 'https://github.com/jiewenhuang/halo-theme-app'
+  settingName: 'theme-app-setting'
+  configMapName: 'theme-app-configMap'
+  version: '1.0'
+  require: 'halo2.0'
+metadata:
+  name: theme-app
