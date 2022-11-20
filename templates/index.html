@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 </head>
 <body>
@@ -26,8 +26,8 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a href="index.html" class="navbar-brand logo">
-        <img class="sun-logo" th:src="@{/assets/uploads/2021/03/logo.png}">
-        <img class="moon-logo" th:src="@{/assets/uploads/2021/03/logo.png}">
+        <img class="sun-logo" th:src="${theme.config.header.header_logo}">
+        <img class="moon-logo" th:src="${theme.config.header.header_logo}">
       </a>
       <nav class="collapse navbar-collapse order-md-2">
         <ul class="navbar-nav main-menu ml-4 mr-auto">
@@ -122,13 +122,13 @@
   <div class="container">
     <div class="row">
       <div class="col-3 col-lg-3">
-        <a href="https://www.wpmao.com/">
+        <a th:href="${theme.config.box.boxone_url}">
           <div class="special-item hover-shadow-6 py-2 text-center" style="background: #7fe496">
             <div class="card">
               <div class="card-body">
                 <h6 class="mb-0 text-white">
                   <i class="fs-24 icon icon-office"></i>
-                  <span class="d-none d-md-block">新人必备</span>
+                  <span class="d-none d-md-block">[[${theme.config.box.box1_text}]]</span>
                 </h6>
               </div>
             </div>
@@ -136,13 +136,13 @@
         </a>
       </div>
       <div class="col-3 col-lg-3">
-        <a href="https://www.wpmao.com/">
+        <a th:href="${theme.config.box.box2_url}">
           <div class="special-item hover-shadow-6 py-2 text-center" style="background: #fe9078">
             <div class="card">
               <div class="card-body">
                 <h6 class="mb-0 text-white">
                   <i class="fs-24 icon icon-gallery"></i>
-                  <span class="d-none d-md-block">图像处理工具</span>
+                  <span class="d-none d-md-block">[[${theme.config.box.box2_text}]]</span>
                 </h6>
               </div>
             </div>
@@ -150,13 +150,13 @@
         </a>
       </div>
       <div class="col-3 col-lg-3">
-        <a href="https://www.wpmao.com/">
+        <a th:href="${theme.config.box.box3_url}">
           <div class="special-item hover-shadow-6 py-2 text-center" style="background: #50a1ff">
             <div class="card">
               <div class="card-body">
                 <h6 class="mb-0 text-white">
                   <i class="fs-24 icon icon-cp"></i>
-                  <span class="d-none d-md-block">产品经理工具</span>
+                  <span class="d-none d-md-block">[[${theme.config.box.box3_text}]]</span>
                 </h6>
               </div>
             </div>
@@ -164,13 +164,13 @@
         </a>
       </div>
       <div class="col-3 col-lg-3">
-        <a href="https://www.wpmao.com/">
+        <a th:href="${theme.config.box.box4_url}">
           <div class="special-item hover-shadow-6 py-2 text-center" style="background: #a682e4">
             <div class="card">
               <div class="card-body">
                 <h6 class="mb-0 text-white">
                   <i class="fs-24 icon icon-code"></i>
-                  <span class="d-none d-md-block">更多专题</span>
+                  <span class="d-none d-md-block">[[${theme.config.box.box4_text}]]</span>
                 </h6>
               </div>
             </div>
@@ -179,7 +179,10 @@
       </div>
     </div>
   </div>
-</section><section class="soft">
+</section>
+<!--  <section th:replace="modules/box :: box"></section>-->
+
+<section class="soft">
   <div class="container">
     <div class="d-flex section-header my-4">
       <div class="main-title me-4 flex-fill">
@@ -492,27 +495,29 @@
       </div>
     </div>
   </div>
-</section><footer class="footer d-none d-md-block">
-  <div class="container">
-    <div class="footer-border py-4">
-      <div class="d-flex align-items-center justify-content-between">
-        <div class="footer-logo">
-          <img class="sun-logo" th:src="@{/assets/uploads/2021/03/logo.png}">
-          <img class="moon-logo" th:src="@{/assets/uploads/2021/03/logo.png}">
-        </div>
+</section>
+<!--<footer class="footer d-none d-md-block">-->
+<!--  <div class="container">-->
+<!--    <div class="footer-border py-4">-->
+<!--      <div class="d-flex align-items-center justify-content-between">-->
+<!--        <div class="footer-logo">-->
+<!--          <img class="sun-logo" th:src="@{/assets/uploads/2021/03/logo.png}">-->
+<!--          <img class="moon-logo" th:src="@{/assets/uploads/2021/03/logo.png}">-->
+<!--        </div>-->
 
-        <div class="footer-nav nav">
-          <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">首页</a></li>
-          <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">装机必备</a></li>
-          <li class="menu-item"><a href="feed.rss">RSS订阅</a></li>
-          <li class="menu-item"><a href="feedback.html">留言反馈</a></li>
-        </div>
-        <div class="float-lg-right">
-          <p>Copyright © 2015 - 2020 <a href="https://www.wpmao.com/" target="_blank">WP猫</a>. All Rights Reserved. | Design by <a href="https://www.wpmao.com/" target="_blank">WP猫</a></p>				</div>
-      </div>
-    </div>
-  </div>
-</footer>
+<!--        <div class="footer-nav nav">-->
+<!--          <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">首页</a></li>-->
+<!--          <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">装机必备</a></li>-->
+<!--          <li class="menu-item"><a href="feed.rss">RSS订阅</a></li>-->
+<!--          <li class="menu-item"><a href="feedback.html">留言反馈</a></li>-->
+<!--        </div>-->
+<!--        <div class="float-lg-right">-->
+<!--          <p>Copyright © 2015 - 2020 <a href="https://www.wpmao.com/" target="_blank">WP猫</a>. All Rights Reserved. | Design by <a href="https://www.wpmao.com/" target="_blank">WP猫</a></p>				</div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</footer>-->
+<footer th:replace="modules/footer :: footer"></footer>
 <script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/plugins.js}" id='plugins-js'></script>
 <script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/main.js}" id='main-js'></script>
 <script type='text/javascript' th:src="@{/assets/js/comment-reply.min.js}" id='comment-reply-js'></script>

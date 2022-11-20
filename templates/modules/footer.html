@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<footer class="footer d-none d-md-block" th:fragment="footer">
+  <div class="container">
+    <div class="footer-border py-4">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="footer-logo">
+          <img class="sun-logo" th:src="${theme.config.footer.footer_logo}">
+          <img class="moon-logo" th:src="${theme.config.footer.footer_logo}">
+        </div>
+
+        <div class="footer-nav nav">
+          <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">首页</a></li>
+          <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">装机必备</a></li>
+          <li class="menu-item"><a href="feed.rss">RSS订阅</a></li>
+          <li class="menu-item"><a href="feedback.html">留言反馈</a></li>
+        </div>
+        <div class="float-lg-right">
+          <p>Copyright © 2022 - 2022 <a th:href="${site.url}" target="_blank">[[${site.title}]]</a> <a th:href="${site.url}" target="_blank" >[[${theme.config.basics.icp}]]</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>

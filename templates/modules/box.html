@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<section class="special" th:fragment="box">
+  <div class="container">
+    <div class="row">
+      <div class="col-3 col-lg-3">
+        <a th:href="${theme.config.box.box1_url}">
+          <div class="special-item hover-shadow-6 py-2 text-center" style="background: #7fe496">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="mb-0 text-white">
+                  <i class="fs-24 icon icon-office"></i>
+                  <span class="d-none d-md-block">[[${theme.config.box.box1_text}]]</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-3 col-lg-3">
+        <a th:href="${theme.config.box.box2_url}">
+          <div class="special-item hover-shadow-6 py-2 text-center" style="background: #fe9078">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="mb-0 text-white">
+                  <i class="fs-24 icon icon-gallery"></i>
+                  <span class="d-none d-md-block">[[${theme.config.box.box2_text}]]</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-3 col-lg-3">
+        <a th:href="${theme.config.box.box3_url}">
+          <div class="special-item hover-shadow-6 py-2 text-center" style="background: #50a1ff">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="mb-0 text-white">
+                  <i class="fs-24 icon icon-cp"></i>
+                  <span class="d-none d-md-block">[[${theme.config.box.box3_text}]]</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-3 col-lg-3">
+        <a th:href="${theme.config.box.box4_url}">
+          <div class="special-item hover-shadow-6 py-2 text-center" style="background: #a682e4">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="mb-0 text-white">
+                  <i class="fs-24 icon icon-code"></i>
+                  <span class="d-none d-md-block">[[${theme.config.box.box4_text}]]</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</html>

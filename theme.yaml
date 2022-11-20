@@ -1,7 +1,7 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 spec:
-  displayName: thmeme-app
+  displayName: theme-app
   author:
     name: jiewenhuang
     website: 'https://jiewen.run'
