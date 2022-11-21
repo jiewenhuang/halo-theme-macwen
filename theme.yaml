@@ -1,6 +1,12 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 spec:
+  customTemplates:
+    post:
+      - name: 文档
+        description: 文档类型的文章
+        screenshot:
+        file: post_documentation.html
   displayName: theme-app
   author:
     name: jiewenhuang

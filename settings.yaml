@@ -31,6 +31,30 @@ spec:
           label: 顶部LOGO
           placeholder: "请输入LOGO地址"
           help: '页脚导航LOGO'
+        - $formkit: url
+          name: banner_url
+          label: 顶部banner按钮跳转链接
+          placeholder: "请输入跳转地址"
+          help: '输入你要跳转的地址'
+        - $formkit: text
+          name: banner_buttontext
+          label: banner跳转按钮文字
+          value: 立即下载
+          placeholder: "按钮文字"
+          help: '输入按钮名字，例如：立即下载'
+        - $formkit: text
+          name: banner_firsttext
+          label: banner黑体文字
+          value: Halo-theme - 一对一高品质定制服务
+          placeholder: "请输入你想要的文字"
+          help: '第一行黑体大字'
+        - $formkit: text
+          name: banner_secondtext
+          label: banner灰体文字
+          value: 提供精美设计，功能开发，打造你的专属halo应用下载主题。
+          placeholder: "请输入你想要的文字"
+          help: '第二行灰体字'
+
     - group: footer
       label: 页脚
       formSchema:

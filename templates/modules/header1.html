@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" >
+<div class="header-top" th:fragment="header1">
+  <div class="container">
+    <div class="header-main d-flex justify-content-between align-items-center">
+      <nav class="nav top-bar-nav ">
+        <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">首页</a></li>
+        <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">装机必备</a></li>
+        <li class="menu-item"><a href="feed.rss">RSS订阅</a></li>
+        <li class="menu-item"><a href="feedback.html">留言反馈</a></li>
+      </nav>
+      <nav class="nav justify-content-end">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <i class="fs-16 icon icon-sun"></i>
+          <i class="fs-16 icon icon-moon"></i>
+        </label>
+      </nav>
+    </div>
+  </div>
+</div>
+<header class="header" th:fragment="header2" >
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a th:href="${site.url}" class="navbar-brand logo">
+        <img class="sun-logo" th:src="${theme.config.header.header_logo}">
+        <img class="moon-logo" th:src="${theme.config.header.header_logo}">
+      </a>
+      <nav class="collapse navbar-collapse order-md-2">
+        <ul class="navbar-nav main-menu ml-4 mr-auto">
+          <li class="menu-item current-menu-item"><a th:href="${site.url}" aria-current="page">首页</a></li>
+          <li class="menu-item"><a href="category/soft.html">软件</a></li>
+          <li class="menu-item"><a href="category/article.html">文章</a></li>
+          <li class="menu-item"><a href="zhuanti.html">专题</a></li>
+          <li class="menu-item"><a href="category/perfect.html">榜单</a></li>
+        </ul>
+      </nav>
+      <ul class="nav-right order-3">
+        <!--        <div class="header-search">-->
+        <!--          <form action="index.html" class="search-form" method="get">-->
+        <!--            <div class="input-group">-->
+        <!--              <input type="text" class="form-control" name="s" type="search" placeholder="输入关键字并按回车搜索..." autocomplete="off">-->
+        <!--              <div class="input-group-append">-->
+        <!--                <button class="search-btn" type="submit"><i class="icon icon-search"></i></button>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </form>-->
+        <!--        </div>-->
+      </ul>
+  </nav>
+  </div>
+  <div class="search-wrap fixed-top bg-white py-3" hidden="hidden">
+    <!--    <div class="container">-->
+    <!--      <form action="index.html" class="search-form" method="get">-->
+    <!--        <div class="d-flex justify-content-between align-items-center">-->
+    <!--          <input type="text" class="form-control text-muted border-0" name="s" type="search" placeholder="输入关键字并按回车搜索..." autocomplete="off">-->
+    <!--          <i class="icon icon-close"></i>-->
+    <!--        </div>-->
+    <!--      </form>-->
+    <!--    </div>-->
+  </div>
+</header>
+</html>

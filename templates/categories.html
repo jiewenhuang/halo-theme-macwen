@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 </head>
 <body>
 
+<div th:replace="modules/header1 :: header1"></div>
+<header th:replace="modules/header1 :: header2"></header>
+
+<body>
+<footer th:replace="modules/footer :: footer"></footer>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/plugins.js}" id='plugins-js'></script>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/main.js}" id='main-js'></script>
+<script type='text/javascript' th:src="@{/assets/js/comment-reply.min.js}" id='comment-reply-js'></script>
 </body>
 </html>

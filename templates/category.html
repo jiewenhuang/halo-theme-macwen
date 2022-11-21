@@ -1,10 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 </head>
 <body>
 
+<div th:replace="modules/header1 :: header1"></div>
+<header th:replace="modules/header1 :: header2"></header>
+
+<body>
+<div class="main py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-1">
+                <nav class="sidebar-nav">
+                    <ul class="sidebar-menu">
+                        <p class="fs-12 text-muted mb-0 pt-1">分类</p>
+                        <li class="menu-item menu-item-has-children"><a href="soft/txsj.html">图形设计</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="soft/txsj/photoprocess.html">图像处理</a></li>
+                                <li class="menu-item"><a href="soft/txsj/tpll.html">图片浏览</a></li>
+                                <li class="menu-item"><a href="soft/txsj/dhzz.html">动画制作</a></li>
+                                <li class="menu-item"><a href="soft/txsj/jhgj.html">交互工具</a></li>
+                                <li class="menu-item"><a href="soft/txsj/sjfz.html">设计辅助</a></li>
+                                <li class="menu-item"><a href="soft/txsj/swdh.html">三维动画</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-has-children"><a href="soft/xtgj.html">系统工具</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="soft/xtgj/xtql.html">系统清理</a></li>
+                                <li class="menu-item"><a href="soft/xtgj/xtyh.html">系统优化</a></li>
+                                <li class="menu-item"><a href="soft/xtgj/xtzq.html">系统增项</a></li>
+                                <li class="menu-item"><a href="soft/xtgj/sjhf.html">数据恢复</a></li>
+                                <li class="menu-item"><a href="soft/xtgj/xtgj-xtgj.html">系统固件</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-12 col-lg-11">
+                <section class="soft">
+                    <div class="container">
+                        <div class="row-sm row-cols-2 row-cols-md-5">
+                            <div class="col">
+                                <div class="soft-item delay-0">
+                                    <a href="../140.html" rel="bookmark" title="腾讯柠檬清理">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/05/tencent-lemon-bs.png);"></div>
+                                            <img src="../wp-content/uploads/2021/05/tencent-lemon-bs.png" class="soft-image rounded-sm delay-0" alt="腾讯柠檬清理" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">V4.8.9</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">腾讯柠檬清理</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">系统优化清理工具</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 546</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 05-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-1">
+                                    <a href="../68.html" rel="bookmark" title="Adobe Photoshop 2021 22.3 + Neural Filters 中文破解版 (使用最多的图片处理工具)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/adobe-photoshop-2020-1.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/adobe-photoshop-2020-1.png" class="soft-image rounded-sm delay-1" alt="Adobe Photoshop 2021 22.3 + Neural Filters 中文破解版 (使用最多的图片处理工具)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">V1.2</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">Adobe Photoshop</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">使用最多的图片处理工具</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 1410</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 2</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-2">
+                                    <a href="../63.html" rel="bookmark" title="Adobe Illustrator 2021 25.2.1 中文破解版 (矢量图形设计软件)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/adobe-illustrator-2020-2.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/adobe-illustrator-2020-2.png" class="soft-image rounded-sm delay-2" alt="Adobe Illustrator 2021 25.2.1 中文破解版 (矢量图形设计软件)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">v1.0</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">Adobe Illustrator</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">矢量图形设计软件</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 593</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-3">
+                                    <a href="../59.html" rel="bookmark" title="Snipaste 2.5.6 Beta 中文版 (支持贴图的截图工具)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/snipaste-screen-01.jpg);"></div>
+                                            <img src="../wp-content/uploads/2021/03/snipaste-screen-01.jpg" class="soft-image rounded-sm delay-3" alt="Snipaste 2.5.6 Beta 中文版 (支持贴图的截图工具)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">v1.0</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">Snipaste</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">支持贴图的截图工具</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 521</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-4">
+                                    <a href="../55.html" rel="bookmark" title="Sketch 71.1 中文破解版 (最好用的矢量绘图软件)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/sketch-bs.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/sketch-bs.png" class="soft-image rounded-sm delay-4" alt="Sketch 71.1 中文破解版 (最好用的矢量绘图软件)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">v71.1</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">Sketch</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">最好用的矢量绘图软件</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 410</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-5">
+                                    <a href="../49.html" rel="bookmark" title="XMind 2020 10.3.1 (202101070049) 中文破解版 (轻量级思维导图软件)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/xmind-8-1.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/xmind-8-1.png" class="soft-image rounded-sm delay-5" alt="XMind 2020 10.3.1 (202101070049) 中文破解版 (轻量级思维导图软件)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">v1.0</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">XMind</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">轻量级思维导图软件</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 461</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-6">
+                                    <a href="../44.html" rel="bookmark" title="亿图图示 9.4 中文破解版 (流程图信息图绘制)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/edraw-max-1.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/edraw-max-1.png" class="soft-image rounded-sm delay-6" alt="亿图图示 9.4 中文破解版 (流程图信息图绘制)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">v1.0</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">亿图图示</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">流程图信息图绘制</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 415</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-7">
+                                    <a href="../41.html" rel="bookmark" title="Mindjet mindmanager 13.1.115 中文破解版 (一款思维导图软件)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/mindmanager-3.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/mindmanager-3.png" class="soft-image rounded-sm delay-7" alt="Mindjet mindmanager 13.1.115 中文破解版 (一款思维导图软件)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">v1.0</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">Mindjet mindmanager</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">一款思维导图软件</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 451</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-8">
+                                    <a href="../37.html" rel="bookmark" title="Axure RP 9 9.0.0.3727 中文破解版 (交互原型设计神器)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/axure-rp-9-2.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/axure-rp-9-2.png" class="soft-image rounded-sm delay-8" alt="Axure RP 9 9.0.0.3727 中文破解版 (交互原型设计神器)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">9.0.0.3727</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">交互原型设计神器</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">Axure RP</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 415</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-9">
+                                    <a href="../33.html" rel="bookmark" title="Bootstrap Studio 5.5.2 破解版 (使用Bootstrap框架制作响应式网站)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/Bootstrap_Studio.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/Bootstrap_Studio.png" class="soft-image rounded-sm delay-9" alt="Bootstrap Studio 5.5.2 破解版 (使用Bootstrap框架制作响应式网站)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">5.5.2</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">Bootstrap Studio</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">使用Bootstrap框架制作响应式网站</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 406</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-10">
+                                    <a href="../29.html" rel="bookmark" title="XMind 8 Pro Update 9 中文破解版 (强大的思维导图软件)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/xmind-8-1.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/xmind-8-1.png" class="soft-image rounded-sm delay-10" alt="XMind 8 Pro Update 9 中文破解版 (强大的思维导图软件)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">9.0</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">XMind 8</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">强大的思维导图软件</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 410</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 1</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="soft-item delay-11">
+                                    <a href="../25.html" rel="bookmark" title="OmniGraffle Pro 7.18.4 中文破解版 (图示/图表/流程图等绘制)">
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:url(../wp-content/uploads/2021/03/omnigraffle-pro-1.png);"></div>
+                                            <img src="../wp-content/uploads/2021/03/omnigraffle-pro-1.png" class="soft-image rounded-sm delay-11" alt="OmniGraffle Pro 7.18.4 中文破解版 (图示/图表/流程图等绘制)" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">7.18.4</span>
+                                            <h5 itemprop="name headline" class="line-hide-1">OmniGraffle Pro</h5>
+                                            <p class="line-hide-1 mb-0 text-muted">图示/图表/流程图等绘制</p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 414</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i> 03-26</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="pagination-area pt-3">
+                    <div class="pagination"><ul><li class="prev-page"></li><li class="active"><span>1</span></li><li><a href='soft/page/2.html'>2</a></li><li class="next-page"><a href="soft/page/2.html" ><i class="icon icon-arrow-right"></i></a></li><li><span>2</span></li></ul></div>				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="modules/footer :: footer"></footer>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/plugins.js}" id='plugins-js'></script>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/main.js}" id='main-js'></script>
+<script type='text/javascript' th:src="@{/assets/js/comment-reply.min.js}" id='comment-reply-js'></script>
 </body>
 </html>
