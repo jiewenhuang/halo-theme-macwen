@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 </head>
 <body>
 
+<div th:replace="modules/header1 :: header1"></div>
+<header th:replace="modules/header1 :: header2"></header>
+
+<body>
+<div th:with="categories = ${categoryFinder.listAsTree()}">
+    <ul>
+        <li th:each="category : ${categories}">
+            <a th:href="@{${category.status.permalink}}">
+                <span th:text="${category.spec.displayName}"> </span>
+            </a>
+            <th:block th:if="${not #lists.isEmpty(category.children)}">
+                <th:block th:replace="~{modules/category-tree :: next (categories=${category.children})}"></th:block>
+            </th:block>
+        </li>
+    </ul>
+</div>
+<footer th:replace="modules/footer :: footer"></footer>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/plugins.js}" id='plugins-js'></script>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/main.js}" id='main-js'></script>
+<script type='text/javascript' th:src="@{/assets/js/comment-reply.min.js}" id='comment-reply-js'></script>
 </body>
 </html>

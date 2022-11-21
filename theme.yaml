@@ -1,11 +1,17 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 spec:
-  displayName: theme-app
+  customTemplates:
+    post:
+      - name: 文档
+        description: 文档类型的文章
+        screenshot:
+        file: post_documentation.html
+  displayName: macwen
   author:
     name: jiewenhuang
     website: 'https://jiewen.run'
-  description: Halo 2.0 Theme base on Thymeleaf
+  description: 一个精致的mac风应用下载模板
   logo: 'https://pic.tyubar.com/2022/11/1668877198-32b3773ec3c02dc.png'
   website: 'https://jiewen.run'
   repo: 'https://github.com/jiewenhuang/halo-theme-app'

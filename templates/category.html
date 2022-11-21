@@ -1,10 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 </head>
 <body>
+
+<div th:replace="modules/header1 :: header1"></div>
+<header th:replace="modules/header1 :: header2"></header>
+
+<body>
+<div class="main py-5" >
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-1">
+                <nav class="sidebar-nav">
+                    <ul class="sidebar-menu" >
+                        <p class="fs-12 text-muted mb-0 pt-1">分类</p>
+                        <div th:with="categories = ${categoryFinder.listAsTree()}">
+                            <ul>
+                                <li th:each="category : ${categories}" class="menu-item menu-item-has-children"
+                                    th:classappend="${category.metadata.name == category.metadata.name} ? ' current-menu-item'">
+                                    <a th:href="@{${category.status.permalink}}" th:text="${category.spec.displayName}">
+                                    </a>
+                                    <th:block th:if="${not #lists.isEmpty(category.children)}">
+                                        <th:block th:replace="~{modules/category-tree :: next (categories=${category.children})}"></th:block>
+                                    </th:block>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-12 col-lg-11">
+                <section class="soft">
+                    <div class="container">
+                        <div class="row-sm row-cols-2 row-cols-md-5">
+                            <div class="col" th:each="post : ${posts.items}">
+                                <div class="soft-item delay-0">
+                                    <a th:href="@{${post.status.permalink}}"
+                                       th:title="${post.spec.title}" rel="bookmark" >
+                                        <div class="soft-image">
+                                            <div class="soft-icon" style="--img:th:url(@{/assets/wp-content/uploads/2021/05/tencent-lemon-bs.png};"></div>
+                                            <img th:alt="${post.spec.title}"
+                                                 th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}" class="soft-image rounded-sm delay-0" itemprop="image">
+                                        </div>
+                                        <div class="soft-body pb-7">
+                                            <span class="version text-muted">V4.8.9</span>
+                                            <h5 itemprop="name headline" class="line-hide-1" th:text="${post.spec.title}"></h5>
+                                            <p class="line-hide-1 mb-0 text-muted" th:text="${post.status.excerpt}"></p>
+
+                                        </div>
+                                        <div class="soft-meta">
+                                            <span><i class="icon icon-down"></i> 546</span>
+                                            <span class="comments"><i class="icon icon-comments"></i> 0</span>
+                                            <span class="time"><i class="icon icon-time"></i>[[${#dates.format(post.spec.publishTime,'MM-dd')}]]</span>
+                                        </div>
+                                        <div class="soft-footer d-none">
+                                            <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="modules/footer :: footer"></footer>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/plugins.js}" id='plugins-js'></script>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/main.js}" id='main-js'></script>
+<script type='text/javascript' th:src="@{/assets/js/comment-reply.min.js}" id='comment-reply-js'></script>
+
 
 </body>
 </html>

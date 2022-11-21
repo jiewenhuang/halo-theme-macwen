@@ -1,14 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 </head>
 <body>
-<article
-        id="content"
-        class="prose prose-base mt-4 !max-w-none prose-pre:p-0 dark:prose-invert"
-        th:utext="${post.content.content}"
-></article>
+
+<div th:replace="modules/header1 :: header1"></div>
+<header th:replace="modules/header1 :: header2"></header>
+<div class="layout-header py-5" th:with="contributor = ${post.contributors[0]}">
+    <div>
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-1.svg}" class="shape-three">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-55.svg}" class="shape-four">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-56.svg}" class="shape-five">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-57.svg}" class="shape-six">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-58.svg}" class="shape-seven">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-59.svg}" class="shape-eight">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-60.svg}" class="shape-nine">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-61.svg}" class="shape-ten">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-62.svg}" class="shape-eleven">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-10.svg}" class="shape-10">
+        <img th:src="@{/assets/themes/Falls/static/img/svg/shape-11.svg}" class="shape-11">
+    </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+                <div class="header-app">
+                    <img class="app-icon me-3" th:src="${post.spec.cover}">
+                    <div class="list-body">
+                        <h2 class="article-title mb-3" th:text="${post.spec.title}"></h2>
+                        <div class="down-box">
+                            <div class="btn-group">
+                                <button class="btn btn-primary rounded-start-pill" type="button" data-bs-toggle="modal" data-bs-target="#DmownModal">
+                                    <i class="icon icon-download fs-20 mr-1"></i> 立即下载
+                                </button>
+                                <button type="button" class="btn btn-primary rounded-end-pill dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <i class="icon icon-bottom fs-12"></i>
+                                </button>
+                                <ul class="dropdown-menu"><table class="history-body table table-light history-body border bg-white"><tbody>                      <tr>
+                                    <td scope="row">V1.2</td>
+                                    <td>800 MB</td>
+                                    <td>中文</td>
+                                    <td>&gt;= 10.12</td>
+                                    <td class="text-center"><a href="#lsbb"><i class="icon icon-down"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">v1.1</td>
+                                    <td>500 MB</td>
+                                    <td>中文</td>
+                                    <td>&gt;= 10.12</td>
+                                    <td class="text-center"><a href="#lsbb"><i class="icon icon-down"></i></a></td>
+                                </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                            <a href="javascript:;" data-action="ding" data-id="68" class="btn btn-outline-primary rounded-pill px-6 ms-3 zan"><i class="fs-20 icon icon-zan me-1"></i>点赞 (<span class="count">[[${post.stats.upvote}]]</span>)</a>
+                        </div>
+                        <div class="mt-5 platform-checkbox d-flex">
+                            <a href="#step-update" class="fs-14 mr-6 text-muted">更新日志<i class="icon icon-arrow-bottom fw-800 fs-12" style="transform: scale(0.8) rotate(90deg);"></i></a>
+                            <div class="d-flex align-items-center el-popover__reference" aria-describedby="el-popover-702" tabindex="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="device-macbook-pro">
+                    <div class="device-frame">
+                        <div class="owl-carousel owl-macbook">
+                            <div class="item">
+                                <img th:src="@{/assets/uploads/2021/03/adobe-photoshop-2020-screen-01.jpg}">
+                            </div>
+                            <div class="item">
+                                <img th:src="@{/assets/uploads/2021/03/adobe-photoshop-2020-screen-02.jpg}">
+                            </div>
+                            <div class="item">
+                                <img th:src="@{/assets/uploads/2021/03/adobe-photoshop-2020-screen-03.jpg}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="device-power"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="soft-layout mb-8">
+    <div class="layout-info">
+        <div class="container">
+            <div class="row px-0 app-info">
+                <div class="col">
+                    <div class="border-end text-center my-4">
+                        <p class="text-muted fs-10 ls-2 mb-0">大小</p>
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70">800</p>
+                        <p class="text-muted fs-10 ls-2 mb-0">MB</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="border-end text-center my-4">
+                        <p class="text-muted fs-10 ls-2 mb-0">下载</p>
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70">1411</p>
+                        <p class="text-muted fs-10 ls-2 mb-0">次</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="border-end text-center my-4">
+                        <p class="text-muted fs-10 ls-2 mb-0">语言</p>
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70">中文</p>
+                        <p class="text-muted fs-10 ls-2 mb-0">CN</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="border-end text-center my-4">
+                        <p class="text-muted fs-10 ls-2 mb-0">兼容性</p>
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70">&gt;= 10.12</p>
+                        <p class="text-muted fs-10 ls-2 mb-0">CN</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <th:block th:if="${not #lists.isEmpty(post.categories)}">
+                    <div class="border-end text-center my-4">
+                        <p class="text-muted fs-10 ls-2 mb-0">类别</p>
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70"><a target="_blank" th:each="category : ${post.categories}"
+                                                                                             th:href="@{${category.status.permalink}}"
+                                                                                             th:text="${category.spec.displayName}"
+                                                                                             th:title="${category.spec.displayName}"> <i class="fs-20 text-muted icon icon-arrow-right"></i></a></p>
+                        <p class="text-muted fs-10 ls-2 mb-0" th:text="${category.spec.displayName}"></p>
+                    </div>
+                    </th:block>
+                </div>
+                <div class="col">
+                    <div class="text-center my-4">
+                        <p class="text-muted fs-10 ls-2 mb-0">更新日期</p>
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70" th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></p>
+                        <p class="text-muted fs-10 ls-2 mb-0" th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout-content bg-white">
+        <div class="layout-content-install pt-7 mb-5 pt-7">
+            <div class="container">
+                <div class="single-header">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-item">
+                            <svg width="80" height="70" viewBox="0 0 125 107" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="48" cy="59" r="48" class="circle-fill"></circle> <path d="M58.536 39.713c0-6.884 1.72-14.007 5.163-21.368 3.443-7.36 8.167-13.458 14.173-18.292l11.645 7.91c-3.589 4.98-6.262 10.016-8.02 15.106S78.86 33.598 78.86 39.384v13.623H58.536V39.713z" class="path-fill"></path> <path d="M93.252 39.713c0-6.884 1.722-14.007 5.164-21.368 3.442-7.36 8.166-13.458 14.172-18.292l11.646 7.91c-3.589 4.98-6.262 10.016-8.02 15.106s-2.637 10.529-2.637 16.315v13.623H93.252V39.713z" class="path-fill-1"></path></g></svg>
+                        </div>
+                        <div class="text">
+                            <h3>安装必读</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row featured-posts mb-6">
+                    <div class="col-12 col-lg-6">
+                        <a href="106.html" class="big-post post-item background-2">
+                            <h5 class="line-hide-2">macOS “不能安装该软件，因为当前无法从软件更新服务器获得” 解决方法</h5>
+                            <p class="justify-content-between align-items-end">
+                                有些小伙伴无法安装苹果开发者工具 command line tools，安装的时候会提示“不能安装该软件，因为当前无法从软件更新服务器获得”，下面macwk.com就教大家手动来安装。
+
+
+                                什么是 command line tools?
+                                Command Line Tools 是苹果的一个小型独立包，适用于 macOS，为终端扩展了额外的功能。包括但...</p>
+                            <div class="post-footer">
+                                <span class="time"><i class="icon icon-time"></i> 2021-03-27</span>
+                                <div class="fs-12">
+                                    <span class="comments me-2"><i class="icon icon-comment"></i> 0 评论</span>
+                                    <span class="zan"><i class="icon icon-zan"></i> 0</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="row small-post">
+                            <div class="col-12 col-lg-12">
+                                <a href="78.html" class="post-item background-8">
+                                    <h5 class="line-hide-2">xxx.app 已损坏，无法打开，你应该将它移到废纸篓/打不开 xxx，因为它来自身份不明的开发者解决方法</h5>
+                                    <p>
+                                        刚用 macOS 的小伙伴或者在更新某个系统版本后运行 App 会提示提示【xxx已损坏，无法打开，你应该将它移到废纸篓解决办法】...</p>
+                                    <div class="post-footer">
+                                        <span class="time"><i class="icon icon-time"></i> 2021-03-26</span>
+                                        <div class="fs-12">
+                                            <span class="comments me-2"><i class="icon icon-comments"> </i>0 评论</span>
+                                            <span class="zan"><i class="icon icon-zan"></i> 0</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-12 col-lg-12">
+                                <a href="76.html" class="post-item background-6">
+                                    <h5 class="line-hide-2">Apple Silicon M1 应用安装后运行闪退怎么办？</h5>
+                                    <p>
+
+                                        最近很多小伙伴买了搭载 M1 芯片的 MacBook，而一些应用厂商也在快速的对自家的应用针对 Apple Silicon M1 进行原生适配...</p>
+                                    <div class="post-footer">
+                                        <span class="time"><i class="icon icon-time"></i> 2021-03-26</span>
+                                        <div class="fs-12">
+                                            <span class="comments me-2"><i class="icon icon-comments"> </i>0 评论</span>
+                                            <span class="zan"><i class="icon icon-zan"></i> 1</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="qqun text-center pt-6 pb-5">
+                    <a target="_blank" href="/" class="btn btn-outline-primary rounded-pill py-2 fs-18 px-7">
+                        <img th:src="@{/assets/themes/Falls/static/img/svg/qqgroup-icon.svg}">
+                        加入QQ群
+                    </a>
+                    <p class="mt-3 text-muted">软件安装、下载、需求等问题请加QQ群：88888888</p>
+                </div>
+            </div>
+        </div>
+        <div class="layout-content-infos">
+            <div class="container">
+                <div class="content-header">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-item">
+                            <svg width="80" height="70" viewBox="0 0 125 107" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="48" cy="59" r="48" class="circle-fill"></circle> <path d="M58.536 39.713c0-6.884 1.72-14.007 5.163-21.368 3.443-7.36 8.167-13.458 14.173-18.292l11.645 7.91c-3.589 4.98-6.262 10.016-8.02 15.106S78.86 33.598 78.86 39.384v13.623H58.536V39.713z" class="path-fill"></path> <path d="M93.252 39.713c0-6.884 1.722-14.007 5.164-21.368 3.442-7.36 8.166-13.458 14.172-18.292l11.646 7.91c-3.589 4.98-6.262 10.016-8.02 15.106s-2.637 10.529-2.637 16.315v13.623H93.252V39.713z" class="path-fill-1"></path></g></svg>
+                        </div>
+                        <div class="text">
+                            <h3>功能介绍</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-content" th:utext="${post.content.content}">
+
+
+
+
+                    <figure class="wp-block-image"><img src="https://cdn.macwk.com/public/uploads/_/originals/Photoshop-CC-2019-demo-04.jpg" alt="" /></figure>
+
+
+
+                    <h4>不仅要按动快门，更要打动人心</h4>
+
+
+
+                    <p>无论您是希望进行日常编辑还是彻底变换，我们的图形设计软件都可以为您提供一整套用于将照片转换成艺术作品的专业摄影工具。调整、裁切、移除对象、润饰和修复旧照片。玩转颜色、效果等，让平凡变非凡。</p>
+
+
+
+                    <figure class="wp-block-image"><img src="https://cdn.macwk.com/public/uploads/_/originals/Photoshop-CC-2019-demo-05.jpg" alt="" /></figure>
+
+
+
+                    <h4>功能强大的画笔</h4>
+
+
+
+                    <p>用专门为插画师设计的工具，随时随地绘制灵感。绘制完美对称的图案，利用笔触平滑获得精致外观。利用感觉真实的铅笔、钢笔、马克笔和画笔进行创作，包括著名插画师 Kyle T. Webster 提供的超过 1,000 种画笔。</p>
+
+
+
+                    <figure class="wp-block-image"><img src="https://cdn.macwk.com/public/uploads/_/originals/Photoshop-CC-2019-demo-06.jpg" alt="" /></figure>
+                </div>
+            </div>
+        </div>
+<!--        <div class="layout-history border-top pt-7 pb-9 border-top" id="lsbb">-->
+<!--            <div class="container">-->
+<!--                <div class="content-header py-7">-->
+<!--                    <div class="d-flex align-items-center">-->
+<!--                        <div class="icon-item">-->
+<!--                            <svg width="80" height="70" viewBox="0 0 125 107" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="48" cy="59" r="48" class="circle-fill"></circle> <path d="M58.536 39.713c0-6.884 1.72-14.007 5.163-21.368 3.443-7.36 8.167-13.458 14.173-18.292l11.645 7.91c-3.589 4.98-6.262 10.016-8.02 15.106S78.86 33.598 78.86 39.384v13.623H58.536V39.713z" class="path-fill"></path> <path d="M93.252 39.713c0-6.884 1.722-14.007 5.164-21.368 3.442-7.36 8.166-13.458 14.172-18.292l11.646 7.91c-3.589 4.98-6.262 10.016-8.02 15.106s-2.637 10.529-2.637 16.315v13.623H93.252V39.713z" class="path-fill-1"></path></g></svg>-->
+<!--                        </div>-->
+<!--                        <div class="text">-->
+<!--                            <h3>历史版本</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <table class="history-body table history-body border bg-white">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th>版本</th>-->
+<!--                        <th>大小</th>-->
+<!--                        <th>语言</th>-->
+<!--                        <th>系统版本</th>-->
+<!--                        <th>更新时间</th>-->
+<!--                        <th class="text-center">操作</th>-->
+<!--                        <th>密码</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <td scope="row">V1.2</td>-->
+<!--                        <td>800 MB</td>-->
+<!--                        <td>中文</td>-->
+<!--                        <td>&gt;= 10.12</td>-->
+<!--                        <td>2021年3月31日</td>-->
+<!--                        <td class="text-center"><a target="_blank" href=""><i class="icon icon-download"></i></a></td>-->
+<!--                        <td><span class="text-success">baiduyun</span></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td scope="row">v1.1</td>-->
+<!--                        <td>500 MB</td>-->
+<!--                        <td>中文</td>-->
+<!--                        <td>&gt;= 10.12</td>-->
+<!--                        <td>2021年3月30日</td>-->
+<!--                        <td class="text-center"><a target="_blank" href=""><i class="icon icon-download"></i></a></td>-->
+<!--                        <td><span class="text-success">da862da</span></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="layout-related border-top pt-7 pb-8 bg-white px-6">-->
+<!--            <div class="container">-->
+<!--                <div class="content-header py-7">-->
+<!--                    <div class="d-flex align-items-center">-->
+<!--                        <div class="icon-item">-->
+<!--                            <svg width="80" height="70" viewBox="0 0 125 107" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="48" cy="59" r="48" class="circle-fill"></circle> <path d="M58.536 39.713c0-6.884 1.72-14.007 5.163-21.368 3.443-7.36 8.167-13.458 14.173-18.292l11.645 7.91c-3.589 4.98-6.262 10.016-8.02 15.106S78.86 33.598 78.86 39.384v13.623H58.536V39.713z" class="path-fill"></path> <path d="M93.252 39.713c0-6.884 1.722-14.007 5.164-21.368 3.442-7.36 8.166-13.458 14.172-18.292l11.646 7.91c-3.589 4.98-6.262 10.016-8.02 15.106s-2.637 10.529-2.637 16.315v13.623H93.252V39.713z" class="path-fill-1"></path></g></svg>-->
+<!--                        </div>-->
+<!--                        <div class="text">-->
+<!--                            <h3>相关软件</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--        </div>-->
+
+        <ul th:with="tags = ${tagFinder.listAll()}">
+            <li th:each="tag : ${tags}">
+                <a th:href="@{${tag.status.permalink}}" th:text="${tag.spec.displayName}"></a>
+            </li>
+        </ul>
+        <div class="article-comment border-top pt-7 pb-9 border-top px-6">
+            <div class="comments-area" id="comments">
+                <div id="respond" class="comments-respond no_webshot">
+                    <div class="comment-respond"><a id="cancel-comment-reply-link" href="javascript:;">取消回复</a></small></h5>
+                        <p class="comment-notes text-xs text-muted">您的电子邮件地址不会被公开，必填的地方已做标记。</p>
+                        <form class="comment-form row" action="https://demo.wpmao.com/mac/wp-comments-post.php" method="post" id="commentform">
+                            <div class="form-group col-md-4 mb-4">
+                                <input class="form-control border-bottom-0" type="text" name="author" id="author" value="" tabindex="2" placeholder="昵称 (必填)">
+                            </div>
+                            <div class="form-group col-md-4 mb-4">
+                                <input class="form-control border-bottom-0" type="text" name="email" id="email" value="" tabindex="3" placeholder="邮箱 (必填)">
+                            </div>
+                            <div class="form-group col-md-4 mb-4">
+                                <input class="form-control border-bottom-0" type="text" name="url" id="url" value="" tabindex="4" placeholder="网址 (非必填)">
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <textarea placeholder="" class="form-control OwO-textarea" name="comment" id="comment" cols="100%" rows="5" tabindex="1" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+                            </div>
+                            <div class="comt-tips mr-2"><input type='hidden' name='comment_post_ID' value='68' id='comment_post_ID' />
+                                <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                            </div>
+                            <div class="comments-form-footer col-lg-12 d-flex align-items-center ps-5">
+                                <div class="form-submit flex-fill text-end">
+                                    <button class="comt-submit" type="submit" name="submit" id="submit" tabindex="5">提交评论</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+<!--                </div>-->
+<!--                <h5 class="comments-title py-3 font-18 font-weight-bold"> 条评论</h5>-->
+                <div id="postcomments" class="postcomments">
+                    <ol class="commentlist">
+                        <li class="comment even thread-even depth-1" id="comment-7"><div class="comment-author"><img th:src="@{/assets/themes/Falls/static/img/avatar.png}" class="avatar avatar-50 photo" width="50" height="50" /></div><div class="comment-body"><div class="comment-meta"><div class="comment-meta-author"><a href='https://www.apkcr.com' rel='external nofollow ugc' class='url'>非洲小白脸</a></div><div class="comment-meta-date">2021-03-26 16:21:52 </div><div class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='68%EF%B9%96replytocom=7.html#respond' data-commentid="7" data-postid="68" data-belowelement="div-comment-7" data-respondelement="respond" data-replyto="回复给非洲小白脸" aria-label='回复给非洲小白脸'>回复</a></div></div><div class="comment-content" id="div-comment-7"><p>试试看如何</p>
+                        </div></div></li></li><!-- #comment-## -->
+                        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-10"><div class="comment-author"><img th:src="@{/assets/themes/Falls/static/img/avatar.png}" class="avatar avatar-50 photo" width="50" height="50" /></div><div class="comment-body"><div class="comment-meta"><div class="comment-meta-author"><a href='https://www.apkcr.com' rel='external nofollow ugc' class='url'>非洲小白脸</a></div><div class="comment-meta-date">2021-03-26 16:21:52 </div><div class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='68%EF%B9%96replytocom=10.html#respond' data-commentid="10" data-postid="68" data-belowelement="div-comment-10" data-respondelement="respond" data-replyto="回复给非洲小白脸" aria-label='回复给非洲小白脸'>回复</a></div></div><div class="comment-content" id="div-comment-10"><p>测试评论</p>
+                        </div></div></li></li><!-- #comment-## -->
+                    </ol>
+                    <div class="comments-pagination">
+                    </div>
+                </div>
+            </div>    </div>
+    </div>
+</div>
+<div id="sidetools" class="">
+    <div class="sidetools-item kefu-wx">
+        <div class="sidetools-wrapper">
+            <a href="javascript:;">
+                <span class="sidetools-icon kfwx"></span>
+            </a>
+        </div>
+        <div class="wx-popover">
+            <div class="text-center">
+                <img th:src="@{/assets/themes/MacDown/static/img/wx.jpg}">
+                <p class="mt-1 mb-0">微信客服</p>
+            </div>
+        </div>
+    </div>
+    <div class="sidetools-item kefu-qq">
+        <div class="sidetools-wrapper">
+            <a href="javascript:;">
+                <span class="sidetools-icon kfqq"></span>
+            </a>
+        </div>
+        <div class="qq-popover">
+            <div class="text-center">
+                <img th:src="@{/assets/themes/MacDown/static/img/qun.jpg}">
+                <p class="mt-1 mb-0">QQ客服</p>
+            </div>
+        </div>
+    </div>
+    <div class="sidetools-item gotop wpmao-animation tinUpIn">
+        <div class="sidetools-wrapper">
+            <a href="javascript:;">
+                <span class="sidetools-icon back-top"></span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="back-prev">
+    <div class="mb-20">
+        <a class="btn" href="category/adobe.html">
+            <i class="icon icon-arrow-left fw-600 fs-22"></i>
+        </a>
+    </div>
+    <div>
+        <a href="javascript:;" class="btn"><i class="icon icon-zan fs-22"></i> <p class="mb-0">22</p>
+        </a>
+    </div>
+    <div class="mb-20">
+        <a href="#comments" class="el-tooltip btn cursor" aria-describedby="el-tooltip-8043" tabindex="0">
+            <i class="icon icon-comments fw-600"></i>
+            <p class="mb-0">2</p>
+        </a>
+    </div>
+</div>
+<div class="download-modal modal fade" id="DmownModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="exampleModalLabel">下载地址<span class="fs-16">
+          - Adobe Photoshop 2021 22.3 + Neural Filters 中文破解版 (使用最多的图片处理工具) <span class="text-muted fs-14 ml-1">需 &gt;= 10.12 或更高版本</span></span>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="download-list px-5 pt-5">
+                    <div class="download-box d-flex mb-6">
+                        <div class="download-icon me-4">
+                            <img th:src="@{/assets/themes/Falls/static/img/baiduyun.svg}">
+                        </div>
+                        <div class="download-body flex">
+                            <h6 class="cursor">
+                  <span class="hover-primary transition"><a href="https://pan.baidu.com/" target="_blank">立即下载 </a><span class="fs-14 ms-2"><span class="text-muted">(提取码/密码：</span> <span class="fs-14 fw-500 text-success">baiduyun</span> <span class="text-muted">)</span></span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="download-list px-5 pt-5">
+                    <div class="download-box d-flex mb-6">
+                        <div class="download-icon me-4">
+                            <img th:src="@{/assets/themes/Falls/static/img/tianyiyun.svg}">
+                        </div>
+                        <div class="download-body flex">
+                            <h6 class="cursor">
+                  <span class="hover-primary transition"><a href="https://www.ctyun.cn/" target="_blank">立即下载 </a><span class="fs-14 ms-2"><span class="text-muted">(提取码/密码：</span> <span class="fs-14 fw-500 text-success">da862da</span> <span class="text-muted">)</span></span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-top-0">
+                <div class="bg-light p-5">
+                    <p class="mt-15 fs-14">
+                        <span class="text-danger">点击下载无响应？</span>
+                        是因为浏览器阻止了弹出窗口，网址输入框的最右边有个图标，点击后允许即可！
+                    </p>
+                    <div class="d-flex">
+                        <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=CIiihlwh11e_XuuDjf00ZYaDl4x6QEfn&amp;jump_from=webapi" class="add-qun btn btn-outline-primary rounded-pill py-2 fs-16 px-8 me-4">
+                            <img th:src="@{/assets/themes/Falls/static/img/svg/qqgroup-icon.svg}"> 加入QQ群
+                            <div class="qq-popover">
+                                <div class="text-center">
+                                    <img th:src="@{/assets/themes/MacDown/static/img/qun.jpg}">
+                                    <div class="flex"><h6 class="fw-600 mb-0">精品Mac软件分享①群</h6> <p class="mb-0 text-muted">扫一扫二维码，加入群聊</p></div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="rewards btn btn-outline-primary rounded-pill">
+                            <img class="w-20 img-reward-default v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-default.svg}" lazy="loaded">
+                            <img class="w-20 img-reward-hover v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-hover.svg}">
+                            打赏赞助
+                            <div class="rewards-popover">
+                                <div class="px-6 pt-6 pb-3 light dk text-center" style="height: 320px;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <i class="icon icon-Alipay fs-40 mb-3" style="color: rgb(22, 120, 255);"></i>
+                                            <h5 class="mb-4">支付宝</h5>
+                                            <img alt="" class="w-full bg-white radius-5x border" th:src="@{/assets/themes/MacDown/static/img/alipay.png}">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <i class="icon icon-wxpay fs-40 mb-3" style="color: rgb(29, 170, 57);"></i>
+                                            <h5 class="mb-4">微信</h5>
+                                            <img alt="" class="w-full bg-white radius-5x border" th:src="@{/assets/themes/MacDown/static/img/wxpay.png}">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <i class="icon icon-qqpay fs-40 mb-3" style="color: rgb(11, 178, 255);"></i>
+                                            <h5 class="mb-4">QQ</h5>
+                                            <img alt="" class="w-full bg-white radius-5x border" th:src="@{/assets/themes/MacDown/static/img/qqpay.png}">
+                                        </div>
+                                        <div class="col-md-4">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center px-4 py-3 border-top">
+                                    <div class="flex">
+                                        <h6 class="fw-600 mb-0">帮助分担一部分运维成本。❤️🙏🤝</h6><p class="mb-0 text-muted">做好事也要留名的！打赏完后记得联系QQ：3270502 统计哦。</p>                  </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 </body>
+<footer th:replace="modules/footer :: footer"></footer>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/plugins.js}" id='plugins-js'></script>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/main.js}" id='main-js'></script>
+<script type='text/javascript' th:src="@{/assets/js/comment-reply.min.js}" id='comment-reply-js'></script>
 </html>

@@ -1,0 +1,16 @@
+.index_post {
+    list-style: none;
+
+    line-height: 40px;
+
+    margin-left: 50px;
+}
+.index_post li {
+    display: block; !important;
+
+    float: left; !important;
+}
+.index_searchicon {
+    border: none;
+    font-size: 30px; !important;
+}

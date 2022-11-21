@@ -3,66 +3,10 @@
 <head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 </head>
 <body>
-<div class="header-top">
-  <div class="container">
-    <div class="header-main d-flex justify-content-between align-items-center">
-      <nav class="nav top-bar-nav ">
-        <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">首页</a></li>
-        <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">装机必备</a></li>
-        <li class="menu-item"><a href="feed.rss">RSS订阅</a></li>
-        <li class="menu-item"><a href="feedback.html">留言反馈</a></li>
-      </nav>
-      <nav class="nav justify-content-end">
-        <label class="theme-switch" for="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <i class="fs-16 icon icon-sun"></i>
-          <i class="fs-16 icon icon-moon"></i>
-        </label>
-      </nav>
-    </div>
-  </div>
-</div>
-<header class="header" >
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a href="index.html" class="navbar-brand logo">
-        <img class="sun-logo" th:src="${theme.config.header.header_logo}">
-        <img class="moon-logo" th:src="${theme.config.header.header_logo}">
-      </a>
-      <nav class="collapse navbar-collapse order-md-2">
-        <ul class="navbar-nav main-menu ml-4 mr-auto">
-          <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">首页</a></li>
-          <li class="menu-item"><a href="category/soft.html">软件</a></li>
-          <li class="menu-item"><a href="category/article.html">文章</a></li>
-          <li class="menu-item"><a href="zhuanti.html">专题</a></li>
-          <li class="menu-item"><a href="category/perfect.html">榜单</a></li>
-        </ul>
-      </nav>
-      <ul class="nav-right order-3">
-<!--        <div class="header-search">-->
-<!--          <form action="index.html" class="search-form" method="get">-->
-<!--            <div class="input-group">-->
-<!--              <input type="text" class="form-control" name="s" type="search" placeholder="输入关键字并按回车搜索..." autocomplete="off">-->
-<!--              <div class="input-group-append">-->
-<!--                <button class="search-btn" type="submit"><i class="icon icon-search"></i></button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </form>-->
-<!--        </div>-->
-      </ul>
-  </nav>
-  </div>
-  <div class="search-wrap fixed-top bg-white py-3" hidden="hidden">
-<!--    <div class="container">-->
-<!--      <form action="index.html" class="search-form" method="get">-->
-<!--        <div class="d-flex justify-content-between align-items-center">-->
-<!--          <input type="text" class="form-control text-muted border-0" name="s" type="search" placeholder="输入关键字并按回车搜索..." autocomplete="off">-->
-<!--          <i class="icon icon-close"></i>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--    </div>-->
-  </div>
-</header>
+
+<div th:replace="modules/header1 :: header1"></div>
+<header th:replace="modules/header1 :: header2"></header>
+
 <section class="banner">
   <div class="container">
     <div class="row">
@@ -83,9 +27,9 @@
               <img th:src="@{/assets/themes/Falls/static/img/svg/shape-11.svg}" class="shape-11">
             </div>
             <div class="banner-content">
-              <h2>WP猫 - 一对一高品质定制服务</h2>
-              <p class="text-muted  fs-18">提供精美设计，功能开发，打造你的专属WordPress主题。</p>
-              <a href="https://www.wpmao.com/" class="btn btn-primary btn-round px-3">立即下载</a>
+              <h2>[[${theme.config.header.banner_firsttext}]]</h2>
+              <p class="text-muted  fs-18">[[${theme.config.header.banner_secondtext}]]</p>
+              <a href="https://www.wpmao.com/" class="btn btn-primary btn-round px-3">[[${theme.config.header.banner_buttontext}]]</a>
             </div>
             <div class="banner-img">
               <img th:src="@{/assets/themes/MacDown/static/img/banner-safe-free.png}">
@@ -106,9 +50,9 @@
               <img th:src="@{/assets/themes/Falls/static/img/svg/shape-11.svg}" class="shape-11">
             </div>
             <div class="banner-content">
-              <h2>WP猫 - 一对一高品质定制服务</h2>
-              <p class="text-muted  fs-18">提供精美设计，功能开发，打造你的专属WordPress主题。</p>
-              <a href="https://www.wpmao.com/" class="btn btn-primary btn-round px-3">立即下载</a>
+              <h2>[[${theme.config.header.banner_firsttext}]]</h2>
+              <p class="text-muted  fs-18">[[${theme.config.header.banner_secondtext}]]</p>
+              <a th:href="${theme.config.header.banner_url}" class="btn btn-primary btn-round px-3">[[${theme.config.header.banner_buttontext}]]</a>
             </div>
             <div class="banner-img">
               <img th:src="@{/assets/uploads/2021/03/home-banner-carry.png}">
@@ -118,7 +62,9 @@
       </div>
     </div>
   </div>
-</section><section class="special">
+</section>
+<!--分类专题四个框-->
+<section class="special">
   <div class="container">
     <div class="row">
       <div class="col-3 col-lg-3">
@@ -198,207 +144,35 @@
       </div>
     </div>
     <div class="row-sm row-cols-2 row-cols-md-6">
-      <div class="col">
-        <div class="soft-item delay-0">
-          <a href="140.html" rel="bookmark" title="腾讯柠檬清理">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/05/tencent-lemon-bs.png});"></div>
-              <img th:src="@{/assets/uploads/2021/05/tencent-lemon-bs.png}" class="soft-image rounded-sm delay-0" alt="腾讯柠檬清理" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">V4.8.9</span>
-              <h5 itemprop="name headline" class="line-hide-1">腾讯柠檬清理</h5>
-              <p class="line-hide-1 mb-0 text-muted">系统优化清理工具</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
+<!--文章输出部分-->
+      <div class="col" th:each="post : ${posts.items}">
         <div class="soft-item delay-1">
-          <a href="68.html" rel="bookmark" title="Adobe Photoshop 2021 22.3 + Neural Filters 中文破解版 (使用最多的图片处理工具)">
+          <a th:href="@{${post.status.permalink}}" rel="bookmark" th:title="${post.spec.title}">
             <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/adobe-photoshop-2020-1.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/adobe-photoshop-2020-1.png}" class="soft-image rounded-sm delay-1" alt="Adobe Photoshop 2021 22.3 + Neural Filters 中文破解版 (使用最多的图片处理工具)" itemprop="image">
+              <div class="soft-icon" style="--img:url(wp-content/uploads/2021/03/adobe-photoshop-2020-1.png);"></div>
+              <img th:src="${post.spec.cover}"
+                   th:alt="${post.spec.title}" class="soft-image rounded-sm delay-1"  itemprop="image">
             </div>
             <div class="soft-body">
               <span class="version text-muted">V1.2</span>
-              <h5 itemprop="name headline" class="line-hide-1">Adobe Photoshop</h5>
-              <p class="line-hide-1 mb-0 text-muted">使用最多的图片处理工具</p>
+              <h5 itemprop="name headline" class="line-hide-1" th:text="${post.spec.title}"></h5>
+              <p class="line-hide-1 mb-0 text-muted" th:text="${post.status.excerpt}"></p>
               <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
             </div>
           </a>
         </div>
       </div>
-      <div class="col">
-        <div class="soft-item delay-2">
-          <a href="63.html" rel="bookmark" title="Adobe Illustrator 2021 25.2.1 中文破解版 (矢量图形设计软件)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/adobe-illustrator-2020-2.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/adobe-illustrator-2020-2.png}" class="soft-image rounded-sm delay-2" alt="Adobe Illustrator 2021 25.2.1 中文破解版 (矢量图形设计软件)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">v1.0</span>
-              <h5 itemprop="name headline" class="line-hide-1">Adobe Illustrator</h5>
-              <p class="line-hide-1 mb-0 text-muted">矢量图形设计软件</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="soft-item delay-3">
-          <a href="59.html" rel="bookmark" title="Snipaste 2.5.6 Beta 中文版 (支持贴图的截图工具)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/snipaste-screen-01.jpg});"></div>
-              <img th:src="@{/assets/uploads/2021/03/snipaste-screen-01.jpg}" class="soft-image rounded-sm delay-3" alt="Snipaste 2.5.6 Beta 中文版 (支持贴图的截图工具)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">v1.0</span>
-              <h5 itemprop="name headline" class="line-hide-1">Snipaste</h5>
-              <p class="line-hide-1 mb-0 text-muted">支持贴图的截图工具</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="soft-item delay-4">
-          <a href="55.html" rel="bookmark" title="Sketch 71.1 中文破解版 (最好用的矢量绘图软件)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/sketch-bs.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/sketch-bs.png}" class="soft-image rounded-sm delay-4" alt="Sketch 71.1 中文破解版 (最好用的矢量绘图软件)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">v71.1</span>
-              <h5 itemprop="name headline" class="line-hide-1">Sketch</h5>
-              <p class="line-hide-1 mb-0 text-muted">最好用的矢量绘图软件</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="soft-item delay-5">
-          <a href="49.html" rel="bookmark" title="XMind 2020 10.3.1 (202101070049) 中文破解版 (轻量级思维导图软件)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/xmind-8-1.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/xmind-8-1.png}" class="soft-image rounded-sm delay-5" alt="XMind 2020 10.3.1 (202101070049) 中文破解版 (轻量级思维导图软件)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">v1.0</span>
-              <h5 itemprop="name headline" class="line-hide-1">XMind</h5>
-              <p class="line-hide-1 mb-0 text-muted">轻量级思维导图软件</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="soft-item delay-6">
-          <a href="44.html" rel="bookmark" title="亿图图示 9.4 中文破解版 (流程图信息图绘制)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/edraw-max-1.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/edraw-max-1.png}" class="soft-image rounded-sm delay-6" alt="亿图图示 9.4 中文破解版 (流程图信息图绘制)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">v1.0</span>
-              <h5 itemprop="name headline" class="line-hide-1">亿图图示</h5>
-              <p class="line-hide-1 mb-0 text-muted">流程图信息图绘制</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="soft-item delay-7">
-          <a href="41.html" rel="bookmark" title="Mindjet mindmanager 13.1.115 中文破解版 (一款思维导图软件)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/mindmanager-3.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/mindmanager-3.png}" class="soft-image rounded-sm delay-7" alt="Mindjet mindmanager 13.1.115 中文破解版 (一款思维导图软件)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">v1.0</span>
-              <h5 itemprop="name headline" class="line-hide-1">Mindjet mindmanager</h5>
-              <p class="line-hide-1 mb-0 text-muted">一款思维导图软件</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="soft-item delay-8">
-          <a href="37.html" rel="bookmark" title="Axure RP 9 9.0.0.3727 中文破解版 (交互原型设计神器)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/axure-rp-9-2.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/axure-rp-9-2.png}" class="soft-image rounded-sm delay-8" alt="Axure RP 9 9.0.0.3727 中文破解版 (交互原型设计神器)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">9.0.0.3727</span>
-              <h5 itemprop="name headline" class="line-hide-1">交互原型设计神器</h5>
-              <p class="line-hide-1 mb-0 text-muted">Axure RP</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="soft-item delay-9">
-          <a href="33.html" rel="bookmark" title="Bootstrap Studio 5.5.2 破解版 (使用Bootstrap框架制作响应式网站)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/Bootstrap_Studio.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/Bootstrap_Studio.png}" class="soft-image rounded-sm delay-9" alt="Bootstrap Studio 5.5.2 破解版 (使用Bootstrap框架制作响应式网站)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">5.5.2</span>
-              <h5 itemprop="name headline" class="line-hide-1">Bootstrap Studio</h5>
-              <p class="line-hide-1 mb-0 text-muted">使用Bootstrap框架制作响应式网站</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="soft-item delay-10">
-          <a href="29.html" rel="bookmark" title="XMind 8 Pro Update 9 中文破解版 (强大的思维导图软件)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/xmind-8-1.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/xmind-8-1.png}" class="soft-image rounded-sm delay-10" alt="XMind 8 Pro Update 9 中文破解版 (强大的思维导图软件)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">9.0</span>
-              <h5 itemprop="name headline" class="line-hide-1">XMind 8</h5>
-              <p class="line-hide-1 mb-0 text-muted">强大的思维导图软件</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col">
-        <div class="soft-item delay-11">
-          <a href="25.html" rel="bookmark" title="OmniGraffle Pro 7.18.4 中文破解版 (图示/图表/流程图等绘制)">
-            <div class="soft-image">
-              <div class="soft-icon" style="--img:th:url(@{/assets/uploads/2021/03/omnigraffle-pro-1.png});"></div>
-              <img th:src="@{/assets/uploads/2021/03/omnigraffle-pro-1.png}" class="soft-image rounded-sm delay-11" alt="OmniGraffle Pro 7.18.4 中文破解版 (图示/图表/流程图等绘制)" itemprop="image">
-            </div>
-            <div class="soft-body">
-              <span class="version text-muted">7.18.4</span>
-              <h5 itemprop="name headline" class="line-hide-1">OmniGraffle Pro</h5>
-              <p class="line-hide-1 mb-0 text-muted">图示/图表/流程图等绘制</p>
-              <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
-            </div>
-          </a>
-        </div>
-      </div>
+
+
     </div>
   </div>
-</section>
+  </section>
 <section class="home-list bg-white py-5">
   <div class="container">
     <div class="d-flex section-header mb-5">
       <div class="main-title me-4 flex-fill">
         <h4 class="fs-30">
-          <i class="icon icon-layers me-2 fs-28"></i><span>教程文章</span>
+          <i class="icon icon-layers me-2 fs-28"></i><span>[[${theme.config.header.category2_text}]]</span>
         </h4>
       </div>
       <div class="more-action">
@@ -408,86 +182,19 @@
         </a>
       </div>
     </div>
-    <div class="row post-list">
-      <div class="com-md-12 col-lg-6">
-        <a href="123.html" class="post-news delay-0 hover-shadow-6 list-animation-leftIn">
+    <div class="row post-list" th:with="posts = ${postFinder.listByCategory(1,10,theme.config.header.category2)}">
+      <div class="com-md-12 col-lg-6" th:each="post : ${posts.items}">
+        <a th:href="@{${post.status.permalink}}" class="post-news delay-0 hover-shadow-6 list-animation-leftIn">
           <div class="d-flex align-items-center">
             <div class="post-image">
-              <img class="delay-0" th:src="@{/assets/uploads/2021/03/110115uzl42fjx8u51p111.4.2-on-phone-icon-fix.jpg}">
+              <img class="delay-0" th:src="${post.spec.cover}"
+                   th:alt="${post.spec.title}">
             </div>
             <div class="post-footer">
-              <h5 class="line-hide-2">苹果发布iOS/iPadOS 14.4.2 提供重要安全更新</h5>
-              <div class="text-muted fs-16 me-3">2021-03-27</div>
-            </div>
-            <div class="read-more d-flex justify-content-end w-80 pr-3"><i class="icon fs-36 icon-next-arrow"></i></div>
-          </div>
-        </a>
-      </div>
-      <div class="com-md-12 col-lg-6">
-        <a href="115.html" class="post-news delay-1 hover-shadow-6 list-animation-leftIn">
-          <div class="d-flex align-items-center">
-            <div class="post-image">
-              <img class="delay-0" th:src="@{/assets/uploads/2021/03/2144507r91hngpmi7mrlc1.jpg}">
-            </div>
-            <div class="post-footer">
-              <h5 class="line-hide-2">新手教程：如何将 Safari 书签导入到 Chrome 浏览器</h5>
-              <div class="text-muted fs-16 me-3">2021-03-27</div>
-            </div>
-            <div class="read-more d-flex justify-content-end w-80 pr-3"><i class="icon fs-36 icon-next-arrow"></i></div>
-          </div>
-        </a>
-      </div>
-      <div class="com-md-12 col-lg-6">
-        <a href="108.html" class="post-news delay-2 hover-shadow-6 list-animation-leftIn">
-          <div class="d-flex align-items-center">
-            <div class="post-image">
-              <img class="delay-0" th:src="@{/assets/uploads/2021/03/rounded-adobe-article.jpg}">
-            </div>
-            <div class="post-footer">
-              <h5 class="line-hide-2">Adobe 2020 系列圆角图标替换，一键就可以操作，无需手动替换</h5>
-              <div class="text-muted fs-16 me-3">2021-03-27</div>
-            </div>
-            <div class="read-more d-flex justify-content-end w-80 pr-3"><i class="icon fs-36 icon-next-arrow"></i></div>
-          </div>
-        </a>
-      </div>
-      <div class="com-md-12 col-lg-6">
-        <a href="106.html" class="post-news delay-3 hover-shadow-6 list-animation-leftIn">
-          <div class="d-flex align-items-center">
-            <div class="post-image">
-              <img class="delay-0" th:src="@{/assets/uploads/2021/03/snipaste-screen-01.jpg}">
-            </div>
-            <div class="post-footer">
-              <h5 class="line-hide-2">macOS “不能安装该软件，因为当前无法从软件更新服务器获得” 解决方法</h5>
-              <div class="text-muted fs-16 me-3">2021-03-27</div>
-            </div>
-            <div class="read-more d-flex justify-content-end w-80 pr-3"><i class="icon fs-36 icon-next-arrow"></i></div>
-          </div>
-        </a>
-      </div>
-      <div class="com-md-12 col-lg-6">
-        <a href="78.html" class="post-news delay-4 hover-shadow-6 list-animation-leftIn">
-          <div class="d-flex align-items-center">
-            <div class="post-image">
-              <img class="delay-0" th:src="@{/assets/uploads/2021/03/006-1.jpg}">
-            </div>
-            <div class="post-footer">
-              <h5 class="line-hide-2">xxx.app 已损坏，无法打开，你应该将它移到废纸篓/打不开 xxx，因为它来自身份不明的开发者解决方法</h5>
-              <div class="text-muted fs-16 me-3">2021-03-26</div>
-            </div>
-            <div class="read-more d-flex justify-content-end w-80 pr-3"><i class="icon fs-36 icon-next-arrow"></i></div>
-          </div>
-        </a>
-      </div>
-      <div class="com-md-12 col-lg-6">
-        <a href="76.html" class="post-news delay-5 hover-shadow-6 list-animation-leftIn">
-          <div class="d-flex align-items-center">
-            <div class="post-image">
-              <img class="delay-0" th:src="@{/assets/uploads/2021/03/pexels-tyler-lastovich-699122.jpg}">
-            </div>
-            <div class="post-footer">
-              <h5 class="line-hide-2">Apple Silicon M1 应用安装后运行闪退怎么办？</h5>
-              <div class="text-muted fs-16 me-3">2021-03-26</div>
+              <h5 class="line-hide-2" th:text="${post.spec.title}"></h5>
+              <div class="text-muted fs-16 me-3" th:attr="datetime=${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
+                   th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+                   th:title="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></div>
             </div>
             <div class="read-more d-flex justify-content-end w-80 pr-3"><i class="icon fs-36 icon-next-arrow"></i></div>
           </div>
@@ -495,37 +202,15 @@
       </div>
     </div>
   </div>
-</section>
-<!--<footer class="footer d-none d-md-block">-->
-<!--  <div class="container">-->
-<!--    <div class="footer-border py-4">-->
-<!--      <div class="d-flex align-items-center justify-content-between">-->
-<!--        <div class="footer-logo">-->
-<!--          <img class="sun-logo" th:src="@{/assets/uploads/2021/03/logo.png}">-->
-<!--          <img class="moon-logo" th:src="@{/assets/uploads/2021/03/logo.png}">-->
-<!--        </div>-->
 
-<!--        <div class="footer-nav nav">-->
-<!--          <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">首页</a></li>-->
-<!--          <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">装机必备</a></li>-->
-<!--          <li class="menu-item"><a href="feed.rss">RSS订阅</a></li>-->
-<!--          <li class="menu-item"><a href="feedback.html">留言反馈</a></li>-->
-<!--        </div>-->
-<!--        <div class="float-lg-right">-->
-<!--          <p>Copyright © 2015 - 2020 <a href="https://www.wpmao.com/" target="_blank">WP猫</a>. All Rights Reserved. | Design by <a href="https://www.wpmao.com/" target="_blank">WP猫</a></p>				</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</footer>-->
+
+
+</section>
+<!--底部模块-->
 <footer th:replace="modules/footer :: footer"></footer>
+
 <script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/plugins.js}" id='plugins-js'></script>
 <script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/main.js}" id='main-js'></script>
 <script type='text/javascript' th:src="@{/assets/js/comment-reply.min.js}" id='comment-reply-js'></script>
-</body>
-<ul>
-  <li th:each="post : ${posts.items}">
-    <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
-  </li>
-</ul>
 </body>
 </html>

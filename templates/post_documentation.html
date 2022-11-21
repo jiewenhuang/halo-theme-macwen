@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
+</head>
+<body>
+
+<div th:replace="modules/header1 :: header1"></div>
+<header th:replace="modules/header1 :: header2"></header>
+<body>
+
+<main class="single-item" th:with="contributor = ${post.contributors[0]}">
+    <div class="site-main py-5">
+        <div class="container">
+            <div class="row justify-content-lg-center">
+                <div class="col-12 col-md-8">
+                    <div class="post-main p-2 p-md-4">
+                        <div class="article-header">
+                            <h1 class="mb-3" th:text="${post.spec.title}"></h1>
+                            <div class="article-meta">
+                                <th:block th:if="${not #lists.isEmpty(post.categories)}">
+                                <span class="item">分类：<a th:each="category : ${post.categories}"
+                                                           th:href="@{${category.status.permalink}}"
+                                                           th:text="${category.spec.displayName}"
+                                                           th:title="${category.spec.displayName}"></a></span>
+                                </th:block>
+                                <span class="item" th:text="${'时间： '+#dates.format(post.spec.publishTime,'yyyy月MM月dd')}"></span>
+                                <span class="item" th:text="'作者：' +${contributor.displayName}"></span>
+                                <span class="item" th:text="'浏览：' +${post.stats.visit}"></span>
+                                <span class="item" th:text="评论： +${post.stats.comment}"></span>
+                            </div>
+                        </div>
+                        <div class="article-content pt-3" th:utext="${post.content.content}">
+
+                        </div>
+                    </div>
+                    <div class="article-comment p-2 p-md-4 d-none d-md-block">
+                        <div class="comments-area" id="comments">
+                            <div id="respond" class="comments-respond no_webshot">
+                                <div class="comment-respond"><a id="cancel-comment-reply-link" href="javascript:;">取消回复</a></small></h5>
+                                    <p class="comment-notes text-xs text-muted">您的电子邮件地址不会被公开，必填的地方已做标记。</p>
+                                    <form class="comment-form row" action="https://demo.wpmao.com/mac/wp-comments-post.php" method="post" id="commentform">
+                                        <div class="form-group col-md-4 mb-4">
+                                            <input class="form-control border-bottom-0" type="text" name="author" id="author" value="" tabindex="2" placeholder="昵称 (必填)">
+                                        </div>
+                                        <div class="form-group col-md-4 mb-4">
+                                            <input class="form-control border-bottom-0" type="text" name="email" id="email" value="" tabindex="3" placeholder="邮箱 (必填)">
+                                        </div>
+                                        <div class="form-group col-md-4 mb-4">
+                                            <input class="form-control border-bottom-0" type="text" name="url" id="url" value="" tabindex="4" placeholder="网址 (非必填)">
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <textarea placeholder="" class="form-control OwO-textarea" name="comment" id="comment" cols="100%" rows="5" tabindex="1" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+                                        </div>
+                                        <div class="comt-tips mr-2"><input type='hidden' name='comment_post_ID' value='123' id='comment_post_ID' />
+                                            <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                                        </div>
+                                        <div class="comments-form-footer col-lg-12 d-flex align-items-center ps-5">
+                                            <div class="form-submit flex-fill text-end">
+                                                <button class="comt-submit" type="submit" name="submit" id="submit" tabindex="5">提交评论</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="modules/footer :: footer"></footer>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/plugins.js}" id='plugins-js'></script>
+<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/main.js}" id='main-js'></script>
+<script type='text/javascript' th:src="@{/assets/js/comment-reply.min.js}" id='comment-reply-js'></script>
+</body>
+</html>

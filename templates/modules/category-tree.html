@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<ul th:fragment="next (categories)" class="sub-menu">
+  <li th:fragment="single (categories)" th:each="category : ${categories}" class="menu-item"
+      th:classappend="${category.metadata.name == category.metadata.name} ? ' current-menu-item'">
+    <a th:href="@{${category.status.permalink}}">
+      <span th:text="${category.spec.displayName}"> </span>
+    </a>
+  </li>
+</ul>
+</html>

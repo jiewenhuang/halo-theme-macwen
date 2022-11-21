@@ -333,7 +333,7 @@ ul {
 .header {
     background: #ffffff;
     position: relative;
-    z-index: 1002;
+    z-index: 999;
     box-shadow: 0 0 18px rgba(0,0,0,.06);
     border-bottom: 1px solid hsla(210,8%,51%,.09);
 }
@@ -361,6 +361,7 @@ ul {
     height: 100%;
     position: relative;
     display: inline-block;
+    font-size: 20px;
 }
 
 .main-menu li a {
@@ -371,9 +372,20 @@ ul {
     font-size: 16px;
     line-height: 1;
 }
-
+.menu-search a li {
+    font-size: 20px;
+}
 .main-menu li.current-menu-item a {
     color: #50a1ff
+}
+.menu-search {
+    width: 30px;
+    height: 28px;
+    margin-left: 65%;
+    float: right;
+}
+.menu-search li {
+    width: 20px;
 }
 
 /*--------------------------------------------------------------
@@ -1571,13 +1583,15 @@ ul {
     position: relative;
 }
 
+
 .sidebar-nav .menu-item {
     position: relative;
 }
 
+
 .sidebar-nav .menu-item.current-menu-item.active>a,.sidebar-nav .menu-item.current-menu-item.active>.sub-menu>a {
-    font-weight: 600;
-    color: #50a1ff;
+    font-weight: 600; !important;
+    color: #50a1ff; !important;
 }
 
 .sidebar-nav .menu-item a {
@@ -1599,6 +1613,13 @@ ul {
     color: #757575;
 }
 
+.sidebar-nav .menu-item a:hover {
+    color: #50a1ff;
+}
+.addmenu-a {
+    color: #50a1ff;
+}
+
 .sidebar-nav .menu-item.menu-item-has-children>a:after {
     position: absolute;
     content: "";
@@ -1611,6 +1632,7 @@ ul {
     transform: rotate(-45deg) translateY(-50%);
     transform-origin: top;
     top: 18px;
+
 }
 
 .sidebar-nav .menu-item.menu-item-has-children.active>a:after {
