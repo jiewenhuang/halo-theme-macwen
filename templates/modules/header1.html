@@ -28,8 +28,8 @@
       </a>
       <nav class="collapse navbar-collapse order-md-2" th:with="menu = ${menuFinder.getByName(theme.config.menu.menu_top)}">
         <ul class="navbar-nav main-menu ml-4 mr-auto" th:with="menuItems = ${menu.menuItems}">
-          <li class="menu-item" th:each="menuItem : ${menuItems}"
-              th:classappend="${menuItem.status.href == menuItem.status.displayName} ? ' current-menu-item'">
+          <li class="menu-item " th:each="menuItem : ${menuItems}"
+               >
             <a th:href="@{${menuItem.status.href}}" th:text="${menuItem.status.displayName}"></a>
           </li>
 
