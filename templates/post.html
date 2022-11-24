@@ -319,11 +319,7 @@
 
 <!--        </div>-->
 
-        <ul th:with="tags = ${tagFinder.listAll()}">
-            <li th:each="tag : ${tags}">
-                <a th:href="@{${tag.status.permalink}}" th:text="${tag.spec.displayName}"></a>
-            </li>
-        </ul>
+
         <div class="article-comment border-top pt-7 pb-9 border-top px-6">
             <div class="comments-area" id="comments">
                 <div id="respond" class="comments-respond no_webshot">
@@ -352,14 +348,13 @@
                             </div>
                         </form>
                     </div>
+
+
 <!--                </div>-->
 <!--                <h5 class="comments-title py-3 font-18 font-weight-bold"> 条评论</h5>-->
                 <div id="postcomments" class="postcomments">
                     <ol class="commentlist">
-                        <li class="comment even thread-even depth-1" id="comment-7"><div class="comment-author"><img th:src="@{/assets/themes/Falls/static/img/avatar.png}" class="avatar avatar-50 photo" width="50" height="50" /></div><div class="comment-body"><div class="comment-meta"><div class="comment-meta-author"><a href='https://www.apkcr.com' rel='external nofollow ugc' class='url'>非洲小白脸</a></div><div class="comment-meta-date">2021-03-26 16:21:52 </div><div class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='68%EF%B9%96replytocom=7.html#respond' data-commentid="7" data-postid="68" data-belowelement="div-comment-7" data-respondelement="respond" data-replyto="回复给非洲小白脸" aria-label='回复给非洲小白脸'>回复</a></div></div><div class="comment-content" id="div-comment-7"><p>试试看如何</p>
-                        </div></div></li></li><!-- #comment-## -->
-                        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-10"><div class="comment-author"><img th:src="@{/assets/themes/Falls/static/img/avatar.png}" class="avatar avatar-50 photo" width="50" height="50" /></div><div class="comment-body"><div class="comment-meta"><div class="comment-meta-author"><a href='https://www.apkcr.com' rel='external nofollow ugc' class='url'>非洲小白脸</a></div><div class="comment-meta-date">2021-03-26 16:21:52 </div><div class="comment-reply"><a rel='nofollow' class='comment-reply-link' href='68%EF%B9%96replytocom=10.html#respond' data-commentid="10" data-postid="68" data-belowelement="div-comment-10" data-respondelement="respond" data-replyto="回复给非洲小白脸" aria-label='回复给非洲小白脸'>回复</a></div></div><div class="comment-content" id="div-comment-10"><p>测试评论</p>
-                        </div></div></li></li><!-- #comment-## -->
+
                     </ol>
                     <div class="comments-pagination">
                     </div>
@@ -511,7 +506,5 @@
 
 </body>
 <footer th:replace="modules/footer :: footer"></footer>
-<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/plugins.js}" id='plugins-js'></script>
-<script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/main.js}" id='main-js'></script>
-<script type='text/javascript' th:src="@{/assets/js/comment-reply.min.js}" id='comment-reply-js'></script>
+
 </html>
