@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
+
 </head>
 <body>
-
 <div th:replace="modules/header1 :: header1"></div>
 <header th:replace="modules/header1 :: header2"></header>
-
-<body>
-<div th:with="categories = ${categoryFinder.listAsTree()}">
-    <ul>
-        <li th:each="category : ${categories}">
-            <a th:href="@{${category.status.permalink}}">
-                <span th:text="${category.spec.displayName}"> </span>
-            </a>
-            <th:block th:if="${not #lists.isEmpty(category.children)}">
-                <th:block th:replace="~{modules/category-tree :: next (categories=${category.children})}"></th:block>
-            </th:block>
-        </li>
-    </ul>
+<div th:replace="modules/header1 :: header3"></div>
+<div class="container m-category">
+    <div class="row">
+        <h5 class="mb-3 pt-3 border-top">全部软件</h5>
+        <div class="row post-list" th:with="posts = ${postFinder.listAll()}">
+            <div class="col-12" th:each="post : ${posts}">
+                <a th:href="@{${post.status.permalink}}" class="post border-bottom d-block py-2">
+                    <div class="d-flex align-items-center">
+                        <div class="post-image me-3">
+                            <img th:src="${post.spec.cover}"
+                                 th:alt="${post.spec.title}">
+                        </div>
+                        <div class="post-footer w-100">
+                            <h5 class="line-hide-1 fs-16">[[${post.spec.title}]] <span class="text-muted fs-14"><span class="mx-1">-</span>V4.8.9</span></h5>
+                            <th:block th:if="${not #lists.isEmpty(post.categories)}">
+                            <div class="text-muted fs-16 me-3"
+                                 th:each="category : ${post.categories}"
+                                 th:text="${category.spec.displayName}"></div>
+                            </th:block>
+                        </div>
+                        <i class="icon fs-36 icon-next-arrow"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="pagination-area pt-3">
+            <div class="pagination"><ul><li class="prev-page"></li><li class="active"><span>1</span></li><li><a href='soft/page/2.html'>2</a></li><li class="next-page"><a href="soft/page/2.html" ><i class="icon icon-arrow-right"></i></a></li><li><span>2</span></li></ul></div>	</div>
+    </div>
+    </div>
 </div>
-<footer th:replace="modules/footer :: footer"></footer>
-
 </body>
 </html>

@@ -4,10 +4,10 @@
   <div class="container">
     <div class="header-main d-flex justify-content-between align-items-center">
       <nav class="nav top-bar-nav ">
-        <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">首页</a></li>
-        <li class="menu-item current-menu-item"><a href="index.html" aria-current="page">装机必备</a></li>
-        <li class="menu-item"><a href="feed.rss">RSS订阅</a></li>
-        <li class="menu-item"><a href="feedback.html">留言反馈</a></li>
+        <li class="menu-item current-menu-item"><a href="${site.url}" aria-current="page">首页</a></li>
+        <li class="menu-item current-menu-item"><a href="${site.url}" aria-current="page">装机必备</a></li>
+        <li class="menu-item"><a href="${site.url}">RSS订阅</a></li>
+        <li class="menu-item"><a href="${site.url}">留言反馈</a></li>
       </nav>
       <nav class="nav justify-content-end">
         <label class="theme-switch" for="checkbox">
@@ -65,5 +65,34 @@
 <!--      </form>-->
 <!--    </div>-->
 <!--  </div>-->
+
 </header>
+<div class="header-m" th:fragment="header3">
+  <div class="container">
+    <div class="bg-white py-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <a class="logo" th:href="${site.url}">
+          <img th:src="${theme.config.header.header_logo}">
+        </a>
+        <div class="header-search">
+          <i class="icon icon-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="search-wrap" hidden="hidden">
+  <div class="van-overlay"></div>
+  <div class="container">
+    <div class="search-form" >
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="menu-search">
+          <a class="site-page social-icon search" href="javascript:SearchWidget.open();" rel="external nofollow" title="站内搜索">
+            <i class="icon icon-search index_searchicon"></i>
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </html>

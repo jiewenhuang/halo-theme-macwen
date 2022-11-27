@@ -2,10 +2,11 @@
 <html lang="en">
 <head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 </head>
-<body>
+<body class="post-template-default single single-post postid-140 single-format-standard wpmao-animation">
 
 <div th:replace="modules/header1 :: header1"></div>
 <header th:replace="modules/header1 :: header2"></header>
+<div th:replace="modules/header1 :: header3"></div>
 <div class="layout-header py-5" th:with="contributor = ${post.contributors[0]}">
     <div>
         <img th:src="@{/assets/themes/Falls/static/img/svg/shape-1.svg}" class="shape-three">
@@ -362,147 +363,212 @@
             </div>    </div>
     </div>
 </div>
-<div id="sidetools" class="">
-    <div class="sidetools-item kefu-wx">
-        <div class="sidetools-wrapper">
-            <a href="javascript:;">
-                <span class="sidetools-icon kfwx"></span>
-            </a>
-        </div>
-        <div class="wx-popover">
-            <div class="text-center">
-                <img th:src="@{/assets/themes/MacDown/static/img/wx.jpg}">
-                <p class="mt-1 mb-0">微信客服</p>
-            </div>
-        </div>
-    </div>
-    <div class="sidetools-item kefu-qq">
-        <div class="sidetools-wrapper">
-            <a href="javascript:;">
-                <span class="sidetools-icon kfqq"></span>
-            </a>
-        </div>
-        <div class="qq-popover">
-            <div class="text-center">
-                <img th:src="@{/assets/themes/MacDown/static/img/qun.jpg}">
-                <p class="mt-1 mb-0">QQ客服</p>
-            </div>
-        </div>
-    </div>
-    <div class="sidetools-item gotop wpmao-animation tinUpIn">
-        <div class="sidetools-wrapper">
-            <a href="javascript:;">
-                <span class="sidetools-icon back-top"></span>
-            </a>
-        </div>
-    </div>
+
 </div>
-<div class="back-prev">
-    <div class="mb-20">
-        <a class="btn" href="category/adobe.html">
-            <i class="icon icon-arrow-left fw-600 fs-22"></i>
-        </a>
-    </div>
-    <div>
-        <a href="javascript:;" class="btn"><i class="icon icon-zan fs-22"></i> <p class="mb-0">22</p>
-        </a>
-    </div>
-    <div class="mb-20">
-        <a href="#comments" class="el-tooltip btn cursor" aria-describedby="el-tooltip-8043" tabindex="0">
-            <i class="icon icon-comments fw-600"></i>
-            <p class="mb-0">2</p>
-        </a>
-    </div>
-</div>
-<div class="download-modal modal fade" id="DmownModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-                <h5 class="modal-title" id="exampleModalLabel">下载地址<span class="fs-16">
-          - Adobe Photoshop 2021 22.3 + Neural Filters 中文破解版 (使用最多的图片处理工具) <span class="text-muted fs-14 ml-1">需 &gt;= 10.12 或更高版本</span></span>
-                </h5>
-            </div>
-            <div class="modal-body">
-                <div class="download-list px-5 pt-5">
-                    <div class="download-box d-flex mb-6">
-                        <div class="download-icon me-4">
-                            <img th:src="@{/assets/themes/Falls/static/img/baiduyun.svg}">
-                        </div>
-                        <div class="download-body flex">
-                            <h6 class="cursor">
-                  <span class="hover-primary transition"><a href="https://pan.baidu.com/" target="_blank">立即下载 </a><span class="fs-14 ms-2"><span class="text-muted">(提取码/密码：</span> <span class="fs-14 fw-500 text-success">baiduyun</span> <span class="text-muted">)</span></span>
-                            </h6>
-                        </div>
+
+<div class="single bg-light pt-5 single-m" th:with="contributor = ${post.contributors[0]}">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-12">
+                <div class="text-center">
+                    <img class="app-img" th:src="${post.spec.cover}">
+                    <h3 th:text="${post.spec.title}"></h3>
+                    <h5></h5>
+                    <div class="mt-4 mb-5">
+            <span class="me-3">
+              <i class="icon icon-zip text-muted me-1"></i>
+              <span>563MB</span>
+            </span>
+                        <span class="me-3" th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+              <i class="icon icon-time text-muted me-1"></i>             </span>
+                        <span class="me-3"><i class="icon icon-goup text-muted me-1"></i>
+              <span class="fs-13" th:text="' '+${post.stats.visit}+' '"></span>
+            </span>
                     </div>
                 </div>
-                <div class="download-list px-5 pt-5">
-                    <div class="download-box d-flex mb-6">
-                        <div class="download-icon me-4">
-                            <img th:src="@{/assets/themes/Falls/static/img/tianyiyun.svg}">
-                        </div>
-                        <div class="download-body flex">
-                            <h6 class="cursor">
-                  <span class="hover-primary transition"><a href="https://www.ctyun.cn/" target="_blank">立即下载 </a><span class="fs-14 ms-2"><span class="text-muted">(提取码/密码：</span> <span class="fs-14 fw-500 text-success">da862da</span> <span class="text-muted">)</span></span>
-                            </h6>
-                        </div>
-                    </div>
+                <div class="mb-7 text-center">
+                    <a class="btn btn-primary rounded-pill nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="icon icon-download fs-20 mr-1"></i> 立即下载</a>
+                    <ul class="dropdown-menu"><table class="history-body table table-light history-body border bg-white"><tbody><thead>
+                    <tr>
+                        <th>版本</th>
+                        <th>大小</th>
+                        <th>密码</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                    </thead>              <tr>
+                        <td scope="row">V4.8.9</td>
+                        <td>563 MB</td>
+                        <td>489n</td>
+                        <td class="text-center"><a target="_blank" href="https://pan.baidu.com/"><i class="icon icon-down"></i></a></td>
+                    </tr>
+                        </tbody>
+                    </table>
+                    </ul>
                 </div>
             </div>
-            <div class="modal-footer border-top-0">
-                <div class="bg-light p-5">
-                    <p class="mt-15 fs-14">
-                        <span class="text-danger">点击下载无响应？</span>
-                        是因为浏览器阻止了弹出窗口，网址输入框的最右边有个图标，点击后允许即可！
-                    </p>
-                    <div class="d-flex">
-                        <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=CIiihlwh11e_XuuDjf00ZYaDl4x6QEfn&amp;jump_from=webapi" class="add-qun btn btn-outline-primary rounded-pill py-2 fs-16 px-8 me-4">
-                            <img th:src="@{/assets/themes/Falls/static/img/svg/qqgroup-icon.svg}"> 加入QQ群
-                            <div class="qq-popover">
-                                <div class="text-center">
-                                    <img th:src="@{/assets/themes/MacDown/static/img/qun.jpg}">
-                                    <div class="flex"><h6 class="fw-600 mb-0">精品Mac软件分享①群</h6> <p class="mb-0 text-muted">扫一扫二维码，加入群聊</p></div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="rewards btn btn-outline-primary rounded-pill">
-                            <img class="w-20 img-reward-default v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-default.svg}" lazy="loaded">
-                            <img class="w-20 img-reward-hover v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-hover.svg}">
-                            打赏赞助
-                            <div class="rewards-popover">
-                                <div class="px-6 pt-6 pb-3 light dk text-center" style="height: 320px;">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <i class="icon icon-Alipay fs-40 mb-3" style="color: rgb(22, 120, 255);"></i>
-                                            <h5 class="mb-4">支付宝</h5>
-                                            <img alt="" class="w-full bg-white radius-5x border" th:src="@{/assets/themes/MacDown/static/img/alipay.png}">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <i class="icon icon-wxpay fs-40 mb-3" style="color: rgb(29, 170, 57);"></i>
-                                            <h5 class="mb-4">微信</h5>
-                                            <img alt="" class="w-full bg-white radius-5x border" th:src="@{/assets/themes/MacDown/static/img/wxpay.png}">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <i class="icon icon-qqpay fs-40 mb-3" style="color: rgb(11, 178, 255);"></i>
-                                            <h5 class="mb-4">QQ</h5>
-                                            <img alt="" class="w-full bg-white radius-5x border" th:src="@{/assets/themes/MacDown/static/img/qqpay.png}">
-                                        </div>
-                                        <div class="col-md-4">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center px-4 py-3 border-top">
-                                    <div class="flex">
-                                        <h6 class="fw-600 mb-0">帮助分担一部分运维成本。❤️🙏🤝</h6><p class="mb-0 text-muted">做好事也要留名的！打赏完后记得联系QQ：3270502 统计哦。</p>                  </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+<!--            <div class="col-xl-12 text-center mb-5">-->
+<!--                <div class="owl-carousel owl-macbook">-->
+<!--                    <div class="item">-->
+<!--                        <img th:src="${post.spec.cover}">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="col-xl-12" th:utext="${post.content.content}">
+
             </div>
         </div>
     </div>
 </div>
-</div>
+
+<!--<div class="single bg-light pt-5">-->
+<!--    <div class="container">-->
+<!--        <div class="row align-items-center">-->
+<!--            <div class="col-xl-12">-->
+<!--                <div class="text-center">-->
+<!--                    <img class="app-img" th:src="wp-content/uploads/2021/05/tencent-lemon-bs.png">-->
+<!--                    <h3>腾讯柠檬清理</h3>-->
+<!--                    <h5></h5>-->
+<!--                    <div class="mt-4 mb-5">-->
+<!--            <span class="me-3">-->
+<!--              <i class="icon icon-zip text-muted me-1"></i>-->
+<!--              <span>563MB</span>-->
+<!--            </span>-->
+<!--                        <span class="me-3">-->
+<!--              <i class="icon icon-time text-muted me-1"></i> 2021-5-26            </span>-->
+<!--                        <span class="me-3"><i class="icon icon-goup text-muted me-1"></i>-->
+<!--              <span class="fs-13"> 643 </span>-->
+<!--            </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="mb-7 text-center">-->
+<!--                    <a class="btn btn-primary rounded-pill nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="icon icon-download fs-20 mr-1"></i> 立即下载</a>-->
+<!--                    <ul class="dropdown-menu"><table class="history-body table table-light history-body border bg-white"><tbody><thead>-->
+<!--                    <tr>-->
+<!--                        <th>版本</th>-->
+<!--                        <th>大小</th>-->
+<!--                        <th>密码</th>-->
+<!--                        <th class="text-center">操作</th>-->
+<!--                    </tr>-->
+<!--                    </thead>              <tr>-->
+<!--                        <td scope="row">V4.8.9</td>-->
+<!--                        <td>563 MB</td>-->
+<!--                        <td>489n</td>-->
+<!--                        <td class="text-center"><a target="_blank" href="https://pan.baidu.com/"><i class="icon icon-down"></i></a></td>-->
+<!--                    </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xl-12 text-center mb-5">-->
+<!--                <div class="owl-carousel owl-macbook">-->
+<!--                    <div class="item">-->
+<!--                        <img src="wp-content/uploads/2021/05/tencent-lemon-screen-01.jpg">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xl-12">-->
+<!--                <h4 class="fw-600 text-center">软件介绍/功能</h4>-->
+<!--                <div class="article-content">-->
+<!--                    <div class="soft-blockquote fw-400">-->
+<!--                        <div>-->
+<!--                            <p>腾讯柠檬是一款 mac系统清理优化工具。除了可以进行深度清理系统垃圾外，还拥有：应用卸载、大文件清理、重复文件清理、浏览器隐私清理、相似照片清理功能。还配备了菜单栏状态显示功能，支持在状态栏实时显示磁盘空间、风扇转速、网络速度监控等信息，点击菜单栏图标可以进行内存释放。界面设计清爽美观，符合国人使用习惯。腾讯在mac平台的软件值得表扬！</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
+<!--                        <div class="col-5 ml-auto">-->
+<!--                            <div class="pr-4">-->
+<!--                                <h4 class="features-title fs-30 mb-2">深度扫描清理</h4>-->
+<!--                                <div class="soft-markdown-content">-->
+<!--                                    <p>针对微信、QQ、XCode、Sketch等常见应用逐一定制扫描方案，精准分析应用文件，分类通俗易懂，随时保持Mac干净清爽。</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6 order-first"><img decoding="async" class="alignnone size-full wp-image-145" src="wp-content/uploads/2021/05/tencent-lemon-features-06.jpg" width="1000" height="618" /></div>-->
+<!--                    </div>-->
+<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
+<!--                        <div class="col-5 ml-auto">-->
+<!--                            <div class="pr-4">-->
+<!--                                <h4 class="features-title fs-30 mb-2">大文件清理</h4>-->
+<!--                                <div class="soft-markdown-content">-->
+<!--                                    <p>全面查找占用超过50M的大文件，揪出磁盘元凶，支持自定义扫描文件夹。</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-146" src="wp-content/uploads/2021/05/tencent-lemon-features-01.jpg" width="1000" height="618" /></div>-->
+<!--                    </div>-->
+<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
+<!--                        <div class="col-5 ml-auto">-->
+<!--                            <div class="pr-4">-->
+<!--                                <h4 class="features-title fs-30 mb-2">重复文件清理</h4>-->
+<!--                                <div class="soft-markdown-content">-->
+<!--                                    <p>智能比对重复内容，腾出磁盘空间，支持自定义扫描文件夹。</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6 order-first"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-147" src="wp-content/uploads/2021/05/tencent-lemon-features-02.jpg" width="1000" height="618" /></div>-->
+<!--                    </div>-->
+<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
+<!--                        <div class="col-5 ml-auto">-->
+<!--                            <div class="pr-4">-->
+<!--                                <h4 class="features-title fs-30 mb-2">相似照片清理</h4>-->
+<!--                                <div class="soft-markdown-content">-->
+<!--                                    <p>整理相册好帮手，极速筛选相似照片，支持自定义扫描文件夹。</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-148" src="wp-content/uploads/2021/05/tencent-lemon-features-03.jpg" width="1000" height="618" /></div>-->
+<!--                    </div>-->
+<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
+<!--                        <div class="col-5 ml-auto">-->
+<!--                            <div class="pr-4">-->
+<!--                                <h4 class="features-title fs-30 mb-2">浏览器隐私清理</h4>-->
+<!--                                <div class="soft-markdown-content">-->
+<!--                                    <p>保护浏览器隐私，防止恶意窃取，支持Safari/Chrome等多款浏览器。</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6 order-first"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-149" src="wp-content/uploads/2021/05/tencent-lemon-features-05.jpg" width="1000" height="618" /></div>-->
+<!--                    </div>-->
+<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
+<!--                        <div class="col-5 ml-auto">-->
+<!--                            <div class="pr-4">-->
+<!--                                <h4 class="features-title fs-30 mb-2">应用卸载</h4>-->
+<!--                                <div class="soft-markdown-content">-->
+<!--                                    <p>正确卸载应用程序，清理彻底无残留，支持系统内核驱动程序卸载。</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-150" src="wp-content/uploads/2021/05/tencent-lemon-features-04.jpg" width="1000" height="618" /></div>-->
+<!--                    </div>-->
+<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
+<!--                        <div class="col-5 ml-auto">-->
+<!--                            <div class="pr-4">-->
+<!--                                <h4 class="features-title fs-30 mb-2">状态栏窗口</h4>-->
+<!--                                <div class="soft-markdown-content">-->
+<!--                                    <p>一切清理释放内存，支持CPU温度、磁盘空间、风扇转速等硬件信息展示，支持检测网络，开启摄像头调用提示等，实时了解Mac状况。</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6 order-first"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-151" src="wp-content/uploads/2021/05/tencent-lemon-features-07-min.gif" width="1192" height="996" /></div>-->
+<!--                    </div>-->
+<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
+<!--                        <div class="col-5 ml-auto">-->
+<!--                            <div class="pr-4">-->
+<!--                                <h4 class="features-title fs-30 mb-2">自定义状态栏展示信息</h4>-->
+<!--                                <div class="soft-markdown-content">-->
+<!--                                    <p>支持自定义在状态栏实时显示内存占用、磁盘空间、CPU温度、风扇转速、网速等信息。</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-6"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-152" src="wp-content/uploads/2021/05/tencent-lemon-features-08.jpg" width="1280" height="879" /></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 
 </body>
 <footer th:replace="modules/footer :: footer"></footer>

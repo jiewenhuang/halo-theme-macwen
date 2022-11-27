@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 </head>
-<body>
+<body class="home blog wpmao-animation">
 
 <div th:replace="modules/header1 :: header1"></div>
 <header th:replace="modules/header1 :: header2"></header>
+<div th:replace="modules/header1 :: header3"></div>
 
 <section class="banner">
   <div class="container">
@@ -63,12 +64,29 @@
     </div>
   </div>
 </section>
-<!--分类专题四个框-->
+<!--手机端banner-->
+<section class="banner-m">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="owl-carousel m-slider">
+          <div class="item d-flex align-items-center rounded px-3" style="background: #50a1ff;">
+            <div class="text-center">
+              <h5 class="fw-600 text-white">只收录精品MAC应用</h5>
+              <p class="mb-0 text-light">每款应用都经过严格测试后发布！</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--pc分类专题四个框-->
 <section class="special">
   <div class="container">
     <div class="row">
       <div class="col-3 col-lg-3">
-        <a th:href="${theme.config.box.boxone_url}">
+        <a th:href="${theme.config.box.box1_url}">
           <div class="special-item hover-shadow-6 py-2 text-center" style="background: #7fe496">
             <div class="card">
               <div class="card-body">
@@ -127,6 +145,74 @@
   </div>
 </section>
 <!--  <section th:replace="modules/box :: box"></section>-->
+<!--手机端四个框-->
+<section class="special-m">
+  <div class="container">
+    <div class="row">
+      <div class="col-3 col-lg-3 text-center">
+        <a class="d-block" th:href="${theme.config.box.box1_url}">
+          <div class="special-m-item hover-shadow-6 py-2 text-center" style="background: #7fe496">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="mb-0 text-white">
+                  <i class="icon icon-office fs-22"></i>
+                  <span class="d-none d-md-block">[[${theme.config.box.box1_text}]]</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <p class="mb-0 mt-2">[[${theme.config.box.box1_text}]]</p>
+        </a>
+      </div>
+      <div class="col-3 col-lg-3 text-center">
+        <a class="d-block" th:href="${theme.config.box.box2_url}">
+          <div class="special-m-item hover-shadow-6 py-2 text-center" style="background: #fe9078">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="mb-0 text-white">
+                  <i class="icon icon-gallery fs-22"></i>
+                  <span class="d-none d-md-block">[[${theme.config.box.box2_text}]]</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <p class="mb-0 mt-2">[[${theme.config.box.box2_text}]]</p>
+        </a>
+      </div>
+      <div class="col-3 col-lg-3 text-center">
+        <a class="d-block" th:href="${theme.config.box.box3_url}">
+          <div class="special-m-item hover-shadow-6 py-2 text-center" style="background: #50a1ff">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="mb-0 text-white">
+                  <i class="icon icon-cp fs-22"></i>
+                  <span class="d-none d-md-block">[[${theme.config.box.box3_text}]]</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <p class="mb-0 mt-2">[[${theme.config.box.box3_text}]]</p>
+        </a>
+      </div>
+      <div class="col-3 col-lg-3 text-center">
+        <a class="d-block" th:href="${theme.config.box.box4_url}">
+          <div class="special-m-item hover-shadow-6 py-2 text-center" style="background: #a682e4">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="mb-0 text-white">
+                  <i class="icon icon-code fs-22"></i>
+                  <span class="d-none d-md-block">[[${theme.config.box.box4_text}]]</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <p class="mb-0 mt-2">[[${theme.config.box.box4_text}]]</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section class="soft">
   <div class="container">
@@ -167,6 +253,7 @@
     </div>
   </div>
   </section>
+
 <section class="home-list bg-white py-5">
   <div class="container">
     <div class="d-flex section-header mb-5">
@@ -202,10 +289,34 @@
       </div>
     </div>
   </div>
-
-
-
 </section>
+<!--手机端文章输出-->
+
+<div class="container-m">
+  <div class="row">
+    <h5 class="mb-3 pt-4">最近更新</h5>
+    <div class="row post-list" th:each="post : ${posts.items}">
+      <div class="col-12">
+        <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}" class="post border-bottom d-block py-2">
+          <div class="d-flex align-items-center">
+            <div class="post-image me-3">
+              <img th:src="${post.spec.cover}"
+                   th:alt="${post.spec.title}">
+            </div>
+            <div class="post-footer w-100">
+              <h5 class="line-hide-1 fs-16">[[${post.spec.title}]]<span class="text-muted fs-14"><span class="mx-1">-</span>V4.8.9</span></h5>
+              <div class="text-muted line-hide-1 fs-16 me-3" th:text="${post.status.excerpt}"></div>
+            </div>
+            <i class="icon fs-36 icon-next-arrow"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="pagination-area pt-3  mb-5">
+      <a class="btn btn-outline-primary rounded-pill py-2 w-100" href="/categories">查看更多</a>
+    </div>
+  </div>
+</div>
 <!--底部模块-->
 <footer th:replace="modules/footer :: footer"></footer>
 

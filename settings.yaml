@@ -1,7 +1,7 @@
 apiVersion: v1alpha1
 kind: Setting
 metadata:
-  name: theme-app-setting
+  name: theme-macwen-setting
 spec:
   forms:
     - group: basics

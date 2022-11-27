@@ -4,9 +4,11 @@
 </head>
 <body>
 
+
+<body>
 <div th:replace="modules/header1 :: header1"></div>
 <header th:replace="modules/header1 :: header2"></header>
-<body>
+<div th:replace="modules/header1 :: header3"></div>
 
 <main class="single-item" th:with="contributor = ${post.contributors[0]}">
     <div class="site-main py-5">

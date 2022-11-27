@@ -6,9 +6,9 @@
 
 <div th:replace="modules/header1 :: header1"></div>
 <header th:replace="modules/header1 :: header2"></header>
+<div th:replace="modules/header1 :: header3"></div>
 
-<body>
-<div class="main py-5" >
+<div class="main py-5 pc-category" >
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-1">
@@ -64,6 +64,7 @@
 
 
 
+
                         </div>
                     </div>
                 </section>
@@ -72,9 +73,30 @@
         </div>
     </div>
 </div>
+<!--手机端分类页-->
+<div class="container m-category">
+    <div class="row">
+        <h5 class="mb-3 pt-3 border-top">全部软件</h5>
+        <div class="row post-list" th:each="post : ${posts.items}">
+            <div class="col-12">
+                <a th:href="@{${post.status.permalink}}" class="post border-bottom d-block py-2">
+                    <div class="d-flex align-items-center">
+                        <div class="post-image me-3">
+                            <img th:src="${post.spec.cover}"
+                                 th:alt="${post.spec.title}">
+                        </div>
+                        <div class="post-footer w-100">
+                            <h5 class="line-hide-1 fs-16">[[${post.spec.title}]] <span class="text-muted fs-14"><span class="mx-1">-</span>V4.8.9</span></h5>
+                            <div class="text-muted fs-16 me-3"th:text="${post.status.excerpt}"></div>
+                        </div>
+                        <i class="icon fs-36 icon-next-arrow"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 <footer th:replace="modules/footer :: footer"></footer>
-
-
 
 </body>
 </html>
