@@ -5328,17 +5328,23 @@ mobile
 }
 
 @media screen and (max-width: 1199px) {
+
     body {
-        margin: 0;
-        font-family: Dosis, Open Sans, pingfang SC, -apple-system, Helvetica Neue, Helvetica, Arial, PingFang SC, PingFang TC, Hiragino Sans GB, Microsoft Yahei, Microsoft Jhenghei, sans-serif;
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #212529;
-        text-align: left;
-        background-color: #f8fafc;
+
+        overflow-x: hidden;
+        overflow-y: scroll;
+        top: 0;
+        left: 0;
+        width: 100%;
+
     }
-/*不显示部分*/
+    html {
+        overflow-x:hidden;
+    }
+
+
+
+    /*不显示部分*/
     .banner {
         display: none;
     }

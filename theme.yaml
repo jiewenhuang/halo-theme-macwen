@@ -20,4 +20,4 @@ spec:
   version: 'beta1'
   require: 'halo2.0'
 metadata:
-  name: theme-app
+  name: theme-macwen
