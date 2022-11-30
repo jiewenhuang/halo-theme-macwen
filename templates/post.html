@@ -1,12 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
-</head>
-<body class="post-template-default single single-post postid-140 single-format-standard wpmao-animation">
-
-<div th:replace="modules/header1 :: header1"></div>
-<header th:replace="modules/header1 :: header2"></header>
-<div th:replace="modules/header1 :: header3"></div>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(title = ${post.spec.title} + ' - ' + ${site.title},bodydepend = post, header = null, content = ~{::content}, head = null, footer = null)}">
+<th:block th:fragment="content">
 <div class="layout-header py-5" th:with="contributor = ${post.contributors[0]}">
     <div>
         <img th:src="@{/assets/themes/Falls/static/img/svg/shape-1.svg}" class="shape-three">
@@ -228,33 +223,6 @@
                 <div class="article-content" th:utext="${post.content.content}">
 
 
-
-
-                    <figure class="wp-block-image"><img src="https://cdn.macwk.com/public/uploads/_/originals/Photoshop-CC-2019-demo-04.jpg" alt="" /></figure>
-
-
-
-                    <h4>不仅要按动快门，更要打动人心</h4>
-
-
-
-                    <p>无论您是希望进行日常编辑还是彻底变换，我们的图形设计软件都可以为您提供一整套用于将照片转换成艺术作品的专业摄影工具。调整、裁切、移除对象、润饰和修复旧照片。玩转颜色、效果等，让平凡变非凡。</p>
-
-
-
-                    <figure class="wp-block-image"><img src="https://cdn.macwk.com/public/uploads/_/originals/Photoshop-CC-2019-demo-05.jpg" alt="" /></figure>
-
-
-
-                    <h4>功能强大的画笔</h4>
-
-
-
-                    <p>用专门为插画师设计的工具，随时随地绘制灵感。绘制完美对称的图案，利用笔触平滑获得精致外观。利用感觉真实的铅笔、钢笔、马克笔和画笔进行创作，包括著名插画师 Kyle T. Webster 提供的超过 1,000 种画笔。</p>
-
-
-
-                    <figure class="wp-block-image"><img src="https://cdn.macwk.com/public/uploads/_/originals/Photoshop-CC-2019-demo-06.jpg" alt="" /></figure>
                 </div>
             </div>
         </div>
@@ -324,37 +292,17 @@
         <div class="article-comment border-top pt-7 pb-9 border-top px-6">
             <div class="comments-area" id="comments">
                 <div id="respond" class="comments-respond no_webshot">
-                    <div class="comment-respond"><a id="cancel-comment-reply-link" href="javascript:;">取消回复</a></small></h5>
-                        <p class="comment-notes text-xs text-muted">您的电子邮件地址不会被公开，必填的地方已做标记。</p>
-                        <form class="comment-form row" action="https://demo.wpmao.com/mac/wp-comments-post.php" method="post" id="commentform">
-                            <div class="form-group col-md-4 mb-4">
-                                <input class="form-control border-bottom-0" type="text" name="author" id="author" value="" tabindex="2" placeholder="昵称 (必填)">
-                            </div>
-                            <div class="form-group col-md-4 mb-4">
-                                <input class="form-control border-bottom-0" type="text" name="email" id="email" value="" tabindex="3" placeholder="邮箱 (必填)">
-                            </div>
-                            <div class="form-group col-md-4 mb-4">
-                                <input class="form-control border-bottom-0" type="text" name="url" id="url" value="" tabindex="4" placeholder="网址 (非必填)">
-                            </div>
-                            <div class="form-group col-lg-12">
-                                <textarea placeholder="" class="form-control OwO-textarea" name="comment" id="comment" cols="100%" rows="5" tabindex="1" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
-                            </div>
-                            <div class="comt-tips mr-2"><input type='hidden' name='comment_post_ID' value='68' id='comment_post_ID' />
-                                <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-                            </div>
-                            <div class="comments-form-footer col-lg-12 d-flex align-items-center ps-5">
-                                <div class="form-submit flex-fill text-end">
-                                    <button class="comt-submit" type="submit" name="submit" id="submit" tabindex="5">提交评论</button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="comment-respond" th:if="${pluginFinder.available('PluginCommentWidget')}">
+                        <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
                     </div>
+
+
 
 
 <!--                </div>-->
 <!--                <h5 class="comments-title py-3 font-18 font-weight-bold"> 条评论</h5>-->
                 <div id="postcomments" class="postcomments">
-                    <ol class="commentlist">
+                    <ol class="commentlist" >
 
                     </ol>
                     <div class="comments-pagination">
@@ -420,157 +368,23 @@
     </div>
 </div>
 
-<!--<div class="single bg-light pt-5">-->
-<!--    <div class="container">-->
-<!--        <div class="row align-items-center">-->
-<!--            <div class="col-xl-12">-->
-<!--                <div class="text-center">-->
-<!--                    <img class="app-img" th:src="wp-content/uploads/2021/05/tencent-lemon-bs.png">-->
-<!--                    <h3>腾讯柠檬清理</h3>-->
-<!--                    <h5></h5>-->
-<!--                    <div class="mt-4 mb-5">-->
-<!--            <span class="me-3">-->
-<!--              <i class="icon icon-zip text-muted me-1"></i>-->
-<!--              <span>563MB</span>-->
-<!--            </span>-->
-<!--                        <span class="me-3">-->
-<!--              <i class="icon icon-time text-muted me-1"></i> 2021-5-26            </span>-->
-<!--                        <span class="me-3"><i class="icon icon-goup text-muted me-1"></i>-->
-<!--              <span class="fs-13"> 643 </span>-->
-<!--            </span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="mb-7 text-center">-->
-<!--                    <a class="btn btn-primary rounded-pill nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="icon icon-download fs-20 mr-1"></i> 立即下载</a>-->
-<!--                    <ul class="dropdown-menu"><table class="history-body table table-light history-body border bg-white"><tbody><thead>-->
-<!--                    <tr>-->
-<!--                        <th>版本</th>-->
-<!--                        <th>大小</th>-->
-<!--                        <th>密码</th>-->
-<!--                        <th class="text-center">操作</th>-->
-<!--                    </tr>-->
-<!--                    </thead>              <tr>-->
-<!--                        <td scope="row">V4.8.9</td>-->
-<!--                        <td>563 MB</td>-->
-<!--                        <td>489n</td>-->
-<!--                        <td class="text-center"><a target="_blank" href="https://pan.baidu.com/"><i class="icon icon-down"></i></a></td>-->
-<!--                    </tr>-->
-<!--                        </tbody>-->
-<!--                    </table>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-xl-12 text-center mb-5">-->
-<!--                <div class="owl-carousel owl-macbook">-->
-<!--                    <div class="item">-->
-<!--                        <img src="wp-content/uploads/2021/05/tencent-lemon-screen-01.jpg">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-xl-12">-->
-<!--                <h4 class="fw-600 text-center">软件介绍/功能</h4>-->
-<!--                <div class="article-content">-->
-<!--                    <div class="soft-blockquote fw-400">-->
-<!--                        <div>-->
-<!--                            <p>腾讯柠檬是一款 mac系统清理优化工具。除了可以进行深度清理系统垃圾外，还拥有：应用卸载、大文件清理、重复文件清理、浏览器隐私清理、相似照片清理功能。还配备了菜单栏状态显示功能，支持在状态栏实时显示磁盘空间、风扇转速、网络速度监控等信息，点击菜单栏图标可以进行内存释放。界面设计清爽美观，符合国人使用习惯。腾讯在mac平台的软件值得表扬！</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
-<!--                        <div class="col-5 ml-auto">-->
-<!--                            <div class="pr-4">-->
-<!--                                <h4 class="features-title fs-30 mb-2">深度扫描清理</h4>-->
-<!--                                <div class="soft-markdown-content">-->
-<!--                                    <p>针对微信、QQ、XCode、Sketch等常见应用逐一定制扫描方案，精准分析应用文件，分类通俗易懂，随时保持Mac干净清爽。</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-6 order-first"><img decoding="async" class="alignnone size-full wp-image-145" src="wp-content/uploads/2021/05/tencent-lemon-features-06.jpg" width="1000" height="618" /></div>-->
-<!--                    </div>-->
-<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
-<!--                        <div class="col-5 ml-auto">-->
-<!--                            <div class="pr-4">-->
-<!--                                <h4 class="features-title fs-30 mb-2">大文件清理</h4>-->
-<!--                                <div class="soft-markdown-content">-->
-<!--                                    <p>全面查找占用超过50M的大文件，揪出磁盘元凶，支持自定义扫描文件夹。</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-6"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-146" src="wp-content/uploads/2021/05/tencent-lemon-features-01.jpg" width="1000" height="618" /></div>-->
-<!--                    </div>-->
-<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
-<!--                        <div class="col-5 ml-auto">-->
-<!--                            <div class="pr-4">-->
-<!--                                <h4 class="features-title fs-30 mb-2">重复文件清理</h4>-->
-<!--                                <div class="soft-markdown-content">-->
-<!--                                    <p>智能比对重复内容，腾出磁盘空间，支持自定义扫描文件夹。</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-6 order-first"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-147" src="wp-content/uploads/2021/05/tencent-lemon-features-02.jpg" width="1000" height="618" /></div>-->
-<!--                    </div>-->
-<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
-<!--                        <div class="col-5 ml-auto">-->
-<!--                            <div class="pr-4">-->
-<!--                                <h4 class="features-title fs-30 mb-2">相似照片清理</h4>-->
-<!--                                <div class="soft-markdown-content">-->
-<!--                                    <p>整理相册好帮手，极速筛选相似照片，支持自定义扫描文件夹。</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-6"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-148" src="wp-content/uploads/2021/05/tencent-lemon-features-03.jpg" width="1000" height="618" /></div>-->
-<!--                    </div>-->
-<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
-<!--                        <div class="col-5 ml-auto">-->
-<!--                            <div class="pr-4">-->
-<!--                                <h4 class="features-title fs-30 mb-2">浏览器隐私清理</h4>-->
-<!--                                <div class="soft-markdown-content">-->
-<!--                                    <p>保护浏览器隐私，防止恶意窃取，支持Safari/Chrome等多款浏览器。</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-6 order-first"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-149" src="wp-content/uploads/2021/05/tencent-lemon-features-05.jpg" width="1000" height="618" /></div>-->
-<!--                    </div>-->
-<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
-<!--                        <div class="col-5 ml-auto">-->
-<!--                            <div class="pr-4">-->
-<!--                                <h4 class="features-title fs-30 mb-2">应用卸载</h4>-->
-<!--                                <div class="soft-markdown-content">-->
-<!--                                    <p>正确卸载应用程序，清理彻底无残留，支持系统内核驱动程序卸载。</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-6"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-150" src="wp-content/uploads/2021/05/tencent-lemon-features-04.jpg" width="1000" height="618" /></div>-->
-<!--                    </div>-->
-<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
-<!--                        <div class="col-5 ml-auto">-->
-<!--                            <div class="pr-4">-->
-<!--                                <h4 class="features-title fs-30 mb-2">状态栏窗口</h4>-->
-<!--                                <div class="soft-markdown-content">-->
-<!--                                    <p>一切清理释放内存，支持CPU温度、磁盘空间、风扇转速等硬件信息展示，支持检测网络，开启摄像头调用提示等，实时了解Mac状况。</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-6 order-first"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-151" src="wp-content/uploads/2021/05/tencent-lemon-features-07-min.gif" width="1192" height="996" /></div>-->
-<!--                    </div>-->
-<!--                    <div class="row gap-y align-items-center py-8 border-bottom mb-3">-->
-<!--                        <div class="col-5 ml-auto">-->
-<!--                            <div class="pr-4">-->
-<!--                                <h4 class="features-title fs-30 mb-2">自定义状态栏展示信息</h4>-->
-<!--                                <div class="soft-markdown-content">-->
-<!--                                    <p>支持自定义在状态栏实时显示内存占用、磁盘空间、CPU温度、风扇转速、网速等信息。</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-6"><img decoding="async" loading="lazy" class="alignnone size-full wp-image-152" src="wp-content/uploads/2021/05/tencent-lemon-features-08.jpg" width="1280" height="879" /></div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 
-</body>
-<footer th:replace="modules/footer :: footer"></footer>
+
+</th:block>
+
+<script src="/assets/PluginCommentWidget/static/comment-widget.iife.js"></script>
+<script>
+    CommentWidget.init(
+        "#comment",
+        "/assets/PluginCommentWidget/static/style.css",
+        {
+            group: "content.halo.run",
+            version: "v1alpha1",
+            kind: "Post",
+            name: "<replace-post-name>",
+        }
+    );
+</script>
 
 </html>

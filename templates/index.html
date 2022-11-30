@@ -1,13 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
-</head>
-<body class="home blog wpmao-animation">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(title = ${site.title},bodydepend = index, header = null, content = ~{::content}, head = null, footer = null)}">
 
-<div th:replace="modules/header1 :: header1"></div>
-<header th:replace="modules/header1 :: header2"></header>
-<div th:replace="modules/header1 :: header3"></div>
-
+<th:block th:fragment="content">
 <section class="banner">
   <div class="container">
     <div class="row">
@@ -30,7 +25,7 @@
             <div class="banner-content">
               <h2>[[${theme.config.header.banner_firsttext}]]</h2>
               <p class="text-muted  fs-18">[[${theme.config.header.banner_secondtext}]]</p>
-              <a href="https://www.wpmao.com/" class="btn btn-primary btn-round px-3">[[${theme.config.header.banner_buttontext}]]</a>
+              <a th:href="${theme.config.header.banner_url}" class="btn btn-primary btn-round px-3">[[${theme.config.header.banner_buttontext}]]</a>
             </div>
             <div class="banner-img">
               <img th:src="@{/assets/themes/MacDown/static/img/banner-safe-free.png}">
@@ -317,9 +312,7 @@
     </div>
   </div>
 </div>
-<!--底部模块-->
-<footer th:replace="modules/footer :: footer"></footer>
-
+</th:block>>
 
 </body>
 </html>

@@ -1,12 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
-</head>
-<body>
-
-<div th:replace="modules/header1 :: header1"></div>
-<header th:replace="modules/header1 :: header2"></header>
-<div th:replace="modules/header1 :: header3"></div>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(title = ${category.spec.displayName} + ' - ' + ${site.title},bodydepend = category, header = null, content = ~{::content}, head = null, footer = null)}">
+<th:block th:fragment="content">
 
 <div class="main py-5 pc-category" >
     <div class="container">
@@ -64,12 +59,125 @@
 
 
 
-
                         </div>
                     </div>
+
                 </section>
 
+                <div class="pagination-area pt-3" th:if="${posts.hasPrevious() || posts.hasNext()}"
+                     th:with="totalPages = ${posts.totalPages}, pageIndex = ${posts.page}">
+                    <!-- 页面小于 7 -->
+                    <div class="pagination" th:if="${(totalPages le 7) && (totalPages gt 0)}">
+                        <ul>
+
+                        <!-- 上一页 -->
+                        <li class="prev-page">
+                            <a class="extend prev" rel="prev" th:href="@{${posts.prevUrl}}" th:if="${posts.hasPrevious()}">
+                                <i class="icon icon-arrow-left"></i>
+                                <!--                                        <div class="pagination_tips_prev">上页</div>-->
+                            </a>
+                        </li>
+                        <li th:classappend="${index eq pageIndex} ? 'active'" th:each="index : ${#numbers.sequence(1, totalPages)}">
+                            <a th:href="@{${category.status.permalink}+ '/page/' + ${index}}" th:text="${index}">
+
+                            </a>
+
+                        </li>
+                        <!-- 下一页 -->
+                        <li class="next-page">
+                            <a th:href="@{${posts.nextUrl}}" th:if="${posts.hasNext()}">
+                                <!--                                        <div class="pagination_tips_next">下页</div>-->
+                                <i class="icon icon-arrow-right"></i>
+                            </a>
+                        </li>
+                        </ul>
+
+                    </div>
+
+
+                    <!-- 页面大于 7 -->
+                    <!-- https://blog.csdn.net/lizc_lizc/article/details/80215147 -->
+                    <div class="pagination" th:if="${totalPages gt 7}">
+                        <ul>
+
+                        <!-- 上一页 -->
+                            <li class="prev-page">
+                        <a th:href="@{${posts.prevUrl}}" th:if="${posts.hasPrevious()}">
+                            <i class="icon icon-arrow-left"></i>
+<!--                            <div class="pagination_tips_prev">上页</div>-->
+                        </a>
+                            </li>
+
+                        <!-- 首页 -->
+                            <li >
+                        <a class="page-number" href="/">1</a>
+                            </li>
+
+                        <!-- 当前页面小于等于4 -->
+                            <li th:classappend="${index eq pageIndex} ? 'active'" th:each="index : ${#numbers.sequence(2,5)}"
+                                th:if="${pageIndex le 4}">
+                        <a th:href="@{${category.status.permalink}+ '/page/' + ${index}}" th:text="${index}">
+
+                        </a>
+
+                            </li>
+                            <li>
+
+                        <a class="page-number" th:if="${pageIndex le 4}">...</a>
+                            </li>
+
+
+                        <!-- 最后一页与当前页面之差小于等于3 -->
+                            <li th:if="${totalPages - pageIndex le 3}">
+                        <a class="page-number" >...</a>
+                            </li>
+                            <li th:classappend="${index eq pageIndex} ? 'active'"
+                                th:each="index : ${#numbers.sequence(totalPages - 4, totalPages - 1)}"
+                                th:if="${totalPages - pageIndex le 3}">
+                        <a th:href="@{${category.status.permalink}+ '/page/' + ${index}}" th:text="${index}">
+
+                        </a>
+
+                            </li>
+
+
+                        <!-- 最后一页与当前页面之差大于3 且当前页面大于4 -->
+                            <li th:if="${(pageIndex gt 4) && (totalPages - pageIndex gt 3)}">
+                        <a>...</a>
+                            </li>
+                            <li th:each="index : ${#numbers.sequence(pageIndex - 1,pageIndex + 1)}"
+                                th:if="${(pageIndex gt 4) && (totalPages - pageIndex gt 3)}">
+                        <a th:href="@{${category.status.permalink}+ '/page/' + ${index}}" th:text="${index}">
+
+                        </a>
+
+                            </li>
+                        <!-- 需要添加 th:href 跳转地址 -->
+                            <li th:if="${(pageIndex gt 4) && (totalPages - pageIndex gt 3)}">
+                        <a class="page-number" >...</a>
+                            </li>
+
+                        <!-- 尾页 -->
+                        <!-- 需要添加 th:href 跳转地址 -->
+                            <li th:classappend="${index eq pageIndex} ? 'active'">
+                        <a th:text="${totalPages}">
+
+                        </a>
+
+                            </li>
+
+                        <!-- 下一页 -->
+                                <li th:if="${posts.hasNext()}">
+                        <a th:href="@{${posts.nextUrl}}" >
+<!--                            <div class="pagination_tips_next">下页</div>-->
+                            <i class="icon icon-arrow-right"></i>
+                        </a>
+                               </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -96,7 +204,7 @@
         </div>
     </div>
 </div>
-<footer th:replace="modules/footer :: footer"></footer>
+</th:block>
 
-</body>
+
 </html>

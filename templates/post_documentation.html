@@ -1,14 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(title = ${site.title},bodydepend = docpost, header = null, content = ~{::content}, head = null, footer = null)}">
 
-
-<body>
-<div th:replace="modules/header1 :: header1"></div>
-<header th:replace="modules/header1 :: header2"></header>
-<div th:replace="modules/header1 :: header3"></div>
+<th:block th:fragment="content">
 
 <main class="single-item" th:with="contributor = ${post.contributors[0]}">
     <div class="site-main py-5">
@@ -38,30 +32,8 @@
                     <div class="article-comment p-2 p-md-4 d-none d-md-block">
                         <div class="comments-area" id="comments">
                             <div id="respond" class="comments-respond no_webshot">
-                                <div class="comment-respond"><a id="cancel-comment-reply-link" href="javascript:;">取消回复</a></small></h5>
-                                    <p class="comment-notes text-xs text-muted">您的电子邮件地址不会被公开，必填的地方已做标记。</p>
-                                    <form class="comment-form row" action="https://demo.wpmao.com/mac/wp-comments-post.php" method="post" id="commentform">
-                                        <div class="form-group col-md-4 mb-4">
-                                            <input class="form-control border-bottom-0" type="text" name="author" id="author" value="" tabindex="2" placeholder="昵称 (必填)">
-                                        </div>
-                                        <div class="form-group col-md-4 mb-4">
-                                            <input class="form-control border-bottom-0" type="text" name="email" id="email" value="" tabindex="3" placeholder="邮箱 (必填)">
-                                        </div>
-                                        <div class="form-group col-md-4 mb-4">
-                                            <input class="form-control border-bottom-0" type="text" name="url" id="url" value="" tabindex="4" placeholder="网址 (非必填)">
-                                        </div>
-                                        <div class="form-group col-lg-12">
-                                            <textarea placeholder="" class="form-control OwO-textarea" name="comment" id="comment" cols="100%" rows="5" tabindex="1" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
-                                        </div>
-                                        <div class="comt-tips mr-2"><input type='hidden' name='comment_post_ID' value='123' id='comment_post_ID' />
-                                            <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-                                        </div>
-                                        <div class="comments-form-footer col-lg-12 d-flex align-items-center ps-5">
-                                            <div class="form-submit flex-fill text-end">
-                                                <button class="comt-submit" type="submit" name="submit" id="submit" tabindex="5">提交评论</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                <div class="comment-respond" th:if="${pluginFinder.available('PluginCommentWidget')}">
+                                    <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
                                 </div>
                             </div>
                         </div>					</div>
@@ -71,7 +43,19 @@
     </div>
 </main>
 
-<footer th:replace="modules/footer :: footer"></footer>
 
-</body>
+</th:block>
+<script src="/assets/PluginCommentWidget/static/comment-widget.iife.js"></script>
+<script>
+    CommentWidget.init(
+        "#comment",
+        "/assets/PluginCommentWidget/static/style.css",
+        {
+            group: "content.halo.run",
+            version: "v1alpha1",
+            kind: "Post",
+            name: "<replace-post-name>",
+        }
+    );
+</script>
 </html>
