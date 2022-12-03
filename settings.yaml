@@ -57,7 +57,7 @@ spec:
         - $formkit: categoryCheckbox
           name: category2
           label: 文档类文章输出分类
-          value: []
+          value: ""
         - $formkit: text
           name: category2_text
           label: 文档分类显示文字

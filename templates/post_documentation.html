@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layout :: html(title = ${site.title},bodydepend = docpost, header = null, content = ~{::content}, head = null, footer = null)}">
+      th:replace="~{modules/layout :: html(title = ${post.spec.title} + ' - ' + ${site.title},bodydepend = docpost, header = null, content = ~{::content}, head = null, footer = null)}">
 
 <th:block th:fragment="content">
 

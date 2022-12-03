@@ -76,7 +76,7 @@ $('.m-slider').owlCarousel({
     margin:10,
 });
 
-//
+
 $('.sidebar-menu li:not(.menu-item) > a').on('click', function(){
 	var $parent = $(this).parent().addClass('active');
 	$parent.siblings('.menu-item.active').find('> a').trigger('click');
@@ -97,8 +97,8 @@ $(window).on('load', function(){
 	});
 });
 
-//点赞
-$(document).ready(function() { 
+点赞
+$(document).ready(function() {
 	$.fn.postLike = function() {
 		if ($(this).hasClass('done')) {
 			return false;
@@ -125,7 +125,7 @@ $(document).ready(function() {
 			$(this).postLike();
 		}
 	);
-}); 
+});
 
 
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');

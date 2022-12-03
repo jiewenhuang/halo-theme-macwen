@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width,initial-scale=1" name="viewport">
-  <title th:text="${site.title}"></title>
+  <title th:text="${title}"></title>
   <meta content="telephone=no" name="format-detection">
 
   <link rel="shortcut icon"
@@ -22,100 +22,100 @@
   <script type='text/javascript' th:src="@{/assets/themes/Falls/static/js/jquery.min.js}" id='jquery.min-js'></script>
   <link rel="stylesheet" th:href="@{/assets/style.css}">
 
-  <script>
-    (win => {
-      win.saveToLocal = {
-        set: function setWithExpiry(key, value, ttl) {
-          if (ttl === 0) return
-          const now = new Date()
-          const expiryDay = ttl * 86400000
-          const item = {
-            value: value,
-            expiry: now.getTime() + expiryDay,
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
+<!--  <script>-->
+<!--    (win => {-->
+<!--      win.saveToLocal = {-->
+<!--        set: function setWithExpiry(key, value, ttl) {-->
+<!--          if (ttl === 0) return-->
+<!--          const now = new Date()-->
+<!--          const expiryDay = ttl * 86400000-->
+<!--          const item = {-->
+<!--            value: value,-->
+<!--            expiry: now.getTime() + expiryDay,-->
+<!--          }-->
+<!--          localStorage.setItem(key, JSON.stringify(item))-->
+<!--        },-->
 
-        get: function getWithExpiry(key) {
-          const itemStr = localStorage.getItem(key)
+<!--        get: function getWithExpiry(key) {-->
+<!--          const itemStr = localStorage.getItem(key)-->
 
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = new Date()
+<!--          if (!itemStr) {-->
+<!--            return undefined-->
+<!--          }-->
+<!--          const item = JSON.parse(itemStr)-->
+<!--          const now = new Date()-->
 
-          if (now.getTime() > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
+<!--          if (now.getTime() > item.expiry) {-->
+<!--            localStorage.removeItem(key)-->
+<!--            return undefined-->
+<!--          }-->
+<!--          return item.value-->
+<!--        }-->
+<!--      }-->
 
-      win.getScript = url => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function () {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(script)
-      })
+<!--      win.getScript = url => new Promise((resolve, reject) => {-->
+<!--        const script = document.createElement('script')-->
+<!--        script.src = url-->
+<!--        script.async = true-->
+<!--        script.onerror = reject-->
+<!--        script.onload = script.onreadystatechange = function () {-->
+<!--          const loadState = this.readyState-->
+<!--          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return-->
+<!--          script.onload = script.onreadystatechange = null-->
+<!--          resolve()-->
+<!--        }-->
+<!--        document.head.appendChild(script)-->
+<!--      })-->
 
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        heo.initThemeColor()
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        heo.initThemeColor()
-      }
-      const t = saveToLocal.get('theme')
+<!--      win.activateDarkMode = function () {-->
+<!--        document.documentElement.setAttribute('data-theme', 'dark')-->
+<!--        heo.initThemeColor()-->
+<!--      }-->
+<!--      win.activateLightMode = function () {-->
+<!--        document.documentElement.setAttribute('data-theme', 'light')-->
+<!--        heo.initThemeColor()-->
+<!--      }-->
+<!--      const t = saveToLocal.get('theme')-->
 
-      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-      const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-      const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-      const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+<!--      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches-->
+<!--      const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches-->
+<!--      const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches-->
+<!--      const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified-->
 
-      if (t === undefined) {
-        if (isLightMode) activateLightMode()
-        else if (isDarkMode) activateDarkMode()
-        else if (isNotSpecified || hasNoSupport) {
-          const now = new Date()
-          const hour = now.getHours()
-          const isNight = hour <= 6 || hour >= 18
-          isNight ? activateDarkMode() : activateLightMode()
-        }
-        window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-          if (saveToLocal.get('theme') === undefined) {
-            e.matches ? activateDarkMode() : activateLightMode()
-          }
-        })
-      } else if (t === 'light') activateLightMode()
-      else activateDarkMode()
+<!--      if (t === undefined) {-->
+<!--        if (isLightMode) activateLightMode()-->
+<!--        else if (isDarkMode) activateDarkMode()-->
+<!--        else if (isNotSpecified || hasNoSupport) {-->
+<!--          const now = new Date()-->
+<!--          const hour = now.getHours()-->
+<!--          const isNight = hour <= 6 || hour >= 18-->
+<!--          isNight ? activateDarkMode() : activateLightMode()-->
+<!--        }-->
+<!--        window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {-->
+<!--          if (saveToLocal.get('theme') === undefined) {-->
+<!--            e.matches ? activateDarkMode() : activateLightMode()-->
+<!--          }-->
+<!--        })-->
+<!--      } else if (t === 'light') activateLightMode()-->
+<!--      else activateDarkMode()-->
 
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    })(window)
-  </script>
+<!--      const asideStatus = saveToLocal.get('aside-status')-->
+<!--      if (asideStatus !== undefined) {-->
+<!--        if (asideStatus === 'hide') {-->
+<!--          document.documentElement.classList.add('hide-aside')-->
+<!--        } else {-->
+<!--          document.documentElement.classList.remove('hide-aside')-->
+<!--        }-->
+<!--      }-->
+<!--    })(window)-->
+<!--  </script>-->
   <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
 
   <!-- 动态加载条 -->
-  <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'
-          src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/pace/1.2.4/pace.min.js"
-          th:if="${theme.config.other.loadProgressBar}">
-  </script>
+<!--  <script data-pace-options='{ "restartOnRequestAfter":false,"eventLag":false}'-->
+<!--          src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/pace/1.2.4/pace.min.js"-->
+<!--          th:if="${theme.config.other.loadProgressBar}">-->
+<!--  </script>-->
 
   <!-- 复制 https://github.com/zenorocha/clipboard.js -->
   <script th:src="@{/assets/libs/clipboard/clipboard.min.js}"></script>
@@ -160,6 +160,7 @@
 <th:block th:if="${footer != null}">
   <th:block th:replace="${footer}" />
 </th:block>
+
 </body>
 
 </html>
