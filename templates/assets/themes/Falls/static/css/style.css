@@ -17,6 +17,7 @@
         text-align: left;
         background-color: #f8fafc;
     }
+    body::-webkit-scrollbar { width: 0 !important }
     .banner-m {
         display: none;
     }
