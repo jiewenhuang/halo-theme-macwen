@@ -120,6 +120,7 @@ spec:
           label: 专题二
           placeholder: "请输入专题地址"
           help: '输入跳转的页面地址'
+
     - group: menu
       label: 菜单
       formSchema:
@@ -132,5 +133,6 @@ spec:
           name: menu_foot
           label: 底部输出导航
           value: ""
+    - group:
 
 
