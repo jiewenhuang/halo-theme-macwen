@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(title = ${site.title},bodydepend = index, header = null, content = ~{::content}, head = null, footer = null)}">
+
+<th:block th:fragment="content">
+</th:block>
+</html>
