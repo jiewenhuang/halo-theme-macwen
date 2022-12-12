@@ -24,7 +24,7 @@ spec:
 
 
     - group: header
-      label: 顶部
+      label: 首页
       formSchema:
         - $formkit: attachment
           name: header_logo
@@ -54,7 +54,20 @@ spec:
           value: 提供精美设计，功能开发，打造你的专属halo应用下载主题。
           placeholder: "请输入你想要的文字"
           help: '第二行灰体字'
-        - $formkit: categoryCheckbox
+        - $formkit: text
+          name: appPost_text
+          label: 软件文模块文字
+          value: 精品软件
+        - $formkit: repeater
+          name: appPost
+          label: 软件类模块文章输出分类
+          help: '一个分类占一行，一行最多六个文章'
+          value: [ ]
+          children:
+            - $formkit: categorySelect
+              name: app_category
+              label: 分类
+        - $formkit: categorySelect
           name: category2
           label: 文档类文章输出分类
           value: ""
@@ -121,6 +134,44 @@ spec:
           placeholder: "请输入专题地址"
           help: '输入跳转的页面地址'
 
+    - group: special
+      label: 专题
+      formSchema:
+        - $formkit: repeater
+          name: specialselection
+          label: 专题设置
+          value: []
+          children:
+            - $formkit: text
+              name: specialname
+              label: 专题名称
+              value: ""
+            - $formkit: attachment
+              name: specialcover
+              label: 专题封面
+              help: '选择专题封面'
+            - $formkit: select
+              name: special_specialSelect_type
+              id: special_specialSelect_type
+              key: special_specialSelect_type
+              label: 专题跳转页
+              value: tag
+              options:
+                - label: 标签
+                  value: tag
+                - label: 分类
+                  value: category
+            - $formkit: tagSelect
+              if: "$get(special_specialSelect_type).value === tag"
+              name: tag
+              label: 选择跳转标签页
+              value: ""
+            - $formkit: categorySelect
+              if: "$get(special_specialSelect_type).value === category"
+              name: category
+              label: 选择跳转分类页
+              value: ""
+
     - group: menu
       label: 菜单
       formSchema:
@@ -133,6 +184,6 @@ spec:
           name: menu_foot
           label: 底部输出导航
           value: ""
-    - group:
+
 
 
