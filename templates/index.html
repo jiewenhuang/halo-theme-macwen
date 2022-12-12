@@ -224,7 +224,8 @@
         </a>
       </div>
     </div>
-    <div class="row-sm row-cols-2 row-cols-md-6">
+    <th:block th:each="appPost : ${theme.config.header.appPost}">
+    <div class="row-sm row-cols-2 row-cols-md-6" th:with="posts = ${postFinder.listByCategory(1,6,appPost.app_category)}">
 <!--文章输出部分-->
       <div class="col" th:each="post : ${posts.items}">
         <div class="soft-item delay-1">
@@ -246,6 +247,7 @@
 
 
     </div>
+    </th:block>
   </div>
   </section>
 
