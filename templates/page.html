@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(title = ${site.title},bodydepend = index, header = null, content = ~{::content}, head = null, footer = null)}">
 
-</body>
+<th:block th:fragment="content">
+    <div th:with="categories = ${categoryFinder.getByNames([theme.config.header.recategory])}">
+        <a th:each="category : ${categories}" th:href="@{${category.status.permalink}}" th:text="${category.spec.displayName}"></a>
+    </div>
+</th:block>
 </html>
