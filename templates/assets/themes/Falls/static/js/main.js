@@ -113,7 +113,7 @@ $(document).ready(function() {
 				um_action: action
 			};
 			$.post(
-				_wpmao.url+'/wp-admin/admin-ajax.php', ajax_data,
+				_macwen.url+'/wp-admin/admin-ajax.php', ajax_data,
 				function(data) {
 					$(rateHolder).html(data);
 				});

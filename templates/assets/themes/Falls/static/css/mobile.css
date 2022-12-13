@@ -206,7 +206,7 @@
         width: 100%;
     }
 
-    .wpmao-icon img {
+    .macwen-icon img {
         width: 72px;
         height: 72px;
         position: relative;
@@ -887,7 +887,7 @@
         top: 50%;
         margin-left: -40px;
         margin-top: -40px;
-        background: url(https://demo.wpmao.com/mac/wp-content/themes/Falls/static/css/owl.video.play.png) no-repeat;
+        background: url(https://demo.macwen.com/mac/wp-content/themes/Falls/static/css/owl.video.play.png) no-repeat;
         cursor: pointer;
         z-index: 1;
         -webkit-backface-visibility: hidden;
