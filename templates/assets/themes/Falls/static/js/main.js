@@ -86,11 +86,11 @@ $('.sidebar-menu li:not(.menu-item) > a').on('click', function(){
 $(window).on('load', function(){
 	$('.sidebar-menu a').each(function(){
 		// console.log(this);
-		var cur = window.location.href;
-		var url = this.href;
+		const cur = window.location.href;
+		const url = this.href;
 		// console.log(cur.match(url));
 		if(cur.match(url)){
-			$(this).parent().addClass('active')
+			$(this).parent().addClass('current-menu-item active')
 			.closest('.sub-menu').addClass('sub-open')
 			.closest('.menu-item').addClass('active');
 		}
