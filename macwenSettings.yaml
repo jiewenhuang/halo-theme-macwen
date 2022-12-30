@@ -1,0 +1,78 @@
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: Post
+  formSchema:
+    - $formkit: "text"
+      name: "download"
+      label: "下载地址"
+    - $formkit: "text"
+      name: "passWord"
+      label: "密码"
+    - $formkit: "text"
+      name: "version"
+      label: "版本"
+    - $formkit: "text"
+      name: "size"
+      label: "软件大小"
+    - $formkit: "text"
+      name: "sizeType"
+      label: "字节类型"
+      help: "例如：MB或GB，默认MB"
+    - $formkit: "attachment"
+      name: "Showcase"
+      label: "展示图"
+    - $formkit: "text"
+      name: "compatibility"
+      label: "软件兼容性"
+      help: "例如：>= 10.12"
+    - $formkit: "text"
+      name: "language"
+      label: "软件语言"
+      help: "例如：中文或English"
+    - $formkit: "text"
+      name: "support"
+      label: "软件支持"
+      help: "例如：支持 Silicon M1"
+    - $formkit: "text"
+      name: "notSupport"
+      label: "软件不支持"
+      help: "例如：不支持 Ventura"
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-
+---
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: SinglePage
+  formSchema:
+    - $formkit: "text"
+      name: "download"
+      label: "下载地址"
+    - $formkit: "text"
+      name: "version"
+      label: "版本"
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-
+
+---
+spec:
+  targetRef:
+    group: ""
+    kind: MenuItem
+  formSchema:
+    - $formkit: "text"
+      name: "icon"
+      label: "图标"
+    - $formkit: "text"
+      name: "version"
+      label: "版本"
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-
