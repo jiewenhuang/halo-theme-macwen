@@ -58,6 +58,10 @@ spec:
           name: appPost_text
           label: 软件文模块文字
           value: 精品软件
+        - $formkit: url
+          name: categoryUrl
+          label: 更多软件跳转地址
+          value: ""
         - $formkit: repeater
           name: appPost
           label: 软件类模块文章输出分类
@@ -77,6 +81,102 @@ spec:
           value: 教程文章
           placeholder: "请输入你想要的文字"
           help: '输入该分类的名称，例如：教程文章'
+        - $formkit: url
+          name: docUrl
+          label: 更多文章跳转地址
+          value: ""
+    - group: post
+      label: 文章页
+      formSchema:
+        - $formkit: radio
+          name: postRequired
+          id: postRequired
+          key: postRequired
+          label: 安装必读
+          value: false
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: postSelect
+          if: "$get(postRequired).value"
+          name: firstPost
+          label: 左边文章（最大）
+          help: "选择一篇必读的文章"
+        - $formkit: postSelect
+          if: "$get(postRequired).value"
+          name: secondPost
+          label: 右边上文章
+          help: "选择一篇必读的文章"
+        - $formkit: postSelect
+          if: "$get(postRequired).value"
+          name: thirdPost
+          label: 右边上文章
+          help: "选择一篇必读的文章"
+        - $formkit: radio
+          name: qqOpen
+          id: qqOpen
+          key: qqOpen
+          label: QQ群
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: url
+          if: "$get(qqOpen).value"
+          name: qqUrl
+          label: 加群链接
+          help: "加入QQ群的加群链接"
+        - $formkit: text
+          if: "$get(qqOpen).value"
+          name: qqText
+          label: QQ群号
+          help: "你的QQ群号"
+        - $formkit: text
+          if: "$get(qqOpen).value"
+          name: qqTitle
+          label: QQ群名称
+          help: "例如：精品mac软件交流群"
+        - $formkit: attachment
+          if: "$get(qqOpen).value"
+          name: qqCode
+          label: 加群二维码
+        - $formkit: radio
+          name: sponsor
+          id: sponsor
+          key: sponsor
+          label: 打赏
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: attachment
+          if: "$get(sponsor).value"
+          name: qqCollection
+          label: QQ收款码
+        - $formkit: attachment
+          if: "$get(sponsor).value"
+          name: wechatCollection
+          label: 微信收款码
+        - $formkit: attachment
+          if: "$get(sponsor).value"
+          name: alipayCollection
+          label: 支付宝收款码
+        - $formkit: textarea
+          if: "$get(sponsor).value"
+          name: thanks
+          label: 说明
+          placeholder: '<h6 class="fw-600 mb-0">帮助分担一部分运维成本。❤️🙏🤝</h6><p class="mb-0 text-muted">做好事也要留名的！打赏完后记得联系QQ：66303299 统计哦。</p>'
+          help: "请输入HTML代码"
+
+
+
+
 
     - group: footer
       label: 页脚
