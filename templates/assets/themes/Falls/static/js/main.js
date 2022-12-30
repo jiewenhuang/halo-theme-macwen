@@ -96,8 +96,6 @@ $(window).on('load', function(){
 		}
 	});
 });
-
-点赞
 $(document).ready(function() {
 	$.fn.postLike = function() {
 		if ($(this).hasClass('done')) {
