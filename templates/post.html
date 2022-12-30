@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layout :: html(title = ${post.spec.title} + ' - ' + ${site.title},bodydepend = post, header = null, content = ~{::content}, head = null, footer = null)}">
+      th:replace="~{modules/layout :: html(title = ${post.spec.title}+' '+${#annotations.get(post, 'version')} + ' - ' + ${site.title},bodydepend = post, header = null, content = ~{::content}, head = null)}">
 <th:block th:fragment="content">
 <div class="layout-header py-5" th:with="contributor = ${post.contributors[0]}">
     <div>
@@ -22,54 +22,64 @@
                 <div class="header-app">
                     <img class="app-icon me-3" th:src="${post.spec.cover}">
                     <div class="list-body">
-                        <h2 class="article-title mb-3" th:text="${post.spec.title}"></h2>
+                        <h2 class="article-title mb-3" th:text="${post.spec.title}+' '+${#annotations.get(post, 'version')}"></h2>
                         <div class="down-box">
                             <div class="btn-group">
                                 <button class="btn btn-primary rounded-start-pill" type="button" data-bs-toggle="modal" data-bs-target="#DmownModal">
-                                    <i class="icon icon-download fs-20 mr-1"></i> <a href="#heading-2">立即下载</a>
+                                    <i class="icon icon-download fs-20 mr-1"></i> 立即下载
                                 </button>
+
                                 <button type="button" class="btn btn-primary rounded-end-pill dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     <i class="icon icon-bottom fs-12"></i>
                                 </button>
-                                <ul class="dropdown-menu"><table class="history-body table table-light history-body border bg-white"><tbody>                      <tr>
-                                    <td scope="row">V1.2</td>
-                                    <td>800 MB</td>
-                                    <td>中文</td>
-                                    <td>&gt;= 10.12</td>
-                                    <td class="text-center"><a href="#lsbb"><i class="icon icon-down"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">v1.1</td>
-                                    <td>500 MB</td>
-                                    <td>中文</td>
-                                    <td>&gt;= 10.12</td>
-                                    <td class="text-center"><a href="#lsbb"><i class="icon icon-down"></i></a></td>
-                                </tr>
-                                </tbody>
-                                </table>
+<!--                                <ul class="dropdown-menu"><table class="history-body table table-light history-body border bg-white"><tbody>                      <tr>-->
+<!--                                    <td scope="row">V1.2</td>-->
+<!--                                    <td>800 MB</td>-->
+<!--                                    <td>中文</td>-->
+<!--                                    <td>&gt;= 10.12</td>-->
+<!--                                    <td class="text-center"><a href="#lsbb"><i class="icon icon-down"></i></a></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td scope="row">v1.1</td>-->
+<!--                                    <td>500 MB</td>-->
+<!--                                    <td>中文</td>-->
+<!--                                    <td>&gt;= 10.12</td>-->
+<!--                                    <td class="text-center"><a href="#lsbb"><i class="icon icon-down"></i></a></td>-->
+<!--                                </tr>-->
+<!--                                </tbody>-->
+<!--                                </table>-->
+<!--                                </ul>-->
                             </div>
                             <a href="javascript:;" data-action="ding" data-id="68" class="btn btn-outline-primary rounded-pill px-6 ms-3 zan"><i class="fs-20 icon icon-zan me-1"></i>点赞 (<span class="count">[[${post.stats.upvote}]]</span>)</a>
                         </div>
+                        <br />
+
+                        <div class="d-flex align-items-center el-popover__reference" aria-describedby="el-popover-702" tabindex="0">
+                                 <span class="ps-4 text-muted"  th:if="${#annotations.get(post, 'notSupport')}">
+                                     <i class="fas fa-check fs-14" style="color: #ff0000"></i>
+                                     <span style="color: #ff0000">[[${#annotations.get(post, 'notSupport')}]]</span>
+                                 </span>
+                                    <span class="ps-4 text-muted" th:if="${#annotations.get(post, 'support')}">
+                                        <i class="fas fa-check fs-14" style="color: #3cd458"></i>
+                                        <span style="color: #3cd458">[[${#annotations.get(post, 'support')}]]</span>
+                                    </span>
+                        </div>
                         <div class="mt-5 platform-checkbox d-flex">
-                            <a href="#step-update" class="fs-14 mr-6 text-muted">更新日志<i class="icon icon-arrow-bottom fw-800 fs-12" style="transform: scale(0.8) rotate(90deg);"></i></a>
+<!--                            <a href="#step-update" class="fs-14 mr-6 text-muted">更新日志<i class="icon icon-arrow-bottom fw-800 fs-12" style="transform: scale(0.8) rotate(90deg);"></i></a>-->
                             <div class="d-flex align-items-center el-popover__reference" aria-describedby="el-popover-702" tabindex="0">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
             <div class="col-12 col-lg-6">
                 <div class="device-macbook-pro">
                     <div class="device-frame">
                         <div class="owl-carousel owl-macbook">
                             <div class="item">
-                                <img th:src="@{/assets/images/post.png}">
-                            </div>
-                            <div class="item">
-                                <img th:src="@{/assets/images/post.png}">
-                            </div>
-                            <div class="item">
-                                <img th:src="@{/assets/images/post.png}">
+                                <img th:src="${#annotations.getOrDefault(post, 'Showcase', '/themes/theme-macwen/assets/images/post.png')}">
                             </div>
                         </div>
                     </div>
@@ -78,6 +88,7 @@
             </div>
         </div>
     </div>
+
 </div>
 <div class="soft-layout mb-8">
     <div class="layout-info">
@@ -86,8 +97,8 @@
                 <div class="col">
                     <div class="border-end text-center my-4">
                         <p class="text-muted fs-10 ls-2 mb-0">大小</p>
-                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70">800</p>
-                        <p class="text-muted fs-10 ls-2 mb-0">MB</p>
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70" th:text="${#annotations.getOrDefault(post, 'size', '未知')}"></p>
+                        <p class="text-muted fs-10 ls-2 mb-0" th:text="${#annotations.getOrDefault(post, 'sizeType', 'MB')}"></p>
                     </div>
                 </div>
                 <div class="col">
@@ -100,14 +111,14 @@
                 <div class="col">
                     <div class="border-end text-center my-4">
                         <p class="text-muted fs-10 ls-2 mb-0">语言</p>
-                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70">中文</p>
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70" th:text="${#annotations.getOrDefault(post, 'language', '中文')}"></p>
                         <p class="text-muted fs-10 ls-2 mb-0">CN</p>
                     </div>
                 </div>
                 <div class="col">
                     <div class="border-end text-center my-4">
                         <p class="text-muted fs-10 ls-2 mb-0">兼容性</p>
-                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70">&gt;= 10.12</p>
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70" th:text="${#annotations.getOrDefault(post, 'attachment', '>=10.12')}"></p>
                         <p class="text-muted fs-10 ls-2 mb-0">CN</p>
                     </div>
                 </div>
@@ -115,7 +126,7 @@
                     <th:block th:if="${not #lists.isEmpty(post.categories)}">
                     <div class="border-end text-center my-4">
                         <p class="text-muted fs-10 ls-2 mb-0">类别</p>
-                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70"><a target="_blank" th:each="category : ${post.categories}"
+                        <p class="mb-0 fs-20 font-weight-bolder line-height-3 opacity-70"><a target="_blank" th:each="category : ${post.categories.get(0)}"
                                                                                              th:href="@{${category.status.permalink}}"
                                                                                              th:text="${category.spec.displayName}"
                                                                                              th:title="${category.spec.displayName}"> <i class="fs-20 text-muted icon icon-arrow-right"></i></a></p>
@@ -132,9 +143,10 @@
                 </div>
             </div>
         </div>
+
     </div>
     <div class="layout-content bg-white">
-        <div class="layout-content-install pt-7 mb-5 pt-7">
+        <div class="layout-content-install pt-7 mb-5 pt-7" th:if="${theme.config.post.postRequired}">
             <div class="container">
                 <div class="single-header">
                     <div class="d-flex align-items-center">
@@ -146,52 +158,49 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row featured-posts mb-6">
-                    <div class="col-12 col-lg-6">
-                        <a href="106.html" class="big-post post-item background-2">
-                            <h5 class="line-hide-2">macOS “不能安装该软件，因为当前无法从软件更新服务器获得” 解决方法</h5>
+                    <div class="col-12 col-lg-6" th:with="post = ${postFinder.getByName(theme.config.post.firstPost)}">
+                        <a th:href="@{${post.status.permalink}}" class="big-post post-item background-2">
+                            <h5 class="line-hide-2" th:text="${post.spec.title}"></h5>
                             <p class="justify-content-between align-items-end">
-                                有些小伙伴无法安装苹果开发者工具 command line tools，安装的时候会提示“不能安装该软件，因为当前无法从软件更新服务器获得”，下面macwk.com就教大家手动来安装。
-
-
-                                什么是 command line tools?
-                                Command Line Tools 是苹果的一个小型独立包，适用于 macOS，为终端扩展了额外的功能。包括但...</p>
+                                [[${post.status.excerpt}]]</p>
                             <div class="post-footer">
-                                <span class="time"><i class="icon icon-time"></i> 2021-03-27</span>
+                                <span class="time"><i class="icon icon-time"></i>[[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]</span>
                                 <div class="fs-12">
-                                    <span class="comments me-2"><i class="icon icon-comment"></i> 0 评论</span>
-                                    <span class="zan"><i class="icon icon-zan"></i> 0</span>
+                                    <span class="comments me-2"><i class="icon icon-comment"></i> [[${post.stats.comment}]] 评论</span>
+                                    <span class="zan"><i class="icon icon-zan"></i> [[${post.stats.upvote}]]</span>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-lg-6" th:with="post = ${postFinder.getByName(theme.config.post.secondPost)}">
                         <div class="row small-post">
                             <div class="col-12 col-lg-12">
-                                <a href="78.html" class="post-item background-8">
-                                    <h5 class="line-hide-2">xxx.app 已损坏，无法打开，你应该将它移到废纸篓/打不开 xxx，因为它来自身份不明的开发者解决方法</h5>
+                                <a th:href="@{${post.status.permalink}}" class="post-item background-8">
+                                    <h5 class="line-hide-2" th:text="${post.spec.title}"></h5>
                                     <p>
-                                        刚用 macOS 的小伙伴或者在更新某个系统版本后运行 App 会提示提示【xxx已损坏，无法打开，你应该将它移到废纸篓解决办法】...</p>
+                                        [[${post.status.excerpt}]] </p>
                                     <div class="post-footer">
-                                        <span class="time"><i class="icon icon-time"></i> 2021-03-26</span>
+                                        <span class="time"><i class="icon icon-time"></i> [[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]</span>
                                         <div class="fs-12">
-                                            <span class="comments me-2"><i class="icon icon-comments"> </i>0 评论</span>
-                                            <span class="zan"><i class="icon icon-zan"></i> 0</span>
+                                            <span class="comments me-2"><i class="icon icon-comments"> </i>[[${post.stats.comment}]] 评论</span>
+                                            <span class="zan"><i class="icon icon-zan"></i> [[${post.stats.upvote}]]</span>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-12 col-lg-12">
-                                <a href="76.html" class="post-item background-6">
-                                    <h5 class="line-hide-2">Apple Silicon M1 应用安装后运行闪退怎么办？</h5>
+                            <div class="col-12 col-lg-12" th:with="post = ${postFinder.getByName(theme.config.post.thirdPost)}">
+                                <a th:href="@{${post.status.permalink}}" class="post-item background-6">
+                                    <h5 class="line-hide-2" th:text="${post.spec.title}"></h5>
                                     <p>
-
-                                        最近很多小伙伴买了搭载 M1 芯片的 MacBook，而一些应用厂商也在快速的对自家的应用针对 Apple Silicon M1 进行原生适配...</p>
+                                        [[${post.status.excerpt}]]
+                                    </p>
                                     <div class="post-footer">
-                                        <span class="time"><i class="icon icon-time"></i> 2021-03-26</span>
+                                        <span class="time"><i class="icon icon-time"></i> [[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]</span>
                                         <div class="fs-12">
-                                            <span class="comments me-2"><i class="icon icon-comments"> </i>0 评论</span>
-                                            <span class="zan"><i class="icon icon-zan"></i> 1</span>
+                                            <span class="comments me-2"><i class="icon icon-comments"> </i>[[${post.stats.comment}]] 评论</span>
+                                            <span class="zan"><i class="icon icon-zan"></i> [[${post.stats.upvote}]]</span>
                                         </div>
                                     </div>
                                 </a>
@@ -199,12 +208,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="qqun text-center pt-6 pb-5">
-                    <a target="_blank" href="/" class="btn btn-outline-primary rounded-pill py-2 fs-18 px-7">
+                <div class="qqun text-center pt-6 pb-5" th:if="${theme.config.post.qqOpen}">
+                    <a target="_blank" th:href="${theme.config.post.qqUrl}" class="btn btn-outline-primary rounded-pill py-2 fs-18 px-7">
                         <img th:src="@{/assets/themes/Falls/static/img/svg/qqgroup-icon.svg}">
                         加入QQ群
                     </a>
-                    <p class="mt-3 text-muted">软件安装、下载、需求等问题请加QQ群：88888888</p>
+                    <p class="mt-3 text-muted">软件安装、下载、需求等问题请加QQ群：[[${theme.config.post.qqText}]]</p>
                 </div>
             </div>
         </div>
@@ -273,26 +282,51 @@
 <!--                </table>-->
 <!--            </div>-->
 <!--        </div>-->
-<!--        <div class="layout-related border-top pt-7 pb-8 bg-white px-6">-->
-<!--            <div class="container">-->
-<!--                <div class="content-header py-7">-->
-<!--                    <div class="d-flex align-items-center">-->
-<!--                        <div class="icon-item">-->
-<!--                            <svg width="80" height="70" viewBox="0 0 125 107" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="48" cy="59" r="48" class="circle-fill"></circle> <path d="M58.536 39.713c0-6.884 1.72-14.007 5.163-21.368 3.443-7.36 8.167-13.458 14.173-18.292l11.645 7.91c-3.589 4.98-6.262 10.016-8.02 15.106S78.86 33.598 78.86 39.384v13.623H58.536V39.713z" class="path-fill"></path> <path d="M93.252 39.713c0-6.884 1.722-14.007 5.164-21.368 3.442-7.36 8.166-13.458 14.172-18.292l11.646 7.91c-3.589 4.98-6.262 10.016-8.02 15.106s-2.637 10.529-2.637 16.315v13.623H93.252V39.713z" class="path-fill-1"></path></g></svg>-->
-<!--                        </div>-->
-<!--                        <div class="text">-->
-<!--                            <h3>相关软件</h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--        </div>-->
+      <div class="layout-related border-top pt-7 pb-8 bg-white px-6">
+        <div class="container">
+            <div class="content-header py-7">
+                <div class="d-flex align-items-center">
+                    <div class="icon-item">
+                        <svg width="80" height="70" viewBox="0 0 125 107" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="48" cy="59" r="48" class="circle-fill"></circle> <path d="M58.536 39.713c0-6.884 1.72-14.007 5.163-21.368 3.443-7.36 8.167-13.458 14.173-18.292l11.645 7.91c-3.589 4.98-6.262 10.016-8.02 15.106S78.86 33.598 78.86 39.384v13.623H58.536V39.713z" class="path-fill"></path> <path d="M93.252 39.713c0-6.884 1.722-14.007 5.164-21.368 3.442-7.36 8.166-13.458 14.172-18.292l11.646 7.91c-3.589 4.98-6.262 10.016-8.02 15.106s-2.637 10.529-2.637 16.315v13.623H93.252V39.713z" class="path-fill-1"></path></g></svg>
+                    </div>
+                    <div class="text">
+                        <h3>相关软件</h3>
+                    </div>
+                </div>
+            </div>
+            <section class="soft">
+                <div class="row-sm row-cols-2 row-cols-md-5"
+                     th:with="recommendPosts = ${postFinder.listByCategory(1,10,post.categories.get(0).metadata.name)}">
+                    <div class="col" th:each="recommendPost : ${recommendPosts.items}">
+                        <div class="soft-item">
+                            <a th:href="@{${recommendPost.status.permalink}}" rel="bookmark" th:title="${recommendPost.spec.title}">
+                                <div class="soft-image">
+                                    <div class="soft-icon" style="--img:url(${recommendPost.spec.cover});"></div>
+                                    <img th:src="${recommendPost.spec.cover}" class="soft-image rounded-sm" th:alt="${recommendPost.spec.title}" itemprop="image">
+                                </div>
+                                <div class="soft-body">
+                                    <span class="version">[[${#annotations.get(recommendPost, 'version')}]]</span>
+                                    <h5 itemprop="name headline" class="line-hide-1">[[${recommendPost.spec.title}]]</h5>
+                                    <p class="line-hide-1 mb-0 text-muted">
+                                       [[${recommendPost.status.excerpt}]]</p>
+                                    <div class="soft-more"><i class="icon fs-36 icon-next-arrow"></i></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
 
         <div class="article-comment border-top pt-7 pb-9 border-top px-6">
             <div class="comments-area" id="comments">
                 <div id="respond" class="comments-respond no_webshot">
                     <div class="comment-respond" th:if="${pluginFinder.available('PluginCommentWidget')}">
+                        <strong>评论</strong>
+                        <br />
+                        <br />
                         <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}"/>
                     </div>
 
@@ -324,12 +358,17 @@
                     <h5></h5>
                     <div class="mt-4 mb-5">
             <span class="me-3">
-              <i class="icon icon-zip text-muted me-1"></i>
-              <span>563MB</span>
+              <svg t="1672421420074" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2122" width="20" height="20"><path d="M597.333333 85.333333l256 256v512a85.333333 85.333333 0 0 1-85.333333 85.333334H256a85.333333 85.333333 0 0 1-85.333333-85.333334V170.666667a85.333333 85.333333 0 0 1 85.333333-85.333334h341.333333z m-42.666666 85.333334H256v682.666666h512V384l-213.333333-213.333333z m42.666666 512v85.333333h-85.333333v-85.333333h85.333333z m-85.333333-85.333334v85.333334h-85.333333v-85.333334h85.333333z m85.333333-85.333333v85.333333h-85.333333v-85.333333h85.333333z m-85.333333-85.333333v85.333333h-85.333333v-85.333333h85.333333z m85.333333-85.333334v85.333334h-85.333333V341.333333h85.333333z m-85.333333-85.333333v85.333333h-85.333333V256h85.333333z" fill="#707070" p-id="2123"></path></svg>
+              <span>[[${#annotations.getOrDefault(post, 'size', '未知')}]] [[${#annotations.getOrDefault(post, 'sizeType', 'MB')}]]</span>
             </span>
-                        <span class="me-3" th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
-              <i class="icon icon-time text-muted me-1"></i>             </span>
-                        <span class="me-3"><i class="icon icon-goup text-muted me-1"></i>
+                        <span class="me-3">
+                        <svg t="1672422051363" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3164" width="20" height="20"><path d="M878.08 731.274667a32 32 0 0 1-54.88-32.938667A360.789333 360.789333 0 0 0 874.666667 512c0-200.298667-162.368-362.666667-362.666667-362.666667S149.333333 311.701333 149.333333 512s162.368 362.666667 362.666667 362.666667a360.789333 360.789333 0 0 0 186.314667-51.445334 32 32 0 0 1 32.928 54.88A424.778667 424.778667 0 0 1 512 938.666667C276.362667 938.666667 85.333333 747.637333 85.333333 512S276.362667 85.333333 512 85.333333s426.666667 191.029333 426.666667 426.666667c0 78.293333-21.152 153.568-60.586667 219.274667z m-548.704-81.898667L480 498.741333V320a32 32 0 0 1 64 0v192a32 32 0 0 1-9.376 22.624l-160 160a32 32 0 1 1-45.248-45.248z" fill="#8a8a8a" p-id="3165"></path></svg>
+
+                        <span th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}">
+                            </span>
+                        </span>
+                        <span class="me-3">
+                            <svg t="1672422137326" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4147" width="20" height="20"><path d="M896 832H128V224a32 32 0 0 0-64 0v640a32 32 0 0 0 32 32h800a32 32 0 1 0 0-64z" p-id="4148" fill="#8a8a8a"></path><path d="M247.008 640c7.424 0 14.88-2.56 20.96-7.808l179.744-155.84 174.56 155.52a31.968 31.968 0 0 0 44.704-2.08l250.432-269.216a32 32 0 1 0-46.88-43.616l-229.088 246.304-172.128-153.44a32.064 32.064 0 0 0-42.272-0.288l-200.992 174.24A32 32 0 0 0 247.008 640z" p-id="4149" fill="#8a8a8a"></path></svg>
               <span class="fs-13" th:text="' '+${post.stats.visit}+' '"></span>
             </span>
                     </div>
@@ -344,26 +383,28 @@
                         <th class="text-center">操作</th>
                     </tr>
                     </thead>              <tr>
-                        <td scope="row">V4.8.9</td>
-                        <td>563 MB</td>
-                        <td>489n</td>
-                        <td class="text-center"><a target="_blank" href="https://pan.baidu.com/"><i class="icon icon-down"></i></a></td>
+                        <td scope="row">[[${#annotations.get(post, 'version')}]]</td>
+                        <td>[[${#annotations.getOrDefault(post, 'size', '未知')}]][[${#annotations.getOrDefault(post, 'sizeType', 'MB')}]]</td>
+                        <td>[[${#annotations.getOrDefault(post, 'passWord', '无')}]]</td>
+                        <td class="text-center"><a target="_blank" th:href="${#annotations.get(post, 'download')}"><i class="icon icon-down"></i></a></td>
                     </tr>
                         </tbody>
                     </table>
                     </ul>
                 </div>
             </div>
-<!--            <div class="col-xl-12 text-center mb-5">-->
-<!--                <div class="owl-carousel owl-macbook">-->
-<!--                    <div class="item">-->
-<!--                        <img th:src="${post.spec.cover}">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="col-xl-12 text-center mb-5">-->
+            <!--                <div class="owl-carousel owl-macbook">-->
+            <!--                    <div class="item">-->
+            <!--                        <img th:src="${post.spec.cover}">-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
             <div class="col-xl-12" th:utext="${post.content.content}">
 
             </div>
+
         </div>
     </div>
 </div>
@@ -371,6 +412,82 @@
 
 
 
+    <div class="download-modal modal fade" id="DmownModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">下载地址<span class="fs-16">
+          - [[${post.spec.title}]] <span class="text-muted fs-14 ml-1">需 [[${#annotations.get(post, 'compatibility')}]] 或更高版本</span></span>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="download-list px-5 pt-5">
+                        <div class="download-box d-flex mb-6">
+                            <div class="download-icon me-4">
+                                <svg t="1672425834919" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5182" width="25" height="25"><path d="M828.975746 894.125047 190.189132 894.125047c-70.550823 0-127.753639-57.18542-127.753639-127.752616L62.435493 606.674243c0-17.634636 14.308891-31.933293 31.93227-31.933293l63.889099 0c17.634636 0 31.93227 14.298658 31.93227 31.933293l0 95.821369c0 35.282574 28.596292 63.877843 63.87682 63.877843L765.098927 766.373455c35.281551 0 63.87682-28.595268 63.87682-63.877843l0-95.821369c0-17.634636 14.298658-31.933293 31.943526-31.933293l63.877843 0c17.634636 0 31.933293 14.298658 31.933293 31.933293l0 159.699212C956.729385 836.939627 899.538849 894.125047 828.975746 894.125047L828.975746 894.125047zM249.938957 267.509636c12.921287-12.919241 33.884738-12.919241 46.807049 0l148.97087 148.971893L445.716876 94.89323c0-17.634636 14.300704-31.94762 31.933293-31.94762l63.875796 0c17.637706 0 31.945573 14.312984 31.945573 31.94762l0 321.588299 148.97087-148.971893c12.921287-12.919241 33.875528-12.919241 46.796816 0l46.814212 46.818305c12.921287 12.922311 12.921287 33.874505 0 46.807049L552.261471 624.930025c-1.140986 1.137916-21.664416 13.68365-42.315758 13.69286-20.87647 0.010233-41.878806-12.541641-43.020816-13.69286L203.121676 361.13499c-12.922311-12.933567-12.922311-33.884738 0-46.807049L249.938957 267.509636 249.938957 267.509636z" fill="#272636" p-id="5183"></path></svg>
+                            </div>
+                            <div class="download-body flex">
+                                <h6 class="cursor">
+                  <span class="hover-primary transition"><a th:href="${#annotations.get(post, 'download')}" target="_blank">立即下载 </a><span class="fs-14 ms-2"><span class="text-muted">(提取码/密码：</span> <span class="fs-14 fw-500 text-success">[[${#annotations.getOrDefault(post, 'passWord', '无')}]]</span> <span class="text-muted">)</span></span>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <div class="bg-light p-5">
+                        <p class="mt-15 fs-14">
+                            <span class="text-danger">点击下载无响应？</span>
+                            是因为浏览器阻止了弹出窗口，网址输入框的最右边有个图标，点击后允许即可！
+                        </p>
+                        <div class="d-flex">
+                            <a target="_blank" th:href="${theme.config.post.qqUrl}" class="add-qun btn btn-outline-primary rounded-pill py-2 fs-16 px-8 me-4">
+                                <img th:src="@{/assets/themes/Falls/static/img/svg/qqgroup-icon.svg}"> 加入QQ群
+                                <div class="qq-popover">
+                                    <div class="text-center">
+                                        <img th:src="${theme.config.post.qqCode}">
+                                        <div class="flex"><h6 class="fw-600 mb-0">[[${theme.config.post.qqTitle}]]</h6> <p class="mb-0 text-muted">扫一扫二维码，加入群聊</p></div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="rewards btn btn-outline-primary rounded-pill">
+                                <img class="w-20 img-reward-default v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-default.svg}" lazy="loaded">
+                                <img class="w-20 img-reward-hover v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-hover.svg}">
+                                打赏赞助
+                                <div class="rewards-popover">
+                                    <div class="px-6 pt-6 pb-3 light dk text-center" style="height: 320px;">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <i class="icon icon-Alipay fs-40 mb-3" style="color: rgb(22, 120, 255);"></i>
+                                                <h5 class="mb-4">支付宝</h5>
+                                                <img alt="" class="w-full bg-white radius-5x border" th:src="${theme.config.post.alipayCollection}">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <i class="icon icon-wxpay fs-40 mb-3" style="color: rgb(29, 170, 57);"></i>
+                                                <h5 class="mb-4">微信</h5>
+                                                <img alt="" class="w-full bg-white radius-5x border" th:src="${theme.config.post.wechatCollection}">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <i class="icon icon-qqpay fs-40 mb-3" style="color: rgb(11, 178, 255);"></i>
+                                                <h5 class="mb-4">QQ</h5>
+                                                <img alt="" class="w-full bg-white radius-5x border" th:src="${theme.config.post.qqCollection}">
+                                            </div>
+                                            <div class="col-md-4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center px-4 py-3 border-top">
+                                        <div class="flex">
+                                            <th:block th:utext="${theme.config.post.thanks}"></th:block>                </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </th:block>
 
 <script src="/assets/PluginCommentWidget/static/comment-widget.iife.js"></script>
