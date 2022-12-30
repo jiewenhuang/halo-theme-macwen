@@ -17,13 +17,13 @@ spec:
   author:
     name: jiewenhuang
     website: 'https://jiewen.run'
-  description: 一个精致的mac风应用下载模板
+  description: 一款移植自wp仿macwk的软件下载类模板
   logo: 'https://pic.tyubar.com/2022/11/1668877198-32b3773ec3c02dc.png'
   website: 'https://jiewen.run'
   repo: 'https://github.com/jiewenhuang/halo-theme-macwen'
   settingName: 'theme-macwen-setting'
   configMapName: 'theme-macwen-configMap'
-  version: 'beta3'
-  require: 'halo2.0'
+  version: '1.0.1'
+  require: 'halo2.1'
 metadata:
   name: theme-macwen
