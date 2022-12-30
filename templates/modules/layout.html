@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (title,header,head,footer,bodydepend)" xmlns:th="http://www.w3.org/1999/html">
+<html lang="en" th:fragment="html (title,header,head,bodydepend)" xmlns:th="http://www.w3.org/1999/html">
 <!-- 公共的 head 部分，可以定义部分 links,scripts,styles -->
 <head th:fragment="head(title,metas,links,scripts)">
   <meta charset="UTF-8">
@@ -56,9 +56,6 @@
 <th:block th:replace="${content}" />
 
 <th:block th:replace="~{modules/footer}" />
-<th:block th:if="${footer != null}">
-  <th:block th:replace="${footer}" />
-</th:block>
 
 </body>
 
