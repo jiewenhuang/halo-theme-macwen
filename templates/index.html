@@ -218,7 +218,7 @@
         </h4>
       </div>
       <div class="more-action">
-        <a href="/" class="more text-primary">
+        <a th:href="${theme.config.header.categoryUrl}" class="more text-primary">
           更多软件
           <i class="icon icon-right text-primary"></i>
         </a>
@@ -229,14 +229,14 @@
 <!--文章输出部分-->
       <div class="col" th:each="post : ${posts.items}">
         <div class="soft-item delay-1">
-          <a th:href="@{${post.status.permalink}}" rel="bookmark" th:title="${post.spec.title}">
+          <a th:href="@{${post.status.permalink}}" rel="bookmark" th:title="${post.spec.title}+' '+${#annotations.get(post, 'version')}">
             <div class="soft-image">
-              <div class="soft-icon" style="--img:url(wp-content/uploads/2021/03/adobe-photoshop-2020-1.png);"></div>
+              <div class="soft-icon" style="--img:url(${post.spec.cover});"></div>
               <img th:src="${post.spec.cover}"
                    th:alt="${post.spec.title}" class="soft-image rounded-sm delay-1"  itemprop="image">
             </div>
             <div class="soft-body">
-              <span class="version text-muted">V1.2</span>
+              <span class="version text-muted"th:text="${#annotations.get(post, 'version')}"></span>
               <h5 itemprop="name headline" class="line-hide-1" th:text="${post.spec.title}"></h5>
               <p class="line-hide-1 mb-0 text-muted" th:text="${post.status.excerpt}"></p>
               <div class="soft-more"><i class="icon fs-36 fw-600 icon-next-arrow"></i></div>
@@ -260,7 +260,7 @@
         </h4>
       </div>
       <div class="more-action">
-        <a href="/" class="more text-primary">
+        <a th:href="${theme.config.header.docUrl}" class="more text-primary">
           更多文章
           <i class="icon icon-right text-primary"></i>
         </a>

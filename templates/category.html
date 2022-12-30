@@ -40,7 +40,7 @@
                                                  th:src="${#strings.isEmpty(post.spec.cover) ? theme.config.layout.postRandomImg : post.spec.cover}" class="soft-image rounded-sm delay-0" itemprop="image">
                                         </div>
                                         <div class="soft-body pb-7">
-                                            <span class="version text-muted">V4.8.9</span>
+                                            <span class="version text-muted" th:text="${#annotations.get(post, 'version')}"></span>
                                             <h5 itemprop="name headline" class="line-hide-1" th:text="${post.spec.title}"></h5>
                                             <p class="line-hide-1 mb-0 text-muted" th:text="${post.status.excerpt}"></p>
 
