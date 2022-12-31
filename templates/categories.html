@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="modules/header :: head(metas = null, links = null, scripts =  ~{::head/script})">
 
 </head>
@@ -19,10 +19,10 @@
                                  th:alt="${post.spec.title}">
                         </div>
                         <div class="post-footer w-100">
-                            <h5 class="line-hide-1 fs-16">[[${post.spec.title}]] <span class="text-muted fs-14"><span class="mx-1">-</span>V4.8.9</span></h5>
+                            <h5 class="line-hide-1 fs-16">[[${post.spec.title}]] <span class="text-muted fs-14"><span class="mx-1">-</span>[[${#annotations.get(post, 'version')}]]</span></h5>
                             <th:block th:if="${not #lists.isEmpty(post.categories)}">
                             <div class="text-muted fs-16 me-3"
-                                 th:each="category : ${post.categories}"
+                                 th:each="category : ${post.categories.get(0)}"
                                  th:text="${category.spec.displayName}"></div>
                             </th:block>
                         </div>
@@ -31,9 +31,7 @@
                 </a>
             </div>
         </div>
-        <div class="pagination-area pt-3">
-            <div class="pagination"><ul><li class="prev-page"></li><li class="active"><span>1</span></li><li><a href='soft/page/2.html'>2</a></li><li class="next-page"><a href="soft/page/2.html" ><i class="icon icon-arrow-right"></i></a></li><li><span>2</span></li></ul></div>	</div>
-    </div>
+
     </div>
 </div>
 </body>

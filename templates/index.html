@@ -301,7 +301,7 @@
                    th:alt="${post.spec.title}">
             </div>
             <div class="post-footer w-100">
-              <h5 class="line-hide-1 fs-16">[[${post.spec.title}]]<span class="text-muted fs-14"><span class="mx-1">-</span>V4.8.9</span></h5>
+              <h5 class="line-hide-1 fs-16">[[${post.spec.title}]]<span class="text-muted fs-14"><span class="mx-1">-</span>[[${#annotations.get(post, 'version')}]]</span></h5>
               <div class="text-muted line-hide-1 fs-16 me-3" th:text="${post.status.excerpt}"></div>
             </div>
             <i class="icon fs-36 icon-next-arrow"></i>
