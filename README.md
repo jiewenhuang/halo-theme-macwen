@@ -1,7 +1,9 @@
 # halo-theme-macwen
-#halo2.0应用下载类主题  
-<div><img src="https://pic.tyubar.com/2022/11/1668877198-32b3773ec3c02dc.png" height="90"></div>  
+### halo2.0应用下载类主题  
+<div><img src="https://pic.tyubar.com/2022/11/1668877198-32b3773ec3c02dc.png" height="90"></div>
 
+
+## 预览
 # 说明
 > 移植自wp仿macwk主题，代码结构可能有些乱，有时间再优化 
 ## 使用说明
