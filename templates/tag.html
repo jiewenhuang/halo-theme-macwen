@@ -9,10 +9,10 @@
                     <header class="special-header text-center py-8">
                         <h1 class="fw-bold fs-60">Best Tools for
                             <span class="text-primary hover-text-underline cursor" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="${tag.spec.displayName}">  <i class="fs-36 icon icon-bottom"></i></span>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a href="soft/txsj/photoprocess.html">图像处理</a></li>
-                                <li><a href="adobe.html">adobe 2021</a></li>
-                            </ul>
+<!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                                <li><a href="soft/txsj/photoprocess.html">图像处理</a></li>-->
+<!--                                <li><a href="adobe.html">adobe 2021</a></li>-->
+<!--                            </ul>-->
                         </h1>
                         <h5 class="text-muted">
                             在这里，您可以找到面向的最佳应用工具。<br>
@@ -38,7 +38,7 @@
                                             </div>
                                             <div class="soft-body pt-6 pb-7">
                                                 <h5 itemprop="name headline" class="line-hide-1 fw-600" th:text="${post.spec.title}"></h5>
-                                                <span class="version text-muted">V1.2</span>
+                                                <span class="version text-muted">[[${#annotations.get(post, 'version')}]]</span>
                                                 <p class="line-hide-1 mb-0 text-muted" th:text="${post.status.excerpt}"></p>
                                             </div>
                                             <div class="soft-meta text-muted">
