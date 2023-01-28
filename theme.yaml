@@ -23,7 +23,7 @@ spec:
   repo: 'https://github.com/jiewenhuang/halo-theme-macwen'
   settingName: 'theme-macwen-setting'
   configMapName: 'theme-macwen-configMap'
-  version: '1.0.1'
+  version: '1.0.2'
   require: 'halo2.1'
 metadata:
   name: theme-macwen
