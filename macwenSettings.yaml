@@ -4,10 +4,22 @@ spec:
     kind: Post
   formSchema:
     - $formkit: "text"
-      name: "download"
-      label: "下载地址"
+      name: "download1"
+      label: "下载地址1"
     - $formkit: "text"
-      name: "passWord"
+      name: "passWord1"
+      label: "密码"
+    - $formkit: "text"
+      name: "download2"
+      label: "下载地址2"
+    - $formkit: "text"
+      name: "passWord2"
+      label: "密码"
+    - $formkit: "text"
+      name: "download3"
+      label: "下载地址3"
+    - $formkit: "text"
+      name: "passWord3"
       label: "密码"
     - $formkit: "text"
       name: "version"
@@ -38,6 +50,10 @@ spec:
       name: "notSupport"
       label: "软件不支持"
       help: "例如：不支持 Ventura"
+    - $formkit: "textarea"
+      name: "Notice"
+      label: "弹窗公告"
+      help: "可以设置每个软件的弹出公告，支持HTML代码"
 
 apiVersion: v1alpha1
 kind: AnnotationSetting
