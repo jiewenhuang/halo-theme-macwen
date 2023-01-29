@@ -173,6 +173,28 @@ spec:
           label: 说明
           placeholder: '<h6 class="fw-600 mb-0">帮助分担一部分运维成本。❤️🙏🤝</h6><p class="mb-0 text-muted">做好事也要留名的！打赏完后记得联系QQ：66303299 统计哦。</p>'
           help: "请输入HTML代码"
+        - $formkit: text
+          name: downName_first
+          label: 下载地址一名称
+          value: "立即下载"
+        - $formkit: attachment
+          name: downIcons_first
+          label: 下载地址一图标
+        - $formkit: text
+          name: downName_second
+          label: 下载地址二名称
+          value: "立即下载"
+        - $formkit: attachment
+          name: downIcons_second
+          label: 下载地址二图标
+        - $formkit: text
+          name: downName_third
+          label: 下载地址三名称
+          value: "立即下载"
+        - $formkit: attachment
+          name: downIcons_third
+          label: 下载地址三图标
+
 
 
 
