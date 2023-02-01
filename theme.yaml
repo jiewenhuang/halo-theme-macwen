@@ -24,6 +24,6 @@ spec:
   settingName: 'theme-macwen-setting'
   configMapName: 'theme-macwen-configMap'
   version: '1.1.0'
-  require: 'halo2.1'
+  requires: '>=2.1.0'
 metadata:
   name: theme-macwen
