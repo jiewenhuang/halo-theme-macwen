@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .index_post {
     list-style: none;
 
@@ -13,4 +14,52 @@
 .index_searchicon {
     border: none;
     font-size: 30px; !important;
+}
+.web_notice {
+    position: fixed;top: 0;
+    left: 0;width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 99999;
+}
+.web_notice_population {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 550px;
+    background: #FFF;transform: translate(-50%, -50%);
+    border-radius: 28px;
+    padding: 30px 30px 5px 30px;
+}
+.web_notice_population h3 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+}
+.web_notice_content {
+    font-size: 16px;
+    margin-top: 26px;
+    margin-bottom: 10px;
+    line-height: 30px;
+    color: #999;
+}
+.web_notice_line {
+    height: 1px;
+    width: 100%;
+    background-color: #1a2537;
+    transform: scaleY(0.5);
+    transform-origin: 50% 100%;margin-bottom: auto;
+}
+.web_notice a {
+    display: block;
+    background: #ffffff;
+    color: #4795f2;
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 60px;
+    margin: 0 auto;
+    margin-top: 0px;
+    border-radius: 32px;
+    width: 80%;
 }
