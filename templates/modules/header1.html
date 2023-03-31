@@ -32,15 +32,21 @@
           </li>
 
         </ul>
-        <div class="menu-search"><a class="site-page social-icon search" href="javascript:SearchWidget.open();" rel="external nofollow" title="站内搜索">
-          <i class="icon icon-search index_searchicon"></i>
-        </a>
-        </div>
       </nav>
+        <ul class="nav-right order-3">
+          <div class="header-search">
+            <form action="index.html" class="search-form" method="get">
+              <div class="input-group">
+                <input name=keyword required placeholder=输入关键字并按回车搜索...>
+                <div class="input-group-append">
+                  <button class="search-btn" title=搜索 onclick="javascript:SearchWidget.open();return false;" type="submit"><i class="icon icon-search"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </ul>
     </div>
-  </nav>
-
-
+      </nav>
 
 </header>
 <div class="header-m" th:fragment="header3">
