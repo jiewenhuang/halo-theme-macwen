@@ -298,8 +298,13 @@ spec:
       label: 菜单
       formSchema:
         - $formkit: menuRadio
-          name: menu_top
+          name: menu_top1
           label: 顶部输出导航
+          value: ""
+          help: '顶部黑色区域导航'
+        - $formkit: menuRadio
+          name: menu_top
+          label: 导航栏
           value: ""
           help: 'LOGO随后的导航'
         - $formkit: menuRadio
