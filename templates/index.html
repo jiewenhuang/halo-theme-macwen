@@ -231,7 +231,7 @@
         <div class="soft-item delay-1">
           <a th:href="@{${post.status.permalink}}" rel="bookmark" th:title="${post.spec.title}+' '+${#annotations.get(post, 'version')}">
             <div class="soft-image">
-              <div class="soft-icon" style="--img:url(${post.spec.cover});"></div>
+              <div class="soft-icon" th:style="'--img:url('+${post.spec.cover}+');'"></div>
               <img th:src="${post.spec.cover}"
                    th:alt="${post.spec.title}" class="soft-image rounded-sm delay-1"  itemprop="image">
             </div>
