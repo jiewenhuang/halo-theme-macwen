@@ -44,6 +44,7 @@
         <img class="sun-logo" th:src="${theme.config.header.header_logo}">
         <img class="moon-logo" th:src="${theme.config.header.header_logo}">
       </a>
+      <th:block th:if="${not #lists.isEmpty(theme.config.menu.menu_top1)}">
       <nav class="collapse navbar-collapse order-md-2" th:with="menu = ${menuFinder.getByName(theme.config.menu.menu_top)}">
         <ul class="navbar-nav main-menu ml-4 mr-auto" th:with="menuItems = ${menu.menuItems}">
           <li class="menu-item " th:each="menuItem : ${menuItems}"
@@ -53,9 +54,21 @@
 
         </ul>
       </nav>
+      </th:block>
+      <th:block th:if="${#lists.isEmpty(theme.config.menu.menu_top1)}">
+        <nav class="collapse navbar-collapse order-md-2" th:with="menu = ${menuFinder.getPrimary()}">
+          <ul class="navbar-nav main-menu ml-4 mr-auto" th:with="menuItems = ${menu.menuItems}">
+            <li class="menu-item " th:each="menuItem : ${menuItems}"
+            >
+              <a th:href="@{${menuItem.status.href}}" th:text="${menuItem.status.displayName}"></a>
+            </li>
+
+          </ul>
+        </nav>
+      </th:block>
         <ul class="nav-right order-3">
           <div class="header-search">
-            <form action="index.html" class="search-form" method="get">
+            <form action="/" class="search-form" method="get">
               <div class="input-group">
                 <input name=keyword required placeholder=输入关键字并按回车搜索...>
                 <div class="input-group-append">
