@@ -16,7 +16,7 @@
       </nav>
       </th:block>
       <th:block th:if="${not #lists.isEmpty(theme.config.menu.menu_first)}"
-                th:with="menu = ${menuFinder.getByName(theme.config.menu.menu_top)}">
+                th:with="menu = ${menuFinder.getByName(theme.config.menu.menu_firs)}">
         <nav class="nav top-bar-nav " th:with="menuItems = ${menu.menuItems}">
           <li class="menu-item"
               th:each="menuItem : ${menuItems}">
