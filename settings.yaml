@@ -298,7 +298,7 @@ spec:
       label: 菜单
       formSchema:
         - $formkit: menuRadio
-          name: menu_top1
+          name: menu_first
           label: 顶部输出导航
           value: ""
           help: '顶部黑色区域导航'

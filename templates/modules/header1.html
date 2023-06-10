@@ -2,7 +2,7 @@
 <div class="header-top" th:fragment="header1">
   <div class="container">
     <div class="header-main d-flex justify-content-between align-items-center">
-      <th:block th:if="${#lists.isEmpty(theme.config.menu.menu_top1)}"
+      <th:block th:if="${#lists.isEmpty(theme.config.menu.menu_first)}"
                 th:with="menu = ${menuFinder.getPrimary()}">
       <nav class="nav top-bar-nav " th:with="menuItems = ${menu.menuItems}">
         <li class="menu-item"
@@ -15,12 +15,13 @@
         </li>
       </nav>
       </th:block>
-      <th:block th:if="${not #lists.isEmpty(theme.config.menu.menu_top1)}"
-                th:with="menu = ${menuFinder.getByName(theme.config.menu.menu_top1)}">
+      <th:block th:if="${not #lists.isEmpty(theme.config.menu.menu_first)}"
+                th:with="menu = ${menuFinder.getByName(theme.config.menu.menu_top)}">
         <nav class="nav top-bar-nav " th:with="menuItems = ${menu.menuItems}">
-          <li class="menu-item">
+          <li class="menu-item"
+              th:each="menuItem : ${menuItems}">
             <a th:href="@{${menuItem.status.href}}"
-               th:text="${menuItem.spec.displayName}"
+               th:text="${menuItem.status.displayName}"
                th:target="${menuItem.spec.target?.value}">
 
             </a>
@@ -44,7 +45,7 @@
         <img class="sun-logo" th:src="${theme.config.header.header_logo}">
         <img class="moon-logo" th:src="${theme.config.header.header_logo}">
       </a>
-      <th:block th:if="${not #lists.isEmpty(theme.config.menu.menu_top1)}">
+      <th:block th:if="${not #lists.isEmpty(theme.config.menu.menu_top)}">
       <nav class="collapse navbar-collapse order-md-2" th:with="menu = ${menuFinder.getByName(theme.config.menu.menu_top)}">
         <ul class="navbar-nav main-menu ml-4 mr-auto" th:with="menuItems = ${menu.menuItems}">
           <li class="menu-item " th:each="menuItem : ${menuItems}"
@@ -55,7 +56,7 @@
         </ul>
       </nav>
       </th:block>
-      <th:block th:if="${#lists.isEmpty(theme.config.menu.menu_top1)}">
+      <th:block th:if="${#lists.isEmpty(theme.config.menu.menu_top)}">
         <nav class="collapse navbar-collapse order-md-2" th:with="menu = ${menuFinder.getPrimary()}">
           <ul class="navbar-nav main-menu ml-4 mr-auto" th:with="menuItems = ${menu.menuItems}">
             <li class="menu-item " th:each="menuItem : ${menuItems}"
