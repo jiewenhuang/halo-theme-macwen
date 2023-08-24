@@ -30,9 +30,9 @@
                                     <i class="icon icon-download fs-20 mr-1"></i> 立即下载
                                 </button>
 
-                                <button type="button" class="btn btn-primary rounded-end-pill dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <i class="icon icon-bottom fs-12"></i>
-                                </button>
+                                <!--<button type="button" class="btn btn-primary rounded-end-pill dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">-->
+                                <!--    <i class="icon icon-bottom fs-12"></i>-->
+                                <!--</button>-->
 <!--                                <ul class="dropdown-menu"><table class="history-body table table-light history-body border bg-white"><tbody>                      <tr>-->
 <!--                                    <td scope="row">V1.2</td>-->
 <!--                                    <td>800 MB</td>-->
@@ -51,7 +51,7 @@
 <!--                                </table>-->
 <!--                                </ul>-->
                             </div>
-                            <a href="javascript:;" @click="upvote" data-action="ding" data-id="68" class="btn btn-outline-primary rounded-pill px-6 ms-3 zan"><i class="fs-20 icon icon-zan me-1"></i>点赞 (<span class="count">[[${post.stats.upvote}]]</span>)</a>
+                            <!--<a href="javascript:;" @click="upvote" data-action="ding" data-id="68" class="btn btn-outline-primary rounded-pill px-6 ms-3 zan"><i class="fs-20 icon icon-zan me-1"></i>点赞 (<span class="count">[[${post.stats.upvote}]]</span>)</a>-->
                         </div>
                         <br />
 
@@ -377,23 +377,27 @@
                     </div>
                 </div>
                 <div class="mb-7 text-center">
-                    <a class="btn btn-primary rounded-pill nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="icon icon-download fs-20 mr-1"></i> 立即下载</a>
-                    <ul class="dropdown-menu"><table class="history-body table table-light history-body border bg-white"><tbody><thead>
-                    <tr>
-                        <th>版本</th>
-                        <th>大小</th>
-                        <th>密码</th>
-                        <th class="text-center">操作</th>
-                    </tr>
-                    </thead>              <tr>
-                        <td scope="row">[[${#annotations.get(post, 'version')}]]</td>
-                        <td>[[${#annotations.getOrDefault(post, 'size', '未知')}]][[${#annotations.getOrDefault(post, 'sizeType', 'MB')}]]</td>
-                        <td>[[${#annotations.getOrDefault(post, 'passWord1', '无')}]]</td>
-                        <td class="text-center"><a target="_blank" th:href="${#annotations.get(post, 'download1')}"><i class="icon icon-down"></i></a></td>
-                    </tr>
-                        </tbody>
-                    </table>
-                    </ul>
+                	<button class="btn btn-primary rounded-start-pill rounded-start-pill-right" type="button" data-bs-toggle="modal" data-bs-target="#DmownModal" style="
+    				width: 100%;
+    				hight: 100px;">
+					<i class="icon icon-download fs-20 mr-1"></i> 立即下载</button>
+                    <!--<a class="btn btn-primary rounded-pill nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="icon icon-download fs-20 mr-1"></i> 立即下载</a>-->
+                    <!--<ul class="dropdown-menu"><table class="history-body table table-light history-body border bg-white"><tbody><thead>-->
+                    <!--<tr>-->
+                    <!--    <th>版本</th>-->
+                    <!--    <th>大小</th>-->
+                    <!--    <th>密码</th>-->
+                    <!--    <th class="text-center">操作</th>-->
+                    <!--</tr>-->
+                    <!--</thead>              <tr>-->
+                    <!--    <td scope="row">[[${#annotations.get(post, 'version')}]]</td>-->
+                    <!--    <td>[[${#annotations.getOrDefault(post, 'size', '未知')}]][[${#annotations.getOrDefault(post, 'sizeType', 'MB')}]]</td>-->
+                    <!--    <td>[[${#annotations.getOrDefault(post, 'passWord1', '无')}]]</td>-->
+                    <!--    <td class="text-center"><a target="_blank" th:href="${#annotations.get(post, 'download1')}"><i class="icon icon-down"></i></a></td>-->
+                    <!--</tr>-->
+                    <!--    </tbody>-->
+                    <!--</table>-->
+                    <!--</ul>-->
                 </div>
             </div>
             <!--            <div class="col-xl-12 text-center mb-5">-->
@@ -477,49 +481,49 @@
                             <span class="text-danger">点击下载无响应？</span>
                             是因为浏览器阻止了弹出窗口，网址输入框的最右边有个图标，点击后允许即可！
                         </p>
-                        <div class="d-flex">
-                            <a target="_blank" th:href="${theme.config.post.qqUrl}" class="add-qun btn btn-outline-primary rounded-pill py-2 fs-16 px-8 me-4">
-                                <img th:src="@{/assets/themes/Falls/static/img/svg/qqgroup-icon.svg}"> 加入QQ群
-                                <div class="qq-popover">
-                                    <div class="text-center">
-                                        <img th:src="${theme.config.post.qqCode}">
-                                        <div class="flex"><h6 class="fw-600 mb-0">[[${theme.config.post.qqTitle}]]</h6> <p class="mb-0 text-muted">扫一扫二维码，加入群聊</p></div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="rewards btn btn-outline-primary rounded-pill">
-                                <img class="w-20 img-reward-default v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-default.svg}" lazy="loaded">
-                                <img class="w-20 img-reward-hover v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-hover.svg}">
-                                打赏赞助
-                                <div class="rewards-popover">
-                                    <div class="px-6 pt-6 pb-3 light dk text-center" style="height: 320px;">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <i class="icon icon-Alipay fs-40 mb-3" style="color: rgb(22, 120, 255);"></i>
-                                                <h5 class="mb-4">支付宝</h5>
-                                                <img alt="" class="w-full bg-white radius-5x border" th:src="${theme.config.post.alipayCollection}">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="icon icon-wxpay fs-40 mb-3" style="color: rgb(29, 170, 57);"></i>
-                                                <h5 class="mb-4">微信</h5>
-                                                <img alt="" class="w-full bg-white radius-5x border" th:src="${theme.config.post.wechatCollection}">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="icon icon-qqpay fs-40 mb-3" style="color: rgb(11, 178, 255);"></i>
-                                                <h5 class="mb-4">QQ</h5>
-                                                <img alt="" class="w-full bg-white radius-5x border" th:src="${theme.config.post.qqCollection}">
-                                            </div>
-                                            <div class="col-md-4">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center px-4 py-3 border-top">
-                                        <div class="flex">
-                                            <th:block th:utext="${theme.config.post.thanks}"></th:block>                </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        <!--<div class="d-flex">-->
+                        <!--    <a target="_blank" th:href="${theme.config.post.qqUrl}" class="add-qun btn btn-outline-primary rounded-pill py-2 fs-16 px-8 me-4">-->
+                        <!--        <img th:src="@{/assets/themes/Falls/static/img/svg/qqgroup-icon.svg}"> 加入QQ群-->
+                        <!--        <div class="qq-popover">-->
+                        <!--            <div class="text-center">-->
+                        <!--                <img th:src="${theme.config.post.qqCode}">-->
+                        <!--                <div class="flex"><h6 class="fw-600 mb-0">[[${theme.config.post.qqTitle}]]</h6> <p class="mb-0 text-muted">扫一扫二维码，加入群聊</p></div>-->
+                        <!--            </div>-->
+                        <!--        </div>-->
+                        <!--    </a>-->
+                        <!--    <a class="rewards btn btn-outline-primary rounded-pill">-->
+                        <!--        <img class="w-20 img-reward-default v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-default.svg}" lazy="loaded">-->
+                        <!--        <img class="w-20 img-reward-hover v-m-4 mr-1" th:src="@{/assets/themes/Falls/static/img/svg/reward-hover.svg}">-->
+                        <!--        打赏赞助-->
+                        <!--        <div class="rewards-popover">-->
+                        <!--            <div class="px-6 pt-6 pb-3 light dk text-center" style="height: 320px;">-->
+                        <!--                <div class="row">-->
+                        <!--                    <div class="col-md-4">-->
+                        <!--                        <i class="icon icon-Alipay fs-40 mb-3" style="color: rgb(22, 120, 255);"></i>-->
+                        <!--                        <h5 class="mb-4">支付宝</h5>-->
+                        <!--                        <img alt="" class="w-full bg-white radius-5x border" th:src="${theme.config.post.alipayCollection}">-->
+                        <!--                    </div>-->
+                        <!--                    <div class="col-md-4">-->
+                        <!--                        <i class="icon icon-wxpay fs-40 mb-3" style="color: rgb(29, 170, 57);"></i>-->
+                        <!--                        <h5 class="mb-4">微信</h5>-->
+                        <!--                        <img alt="" class="w-full bg-white radius-5x border" th:src="${theme.config.post.wechatCollection}">-->
+                        <!--                    </div>-->
+                        <!--                    <div class="col-md-4">-->
+                        <!--                        <i class="icon icon-qqpay fs-40 mb-3" style="color: rgb(11, 178, 255);"></i>-->
+                        <!--                        <h5 class="mb-4">QQ</h5>-->
+                        <!--                        <img alt="" class="w-full bg-white radius-5x border" th:src="${theme.config.post.qqCollection}">-->
+                        <!--                    </div>-->
+                        <!--                    <div class="col-md-4">-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+                        <!--            </div>-->
+                        <!--            <div class="d-flex align-items-center px-4 py-3 border-top">-->
+                        <!--                <div class="flex">-->
+                        <!--                    <th:block th:utext="${theme.config.post.thanks}"></th:block>                </div>-->
+                        <!--            </div>-->
+                        <!--        </div>-->
+                        <!--    </a>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
