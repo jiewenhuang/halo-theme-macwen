@@ -1057,3 +1057,23 @@ a.text-dark:focus,a.text-dark:hover {
     border-bottom-left-radius: 50rem!important;
     border-top-left-radius: 50rem!important
 }
+/*首页自适应边距视觉优化*/
+.special {
+    padding: 0 15px;
+}
+.soft {
+    padding: 0 15px;
+}
+/*移动端序号标题左边距过大优化*/
+ol, ul {
+    margin: 0 0 1.5em 0em;
+}
+/*下载按钮右边圆角美化*/
+.rounded-start-pill {
+    border-bottom-right-radius: 50rem!important;
+    border-top-right-radius: 50rem!important;
+}
+/*下载按钮鼠标反馈背景颜色优化*/  
+.btn.btn-primary.rounded-start-pill:hover {  
+  background-color: #007bff; 
+}
