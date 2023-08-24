@@ -1904,6 +1904,7 @@
  single
 --------------------------------------------------------------*/
     .layout-header {
+    	margin: 0 20px;
         position: relative;
         z-index: 10;
     }
@@ -2184,9 +2185,12 @@
         z-index: 1;
         box-shadow: 0 16px 48px #e7ebf6;
         /*width: 1410px;原样式*/
-        width: auto;/*自适应样式*/
-        max-width: 1410px;/*自适应样式*/
-    	margin: 0 auto;
+        width: auto;
+        max-width: 1410px;
+        margin: 0 auto;
+    	margin-right: 20px;
+    	margin-left: 20px;
+    	/*自适应样式*/
         overflow: hidden;
     }
 
@@ -2226,6 +2230,7 @@
     }
 
     .layout-content .container {
+    	padding: 0 40px;
         max-width: 1240px;
         z-index: 11;
     }
