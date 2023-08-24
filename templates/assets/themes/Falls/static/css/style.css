@@ -2183,8 +2183,10 @@
         position: relative;
         z-index: 1;
         box-shadow: 0 16px 48px #e7ebf6;
-        width: 1410px;
-        margin: 0 auto;
+        /*width: 1410px;原样式*/
+        width: auto;/*自适应样式*/
+        max-width: 1410px;/*自适应样式*/
+    	margin: 0 auto;
         overflow: hidden;
     }
 
