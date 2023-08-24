@@ -5322,7 +5322,6 @@ mobile
     }
 }
 
-
 @media screen and (max-width: 1199px) {
 
     body {
@@ -5590,8 +5589,9 @@ mobile
     .container-m {
         position: relative;
         margin: 0 auto;
-        max-width: 1410px;
-        padding: 0 4px;
+        width: 930px;
+        /*max-width: 1410px;*/
+        /*padding: 0 4px;*/
     }
     .layout-content .container-m {
         max-width: 1240px;
@@ -6333,3 +6333,26 @@ mobile
         }
     }
 
+/*优化手机端自适应效果*/
+@media screen and (max-width: 990px) {
+    .container-m {
+    position: relative;
+    margin: 0 auto;
+    width: 690px;
+    }
+}
+@media screen and (max-width: 768px) {
+.container-m {
+    position: relative;
+    margin: 0 auto;
+    width: 510px;
+    }
+}
+@media screen and (max-width: 576px) {
+.container-m {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 15px;
+    }
+}
